@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="BamStatus"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test_header">
+				<Option output="/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/test_header" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/zhaozhan/CLionProjects/BamStatus/htslib"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0/x86_64-apple-darwin20"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0/backward"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/include"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/include-fixed"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 test_header"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test_header/fast">
+				<Option output="/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/test_header" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/zhaozhan/CLionProjects/BamStatus/htslib"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0/x86_64-apple-darwin20"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0/backward"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/include"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/include-fixed"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 test_header/fast"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="BamStatus">
+				<Option output="/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/BamStatus" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/zhaozhan/CLionProjects/BamStatus/htslib"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0/x86_64-apple-darwin20"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0/backward"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/include"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/include-fixed"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 BamStatus"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="BamStatus/fast">
+				<Option output="/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/BamStatus" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/zhaozhan/CLionProjects/BamStatus/htslib"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0/x86_64-apple-darwin20"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0/backward"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/include"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/include-fixed"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 BamStatus/fast"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Config">
+				<Option output="/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Config" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/zhaozhan/CLionProjects/BamStatus/htslib"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0/x86_64-apple-darwin20"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0/backward"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/include"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/include-fixed"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 Config"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Config/fast">
+				<Option output="/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Config" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/zhaozhan/CLionProjects/BamStatus/htslib"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0/x86_64-apple-darwin20"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0/backward"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/include"/>
+					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/include-fixed"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 Config/fast"/>
+					<CompileFile command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/bcf_sr_sort.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/bcf_sr_sort.h">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/bgzf.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/bgzip.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/errmod.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/faidx.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/header.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/header.h">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/hfile.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/hfile_gcs.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/hfile_libcurl.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/hfile_s3.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/hfile_s3_write.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/hts.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/hts_expr.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/hts_os.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/htsfile.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/kfunc.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/kstring.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/md5.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/multipart.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/plugin.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/probaln.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/realn.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/regidx.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/region.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/sam.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/synced_bcf_reader.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/tabix.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/tbx.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/textutils.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/thread_pool.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/vcf.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/vcf_sweep.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamStatus/htslib/vcfutils.c">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamBlock.cpp">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamBlock.h">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamCompleteBlock.cpp">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamCompleteBlock.h">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamCompress.cpp">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamCompress.h">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamRead.cpp">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamRead.h">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamStatus.cpp">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamStatus.h">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamTools.cpp">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamTools.h">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/Buffer.cpp">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/Buffer.h">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/Duplicate.cpp">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/Duplicate.h">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/Overrepresent.cpp">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/Overrepresent.h">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/block_mul.cpp">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/blockingconcurrentqueue.h">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/concurrentqueue.h">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/config.h">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/lightweightsemaphore.h">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/main.cpp">
+			<Option target="BamStatus"/>
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_header.cpp">
+			<Option target="test_header"/>
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_sam.cpp">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_sam_read.cpp">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,5 @@
+/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles/test_header.dir
+/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles/BamStatus.dir
+/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles/Config.dir
