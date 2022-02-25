@@ -93,65 +93,80 @@ void assign_pack(BamCompress* compress,BamCompleteBlock* completeBlock){
     int need_block_len=0,input_length=0;
     int last_use_block_length=0;
     bool isclean = true;
+    int ret = -1;
     while (1){
         // fg = getRead(comp);
         //printf("%d is not get One compressed data\n",id);
-        if ( isclean && un_comp!=nullptr) compress->backEmpty(un_comp);
-        if ( isclean ) un_comp = compress->getUnCompressData();
+        if ( isclean && un_comp!=nullptr) {
+            compress->backEmpty(un_comp);
+        }
+//        printf("here?\n");
+        un_comp = compress->getUnCompressData();
+//        printf("here??\n");
         if (un_comp == nullptr) {
             break;
         }
         /*
          *  放满一整个 bam_complete_block
          */
+//        printf("here???\n");
 //        printf("last use block len is %d\n",last_use_block_length);
-        int ret;
-        if (last_use_block_length == 0){
-            ret = un_comp -> split_pos;
-        }else{
-            ret = find_divide_pos(un_comp,last_use_block_length);
+
+//        ret = un_comp -> split_pos;
+        ret = find_divide_pos(un_comp);
+        printf("ret number is %d\n",ret);
+        if (ret < 0){
+            printf("unsigned int is wrong\n");
         }
 //            Rabbit_memcpy(&need_block_len,un_comp->data+last_use_block_length,4);
-        need_block_len=ret-last_use_block_length;
+        need_block_len=ret;
 //        printf("need block len is %d\n",need_block_len);
-        int now_push_length = std::max(need_block_len,(int)(un_comp->length)-last_use_block_length);
 //        printf("now_push_length is %d\n",now_push_length);
 //        printf("un comp length is %d\n",un_comp->length);
-        if (assign_block->length + now_push_length > BGZF_MAX_BLOCK_COMPLETE_SIZE){
+        if (assign_block->length + need_block_len > BGZF_MAX_BLOCK_COMPLETE_SIZE){
             completeBlock->inputCompleteBlock(assign_block);
             assign_block = completeBlock->getEmpty();
         }
-        if (now_push_length > (int)(un_comp->length)-last_use_block_length){ // 该分支未经测试
+        if (ret!=un_comp->length){ // 该分支未经测试
             printf("Input This\n");
-            memcpy(assign_block->data+assign_block->length, un_comp->data+last_use_block_length,(un_comp->length - last_use_block_length)*sizeof(char));
-            input_length = (un_comp->length - last_use_block_length);
-            assign_block->length += (un_comp->length - last_use_block_length);
-            while (input_length < need_block_len){
+
+            printf("un comp length is %d\n",un_comp->length);
+            memcpy(assign_block->data+assign_block->length, un_comp->data,ret*sizeof(char));
+            assign_block->length+=ret;
+            completeBlock->inputCompleteBlock(assign_block);
+            assign_block = completeBlock->getEmpty();
+
+            memcpy(assign_block->data+assign_block->length, un_comp->data+ret,(un_comp->length - ret)*sizeof(char));
+            assign_block->length += (un_comp->length - ret);
+            compress->backEmpty(un_comp);
+            un_comp = compress->getUnCompressData();
+            memcpy(assign_block->data+assign_block->length, un_comp->data,un_comp->length*sizeof(char));
+            assign_block->length += un_comp->length;
+            while (find_divide_pos(assign_block) != assign_block->length){
+                printf("find divide pos is %d\n",find_divide_pos(assign_block));
+                printf("assign block length is %d\n",assign_block->length);
                 compress->backEmpty(un_comp);
                 un_comp = compress->getUnCompressData();
-                if (((int)(un_comp->length))>need_block_len-input_length){
-                    memcpy(assign_block->data+assign_block->length, un_comp->data,un_comp->length*sizeof(char));
-                    assign_block->length += un_comp->length;
-                    input_length += un_comp->length;
-                    last_use_block_length = 0;
-                    isclean = true;
-                } else {
-                    memcpy(assign_block->data+assign_block->length, un_comp->data,(need_block_len-input_length)*sizeof(char));
-                    assign_block->length += (need_block_len-input_length) ;
-                    input_length += (need_block_len-input_length);
-                    last_use_block_length = (last_use_block_length);
-                    isclean = false;
-                }
-
+                memcpy(assign_block->data+assign_block->length, un_comp->data,un_comp->length*sizeof(char));
+                assign_block->length += un_comp->length;
+                printf("assign_block->length is oooooooo %d\n",assign_block->length);
             }
-
+//            printf("OK is Over");
+            completeBlock->inputCompleteBlock(assign_block);
+            assign_block = completeBlock->getEmpty();
         } else {
-            memcpy(assign_block->data+assign_block->length, un_comp->data+last_use_block_length,(int)(un_comp->length)-last_use_block_length*sizeof(char));
-            assign_block->length += (int)(un_comp->length)-last_use_block_length ;
+            printf("Input Two?\n");
+            if (ret != un_comp->length ) {
+                printf("ai nan ding\n");
+                break;
+            }
+            memcpy(assign_block->data+assign_block->length, un_comp->data,ret*sizeof(char));
+            assign_block->length += ret ;
             last_use_block_length = 0;
             isclean = true;
         }
     }
+    printf("here??????????????????????\n");
     if (assign_block->length != 0){
         completeBlock->inputCompleteBlock(assign_block);
     }
@@ -170,6 +185,111 @@ void assign_pack(BamCompress* compress,BamCompleteBlock* completeBlock){
 //        compress->backEmpty(un_comp);
 
 }
+
+//void assign_pack(BamCompress* compress,BamCompleteBlock* completeBlock){
+//    bam_block *un_comp = nullptr;
+//    bam_complete_block *assign_block = completeBlock->getEmpty();
+//    int need_block_len=0,input_length=0;
+//    int last_use_block_length=0;
+//    bool isclean = true;
+//    int ret = -1;
+//    while (1){
+//        // fg = getRead(comp);
+//        //printf("%d is not get One compressed data\n",id);
+//        if ( isclean && un_comp!=nullptr) {
+//            compress->backEmpty(un_comp);
+//        }
+////        printf("here?\n");
+//        if ( last_use_block_length == 0) un_comp = compress->getUnCompressData();
+////        printf("here??\n");
+//        if (un_comp == nullptr) {
+//            break;
+//        }
+//        /*
+//         *  放满一整个 bam_complete_block
+//         */
+////        printf("here???\n");
+////        printf("last use block len is %d\n",last_use_block_length);
+//
+//        if (last_use_block_length == 0){
+//            ret = un_comp -> split_pos;
+//        }else{
+//            ret = find_divide_pos(un_comp,last_use_block_length);
+//        }
+////            Rabbit_memcpy(&need_block_len,un_comp->data+last_use_block_length,4);
+//        need_block_len=ret-last_use_block_length;
+////        printf("need block len is %d\n",need_block_len);
+//        int now_push_length = std::max(need_block_len,(int)(un_comp->length)-last_use_block_length);
+////        printf("now_push_length is %d\n",now_push_length);
+////        printf("un comp length is %d\n",un_comp->length);
+//        if (assign_block->length + now_push_length > BGZF_MAX_BLOCK_COMPLETE_SIZE){
+//            completeBlock->inputCompleteBlock(assign_block);
+//            assign_block = completeBlock->getEmpty();
+//        }
+//        if (now_push_length > (int)(un_comp->length)-last_use_block_length){ // 该分支未经测试
+//            printf("Input This\n");
+//            printf("last use block length is %d\n",last_use_block_length);
+//            printf("assign block length is %d\n",assign_block->length);
+//            printf("un comp length is %d\n",un_comp->length);
+//            memcpy(assign_block->data+assign_block->length, un_comp->data+last_use_block_length,(un_comp->length - last_use_block_length)*sizeof(char));
+//            input_length = (un_comp->length - last_use_block_length);
+//            assign_block->length += (un_comp->length - last_use_block_length);
+//            printf("need block len is %d\n",need_block_len);
+//            printf("BGZF_MAX_BLOCK_COMPLETE_SIZE is %d\n",BGZF_MAX_BLOCK_COMPLETE_SIZE);
+//            while (input_length < need_block_len){
+//                printf("Input length is %d\nneed block len is %d\n",input_length,need_block_len);
+//                compress->backEmpty(un_comp);
+//                un_comp = compress->getUnCompressData();
+//                printf("un comp length in this is %d\n",un_comp->length);
+//                if ((un_comp->length)<(need_block_len-input_length)){
+//                    memcpy(assign_block->data+assign_block->length, un_comp->data,un_comp->length*sizeof(char));
+//                    assign_block->length += un_comp->length;
+//                    input_length += un_comp->length;
+//                    last_use_block_length = 0;
+//                    isclean = true;
+//                } else {
+//                    memcpy(assign_block->data+assign_block->length, un_comp->data,(need_block_len-input_length)*sizeof(char));
+//                    assign_block->length += (need_block_len-input_length) ;
+//                    last_use_block_length = (need_block_len-input_length);
+//                    printf("last use block change is %d\n",last_use_block_length);
+//                    input_length += (need_block_len-input_length);
+//                    isclean = false;
+//                }
+//
+//            }
+//
+//        } else {
+//            printf("Input Two?\n");
+//            if (ret != un_comp->length ) {
+//                printf("ai nan ding\n");
+//                break;
+//            }
+//            memcpy(assign_block->data+assign_block->length, un_comp->data+last_use_block_length,ret-last_use_block_length*sizeof(char));
+//            assign_block->length += ret -last_use_block_length ;
+//            last_use_block_length = 0;
+//            isclean = true;
+//        }
+//    }
+//    printf("here??????????????????????\n");
+//    if (assign_block->length != 0){
+//        completeBlock->inputCompleteBlock(assign_block);
+//    }
+//    completeBlock->is_over();
+//    //        if (assign_block->length + un_comp->length >BGZF_MAX_BLOCK_COMPLETE_SIZE){
+////            completeBlock->inputCompleteBlock(assign_block);
+////            assign_block = completeBlock->getEmpty();
+////        }
+//
+////        int ret = find_divide_pos(un_comp);
+////        if (ret != un_comp->length){
+////            printf("ret == %d  block length == %d\n",ret,un_comp->length);
+////        }
+////        memcpy(assign_block->data+assign_block->length, un_comp->data,un_comp->length*sizeof(char));
+////        assign_block->length += un_comp->length;
+////        compress->backEmpty(un_comp);
+//
+//}
+
 void benchmark_pack(BamCompleteBlock* completeBlock){
 
     bam1_t *b;

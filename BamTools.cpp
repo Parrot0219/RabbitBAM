@@ -324,7 +324,7 @@ int read_block(BGZF *fp, struct bam_block *j)
 }
 int Rabbit_bgzf_read(struct bam_block *fq,void *data,unsigned int length){
     if (length <= 0) return -1;
-    if (length > fq->length-fq->pos) printf("One Block Is Small");
+    if (length > fq->length-fq->pos) printf("One Block Is Small\n");
     length=fq->pos+length > fq->length ? fq->length-fq->pos:length;
     memcpy((uint8_t*)data,fq->data+fq->pos,length);
     fq->pos+=length;
@@ -335,7 +335,12 @@ void Rabbit_memcpy(void *target,unsigned char *source,unsigned int length){
 }
 int Rabbit_bgzf_read(struct bam_complete_block *fq,void *data,unsigned int length){
     if (length <= 0) return -1;
-    if (length > fq->length-fq->pos) printf("One Block Is Small");
+    if (length > fq->length-fq->pos) {
+        printf("length is %d\n",length);
+        printf("fq length is %d\n",fq->length);
+        printf("fq pos is %d\n",fq->pos);
+        printf("One Block Is Small\n");
+    }
     length=fq->pos+length > fq->length ? fq->length-fq->pos:length;
     memcpy((uint8_t*)data,fq->data+fq->pos,length);
     fq->pos+=length;
@@ -422,17 +427,27 @@ int read_bam(struct bam_complete_block *fq,bam1_t *b,int is_be){
     c->flag = x[3]>>16; c->n_cigar = x[3]&0xffff;
     c->l_qseq = x[4];
     c->mtid = x[5]; c->mpos = (int32_t)x[6]; c->isize = (int32_t)x[7];
-
+    /*
+     * 未处理这一块
+     */
     new_l_data = block_len - 32 + c->l_extranul;//block_len + c->l_extranul
-    if (new_l_data > INT_MAX || c->l_qseq < 0 || c->l_qname < 1) return -4;
-    if (((uint64_t) c->n_cigar << 2) + c->l_qname + c->l_extranul
-        + (((uint64_t) c->l_qseq + 1) >> 1) + c->l_qseq > (uint64_t) new_l_data)
+    if (new_l_data > INT_MAX || c->l_qseq < 0 || c->l_qname < 1) {
+//        printf("in this not this\n");
         return -4;
+    }
+    if (((uint64_t) c->n_cigar << 2) + c->l_qname + c->l_extranul
+        + (((uint64_t) c->l_qseq + 1) >> 1) + c->l_qseq > (uint64_t) new_l_data){
+//        printf("in this not in this not in this\n");
+        return -4;
+    }
+
+
     if (realloc_bam_data(b, new_l_data) < 0) return -4;
     b->l_data = new_l_data;
 
     if (Rabbit_bgzf_read(fq, b->data, c->l_qname) != c->l_qname) return -4;
     if (b->data[c->l_qname - 1] != '\0') { // Try to fix missing NUL termination
+//        printf("inininininini\n");
         if (fixup_missing_qname_nul(b) < 0) return -4;
     }
     for (i = 0; i < c->l_extranul; ++i) b->data[c->l_qname+i] = '\0';
@@ -458,16 +473,210 @@ int read_bam(struct bam_complete_block *fq,bam1_t *b,int is_be){
     return 4 + block_len;
 }
 
+// Fix bad records where qname is not terminated correctly.
+//没处理完全懂？
+//static int fixup_missing_qname_nul(bam1_t *b) {
+//    bam1_core_t *c = &b->core;
+//
+//    // Note this is called before c->l_extranul is added to c->l_qname
+//    if (c->l_extranul > 0) {
+//        b->data[c->l_qname++] = '\0';
+//        c->l_extranul--;
+//    } else {
+//        if (b->l_data > INT_MAX - 4) return -1;
+//        if (realloc_bam_data(b, b->l_data + 4) < 0) return -1;
+//        b->l_data += 4;
+//        b->data[c->l_qname++] = '\0';
+//        c->l_extranul = 3;
+//    }
+//    return 0;
+//}
 int find_divide_pos(bam_block *block,int last_pos){
     int divide_pos = last_pos;
     int ret = 0;
+    uint32_t x[8], new_l_data;
     while (divide_pos<block->length){
         Rabbit_memcpy(&ret,block->data+divide_pos,4);
+//        printf("ret is %d\n",ret);
+//        printf("divide_pos is %d\n",divide_pos);
+//        printf("block length is %d\n",block->length);
         if (ret>=32){
+            if (divide_pos + 4 + 32 > block->length){
+                break;
+            }
+            Rabbit_memcpy(x,block->data+divide_pos+4,32);
+            int pos = (int32_t)x[1];
+            int l_qname = x[2]&0xff;
+            int l_extranul = (l_qname%4 != 0)? (4 - l_qname%4) : 0;
+            int n_cigar = x[3]&0xffff;
+            int l_qseq = x[4];
+            new_l_data = ret - 32 + l_extranul;//block_len + c->l_extranul
+            if (new_l_data > INT_MAX || l_qseq < 0 || l_qname < 1) {
+//                printf("ai 32 我的老天爷啊\n");
+                divide_pos+=4+32;
+                continue;
+            }
+            if (((uint64_t) n_cigar << 2) + l_qname + l_extranul
+                + (((uint64_t) l_qseq + 1) >> 1) + l_qseq > (uint64_t) new_l_data){
+//                printf("ai 32 我的老天爷啊\n");
+                divide_pos+=4+32;
+                continue;
+            }
+            if (divide_pos + 4 + 32 + l_qname > block->length){
+//                printf("ai lqname Wrong!!!\n");
+                break;
+            }
+            char fg_char;
+            Rabbit_memcpy(&fg_char,block->data+divide_pos+4+32+l_qname-1,1);
+            if (fg_char != '\0' && l_extranul <=0 && new_l_data > INT_MAX -4 ){
+//                printf("this is wrong\n");
+                divide_pos+=4+32+l_qname;
+                continue;
+            }
+
+            if (divide_pos + 4 + ret > block->length) {
+                break;
+            }
             divide_pos+=4+ret;
-        }else divide_pos+=4;
+        }else {
+//            printf("BIG WRONG!!!\n");
+            if (divide_pos+4 > block->length) {
+                break;
+            }
+            divide_pos+=4;
+        }
 //        printf("One Block Size is %d\n",ret);
 
     }
+//    if (block->length!=divide_pos && block->length - divide_pos < 4) printf("BIG WRONG!!!\n");
     return divide_pos;
 }
+
+int find_divide_pos(bam_complete_block *block,int last_pos){
+    int divide_pos = last_pos;
+    int ret = 0;
+    uint32_t x[8], new_l_data;
+    while (divide_pos<block->length){
+        Rabbit_memcpy(&ret,block->data+divide_pos,4);
+//        printf("ret is %d\n",ret);
+//        printf("divide_pos is %d\n",divide_pos);
+//        printf("block length is %d\n",block->length);
+        if (ret>=32){
+            if (divide_pos + 4 + 32 > block->length){
+
+                break;
+            }
+            Rabbit_memcpy(x,block->data+divide_pos+4,32);
+            int pos = (int32_t)x[1];
+            int l_qname = x[2]&0xff;
+            int l_extranul = (l_qname%4 != 0)? (4 - l_qname%4) : 0;
+            int n_cigar = x[3]&0xffff;
+            int l_qseq = x[4];
+            new_l_data = ret - 32 + l_extranul;//block_len + c->l_extranul
+            if (new_l_data > INT_MAX || l_qseq < 0 || l_qname < 1) {
+//                printf("ai 32 我的老天爷啊\n");
+                divide_pos+=4+32;
+                continue;
+            }
+            if (((uint64_t) n_cigar << 2) + l_qname + l_extranul
+                + (((uint64_t) l_qseq + 1) >> 1) + l_qseq > (uint64_t) new_l_data){
+//                printf("ai 32 我的老天爷啊\n");
+                divide_pos+=4+32;
+                continue;
+            }
+            if (divide_pos + 4 + 32 + l_qname > block->length){
+//                printf("ai lqname Wrong!!!\n");
+                break;
+            }
+            char fg_char;
+            Rabbit_memcpy(&fg_char,block->data+divide_pos+4+32+l_qname-1,1);
+            if (fg_char != '\0') {
+//                printf("this is wrong\n");
+            }
+            if (fg_char != '\0' && l_extranul <=0 && new_l_data > INT_MAX -4 ){
+
+                if (divide_pos + 4 + 32 + l_qname > block->length){
+//                    printf("in this not happy!\n");
+                    break;
+                }
+                divide_pos+=4+32+l_qname;
+                continue;
+            }
+
+            if (divide_pos + 4 + ret > block->length) {
+                break;
+            }
+            divide_pos+=4+ret;
+        }else {
+//            printf("BIG WRONG!!!\n");
+            if (divide_pos+4 > block->length) {
+                break;
+            }
+            divide_pos+=4;
+        }
+//        printf("One Block Size is %d\n",ret);
+
+    }
+//    if (block->length!=divide_pos && block->length - divide_pos < 4) printf("BIG WRONG!!!\n");
+    return divide_pos;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * 碎碎念碎碎念碎碎念碎碎念碎碎念碎碎念
+ * TMD这个BAM为啥毛病这么多，找BUG好烦啊
+ * 烦得要死要死
+ */

@@ -20,7 +20,8 @@
 
 #define BLOCK_HEADER_LENGTH 18
 #define BLOCK_FOOTER_LENGTH 8
-#define BGZF_MAX_BLOCK_COMPLETE_SIZE BGZF_MAX_BLOCK_SIZE+BGZF_MAX_BLOCK_SIZE+BGZF_MAX_BLOCK_SIZE+BGZF_MAX_BLOCK_SIZE
+//#define BGZF_MAX_BLOCK_SIZE 0x10000
+#define BGZF_MAX_BLOCK_COMPLETE_SIZE 0xF0000
 typedef struct {
     int size;
     uint8_t *block;
@@ -73,5 +74,6 @@ int Rabbit_bgzf_read(struct bam_complete_block *fq,void *data,unsigned int lengt
 int read_bam(struct bam_block *fq,bam1_t *b,int is_be);
 int read_bam(struct bam_complete_block *fq,bam1_t *b,int is_be);
 int find_divide_pos(bam_block *block,int last_pos=0);
+int find_divide_pos(bam_complete_block *block,int last_pos=0);
 
 #endif //BAMSTATUS_BAMTOOLS_H
