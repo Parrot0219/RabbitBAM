@@ -46,13 +46,14 @@ bam_block* BamCompress::getEmpty(){
  *        int ：读入的顺序编号
  * 输出：  无
  */
+
 void BamCompress::inputUnCompressData(bam_block* data,int block_num) {
-    std::this_thread::sleep_for(std::chrono::milliseconds(blockNum-block_num));
+//    std::this_thread::sleep_for(std::chrono::milliseconds(blockNum-block_num));
     mtx_input.lock();
-    while (block_num != blockNum) {
+    while (block_num!=blockNum) {
         wait_num+=1;
         mtx_input.unlock();
-        std::this_thread::sleep_for(std::chrono::milliseconds(blockNum-block_num));
+        std::this_thread::sleep_for(std::chrono::nanoseconds(block_num-blockNum)/2);
         mtx_input.lock();
     }
 
@@ -62,6 +63,24 @@ void BamCompress::inputUnCompressData(bam_block* data,int block_num) {
     mtx_input.unlock();
 //    printf("block Num is %d\n",blockNum);
 }
+
+
+//void BamCompress::inputUnCompressData(bam_block* data,int block_num) {
+//    std::this_thread::sleep_for(std::chrono::milliseconds(blockNum-block_num));
+//    mtx_input.lock();
+//    while (block_num != blockNum) {
+//        wait_num+=1;
+//        mtx_input.unlock();
+//        std::this_thread::sleep_for(std::chrono::milliseconds(blockNum-block_num));
+//        mtx_input.lock();
+//    }
+//
+//    consumer_data[(consumer_ed + 1) % consumer_size] = data;
+//    consumer_ed = (consumer_ed + 1) % consumer_size;
+//    blockNum++;
+//    mtx_input.unlock();
+////    printf("block Num is %d\n",blockNum);
+//}
 
 
 ///*

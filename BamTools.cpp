@@ -620,6 +620,162 @@ int find_divide_pos(bam_complete_block *block,int last_pos){
 //    if (block->length!=divide_pos && block->length - divide_pos < 4) printf("BIG WRONG!!!\n");
     return divide_pos;
 }
+std::pair<int,int> find_divide_pos_and_get_read_number(bam_block *block,int last_pos){
+    int divide_pos = last_pos;
+    int ans=0;
+    int ret = 0;
+    uint32_t x[8], new_l_data;
+    while (divide_pos<block->length){
+        Rabbit_memcpy(&ret,block->data+divide_pos,4);
+//        printf("ret is %d\n",ret);
+//        printf("divide_pos is %d\n",divide_pos);
+//        printf("block length is %d\n",block->length);
+        if (ret>=32){
+            if (divide_pos + 4 + 32 > block->length){
+
+                break;
+            }
+            Rabbit_memcpy(x,block->data+divide_pos+4,32);
+            int pos = (int32_t)x[1];
+            int l_qname = x[2]&0xff;
+            int l_extranul = (l_qname%4 != 0)? (4 - l_qname%4) : 0;
+            int n_cigar = x[3]&0xffff;
+            int l_qseq = x[4];
+            new_l_data = ret - 32 + l_extranul;//block_len + c->l_extranul
+            if (new_l_data > INT_MAX || l_qseq < 0 || l_qname < 1) {
+//                printf("ai 32 我的老天爷啊\n");
+                divide_pos+=4+32;
+                continue;
+            }
+            if (((uint64_t) n_cigar << 2) + l_qname + l_extranul
+                + (((uint64_t) l_qseq + 1) >> 1) + l_qseq > (uint64_t) new_l_data){
+//                printf("ai 32 我的老天爷啊\n");
+                divide_pos+=4+32;
+                continue;
+            }
+            if (divide_pos + 4 + 32 + l_qname > block->length){
+//                printf("ai lqname Wrong!!!\n");
+                break;
+            }
+            char fg_char;
+            Rabbit_memcpy(&fg_char,block->data+divide_pos+4+32+l_qname-1,1);
+            if (fg_char != '\0') {
+//                printf("this is wrong\n");
+            }
+            if (fg_char != '\0' && l_extranul <=0 && new_l_data > INT_MAX -4 ){
+
+                if (divide_pos + 4 + 32 + l_qname > block->length){
+//                    printf("in this not happy!\n");
+                    break;
+                }
+                divide_pos+=4+32+l_qname;
+                continue;
+            }
+
+            if (divide_pos + 4 + ret > block->length) {
+                break;
+            }
+            divide_pos+=4+ret;
+            ans++;
+        }else {
+//            printf("BIG WRONG!!!\n");
+            if (divide_pos+4 > block->length) {
+                break;
+            }
+            divide_pos+=4;
+        }
+//        printf("One Block Size is %d\n",ret);
+
+    }
+//    if (block->length!=divide_pos && block->length - divide_pos < 4) printf("BIG WRONG!!!\n");
+    return std::pair<int,int>(divide_pos,ans);
+}
+std::pair<int,int> find_divide_pos_and_get_read_number(bam_complete_block *block,int last_pos){
+    int divide_pos = last_pos;
+    int ans=0;
+    int ret = 0;
+    uint32_t x[8], new_l_data;
+    while (divide_pos<block->length){
+        Rabbit_memcpy(&ret,block->data+divide_pos,4);
+//        printf("ret is %d\n",ret);
+//        printf("divide_pos is %d\n",divide_pos);
+//        printf("block length is %d\n",block->length);
+        if (ret>=32){
+            if (divide_pos + 4 + 32 > block->length){
+
+                break;
+            }
+            Rabbit_memcpy(x,block->data+divide_pos+4,32);
+            int pos = (int32_t)x[1];
+            int l_qname = x[2]&0xff;
+            int l_extranul = (l_qname%4 != 0)? (4 - l_qname%4) : 0;
+            int n_cigar = x[3]&0xffff;
+            int l_qseq = x[4];
+            new_l_data = ret - 32 + l_extranul;//block_len + c->l_extranul
+            if (new_l_data > INT_MAX || l_qseq < 0 || l_qname < 1) {
+//                printf("ai 32 我的老天爷啊\n");
+                divide_pos+=4+32;
+                continue;
+            }
+            if (((uint64_t) n_cigar << 2) + l_qname + l_extranul
+                + (((uint64_t) l_qseq + 1) >> 1) + l_qseq > (uint64_t) new_l_data){
+//                printf("ai 32 我的老天爷啊\n");
+                divide_pos+=4+32;
+                continue;
+            }
+            if (divide_pos + 4 + 32 + l_qname > block->length){
+//                printf("ai lqname Wrong!!!\n");
+                break;
+            }
+            char fg_char;
+            Rabbit_memcpy(&fg_char,block->data+divide_pos+4+32+l_qname-1,1);
+            if (fg_char != '\0') {
+//                printf("this is wrong\n");
+            }
+            if (fg_char != '\0' && l_extranul <=0 && new_l_data > INT_MAX -4 ){
+
+                if (divide_pos + 4 + 32 + l_qname > block->length){
+//                    printf("in this not happy!\n");
+                    break;
+                }
+                divide_pos+=4+32+l_qname;
+                continue;
+            }
+
+            if (divide_pos + 4 + ret > block->length) {
+                break;
+            }
+            divide_pos+=4+ret;
+            ans++;
+        }else {
+//            printf("BIG WRONG!!!\n");
+            if (divide_pos+4 > block->length) {
+                break;
+            }
+            divide_pos+=4;
+        }
+//        printf("One Block Size is %d\n",ret);
+
+    }
+//    if (block->length!=divide_pos && block->length - divide_pos < 4) printf("BIG WRONG!!!\n");
+    return std::pair<int,int>(divide_pos,ans);
+}
+int change_data_size(bam_complete_block *block){
+    int new_length;
+    if (block->data_size < 8*BGZF_MAX_BLOCK_SIZE){
+//        printf("In this\n");
+        new_length = 2*block->data_size;
+    }else {
+//        printf("ai why in this\n");
+        new_length = block->data_size+2*BGZF_MAX_BLOCK_SIZE;
+    }
+    unsigned char *data_new = new unsigned char[new_length];
+    memcpy(data_new,block->data,block->length*sizeof(unsigned char));
+//    delete [] block->data;
+    block->data = data_new;
+    block->data_size = new_length;
+    return new_length;
+}
 
 
 
@@ -668,15 +824,3 @@ int find_divide_pos(bam_complete_block *block,int last_pos){
 
 
 
-
-
-
-
-
-
-
-/*
- * 碎碎念碎碎念碎碎念碎碎念碎碎念碎碎念
- * TMD这个BAM为啥毛病这么多，找BUG好烦啊
- * 烦得要死要死
- */

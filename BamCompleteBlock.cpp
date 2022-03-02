@@ -15,6 +15,9 @@ BamCompleteBlock::BamCompleteBlock(int BufferSize){
     complete_data = new bam_complete_block*[complete_size];
     for (int i=complete_bg;i<=complete_ed;i++) {
         complete_data[i] = new bam_complete_block;
+        complete_data[i]->data_size= BGZF_MAX_BLOCK_COMPLETE_SIZE;
+//        printf("dadakjbkjansdkjandasdasd\n");
+        complete_data[i]->data = new unsigned char[complete_data[i]->data_size]; //????
         complete_data[i]->pos=0;
         complete_data[i]->length=0;
     }

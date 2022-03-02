@@ -78,7 +78,9 @@ void compress_pack(BamRead *read,BamCompress *compress){
         }
         block_decode_func(comp.first,un_comp);
         read->backBlock(comp.first);
-        un_comp->split_pos = find_divide_pos(un_comp);
+
+        std::pair<int,int> tmp_pair= find_divide_pos_and_get_read_number(un_comp);
+        un_comp->split_pos=tmp_pair.first,un_comp->bam_number=tmp_pair.second;
         compress->inputUnCompressData(un_comp,comp.second);
 //        while (!compress->tryinputUnCompressData(un_comp,comp.second)){
 //            std::this_thread::sleep_for(std::chrono::milliseconds(1));
@@ -109,28 +111,28 @@ void assign_pack(BamCompress* compress,BamCompleteBlock* completeBlock){
         /*
          *  放满一整个 bam_complete_block
          */
-//        printf("here???\n");
+        printf("here???\n");
 //        printf("last use block len is %d\n",last_use_block_length);
 
-//        ret = un_comp -> split_pos;
-        ret = find_divide_pos(un_comp);
-        printf("ret number is %d\n",ret);
-        if (ret < 0){
-            printf("unsigned int is wrong\n");
-        }
+        ret = un_comp -> split_pos;
+//        ret = find_divide_pos(un_comp);
+//        printf("ret number is %d\n",ret);
+//        if (ret < 0){
+//            printf("unsigned int is wrong\n");
+//        }
 //            Rabbit_memcpy(&need_block_len,un_comp->data+last_use_block_length,4);
         need_block_len=ret;
 //        printf("need block len is %d\n",need_block_len);
 //        printf("now_push_length is %d\n",now_push_length);
 //        printf("un comp length is %d\n",un_comp->length);
-        if (assign_block->length + need_block_len > BGZF_MAX_BLOCK_COMPLETE_SIZE){
+        if (assign_block->length + need_block_len > assign_block->data_size){
             completeBlock->inputCompleteBlock(assign_block);
             assign_block = completeBlock->getEmpty();
         }
         if (ret!=un_comp->length){ // 该分支未经测试
-            printf("Input This\n");
+//            printf("Input This\n");
 
-            printf("un comp length is %d\n",un_comp->length);
+//            printf("un comp length is %d\n",un_comp->length);
             memcpy(assign_block->data+assign_block->length, un_comp->data,ret*sizeof(char));
             assign_block->length+=ret;
             completeBlock->inputCompleteBlock(assign_block);
@@ -143,21 +145,27 @@ void assign_pack(BamCompress* compress,BamCompleteBlock* completeBlock){
             memcpy(assign_block->data+assign_block->length, un_comp->data,un_comp->length*sizeof(char));
             assign_block->length += un_comp->length;
             while (find_divide_pos(assign_block) != assign_block->length){
-                printf("find divide pos is %d\n",find_divide_pos(assign_block));
-                printf("assign block length is %d\n",assign_block->length);
+//                printf("find divide pos is %d\n",find_divide_pos(assign_block));
+//                printf("assign block length is %d\n",assign_block->length);
                 compress->backEmpty(un_comp);
                 un_comp = compress->getUnCompressData();
+                printf("assign block length is %d\n",assign_block->length);
+                printf("assign block data size is %d\n",assign_block->data_size);
+                printf("un comp length is %d\n",un_comp->length);
+                if (assign_block->length+un_comp->length > assign_block->data_size){
+                    change_data_size(assign_block);
+                }
                 memcpy(assign_block->data+assign_block->length, un_comp->data,un_comp->length*sizeof(char));
                 assign_block->length += un_comp->length;
-                printf("assign_block->length is oooooooo %d\n",assign_block->length);
+//                printf("assign_block->length is oooooooo %d\n",assign_block->length);
             }
 //            printf("OK is Over");
             completeBlock->inputCompleteBlock(assign_block);
             assign_block = completeBlock->getEmpty();
         } else {
-            printf("Input Two?\n");
+//            printf("Input Two?\n");
             if (ret != un_comp->length ) {
-                printf("ai nan ding\n");
+//                printf("ai nan ding\n");
                 break;
             }
             memcpy(assign_block->data+assign_block->length, un_comp->data,ret*sizeof(char));
@@ -166,7 +174,7 @@ void assign_pack(BamCompress* compress,BamCompleteBlock* completeBlock){
             isclean = true;
         }
     }
-    printf("here??????????????????????\n");
+//    printf("here??????????????????????\n");
     if (assign_block->length != 0){
         completeBlock->inputCompleteBlock(assign_block);
     }
@@ -186,111 +194,124 @@ void assign_pack(BamCompress* compress,BamCompleteBlock* completeBlock){
 
 }
 
-//void assign_pack(BamCompress* compress,BamCompleteBlock* completeBlock){
-//    bam_block *un_comp = nullptr;
-//    bam_complete_block *assign_block = completeBlock->getEmpty();
-//    int need_block_len=0,input_length=0;
-//    int last_use_block_length=0;
-//    bool isclean = true;
-//    int ret = -1;
-//    while (1){
-//        // fg = getRead(comp);
-//        //printf("%d is not get One compressed data\n",id);
-//        if ( isclean && un_comp!=nullptr) {
-//            compress->backEmpty(un_comp);
+void benchmark_pack(BamCompress* compress,BamCompleteBlock* completeBlock){
+    bam_block *un_comp = nullptr;
+    bam_complete_block *assign_block = completeBlock->getEmpty();
+    int need_block_len=0,input_length=0;
+    int last_use_block_length=0;
+    bool isclean = true;
+    int ret = -1;
+    int bam_number = 0;
+    while (1){
+        // fg = getRead(comp);
+        //printf("%d is not get One compressed data\n",id);
+        if ( isclean && un_comp!=nullptr) {
+            compress->backEmpty(un_comp);
+        }
+//        printf("here?\n");
+        un_comp = compress->getUnCompressData();
+//        printf("here??\n");
+        if (un_comp == nullptr) {
+            break;
+        }
+        /*
+         *  放满一整个 bam_complete_block
+         */
+//        printf("here???\n");
+//        printf("last use block len is %d\n",last_use_block_length);
+
+        ret = un_comp -> split_pos;
+//        ret = find_divide_pos(un_comp);
+//        printf("ret number is %d\n",ret);
+//        if (ret < 0){
+//            printf("unsigned int is wrong\n");
 //        }
-////        printf("here?\n");
-//        if ( last_use_block_length == 0) un_comp = compress->getUnCompressData();
-////        printf("here??\n");
-//        if (un_comp == nullptr) {
-//            break;
-//        }
-//        /*
-//         *  放满一整个 bam_complete_block
-//         */
-////        printf("here???\n");
-////        printf("last use block len is %d\n",last_use_block_length);
-//
-//        if (last_use_block_length == 0){
-//            ret = un_comp -> split_pos;
-//        }else{
-//            ret = find_divide_pos(un_comp,last_use_block_length);
-//        }
-////            Rabbit_memcpy(&need_block_len,un_comp->data+last_use_block_length,4);
-//        need_block_len=ret-last_use_block_length;
-////        printf("need block len is %d\n",need_block_len);
-//        int now_push_length = std::max(need_block_len,(int)(un_comp->length)-last_use_block_length);
-////        printf("now_push_length is %d\n",now_push_length);
-////        printf("un comp length is %d\n",un_comp->length);
-//        if (assign_block->length + now_push_length > BGZF_MAX_BLOCK_COMPLETE_SIZE){
+//            Rabbit_memcpy(&need_block_len,un_comp->data+last_use_block_length,4);
+        need_block_len=ret;
+//        printf("need block len is %d\n",need_block_len);
+//        printf("now_push_length is %d\n",now_push_length);
+//        printf("un comp length is %d\n",un_comp->length);
+        if (assign_block->length + need_block_len > assign_block->data_size){
+            completeBlock->backEmpty(assign_block);
+            assign_block = completeBlock->getEmpty();
+        }
+        if (ret!=un_comp->length){ // 该分支未经测试
+//            printf("Input This\n");
+
+//            printf("un comp length is %d\n",un_comp->length);
+            memcpy(assign_block->data+assign_block->length, un_comp->data,ret*sizeof(char));
+            assign_block->length+=ret;
+            completeBlock->backEmpty(assign_block);
+            bam_number+=find_divide_pos_and_get_read_number(assign_block).second;
+            assign_block = completeBlock->getEmpty();
+
+            memcpy(assign_block->data+assign_block->length, un_comp->data+ret,(un_comp->length - ret)*sizeof(char));
+            assign_block->length += (un_comp->length - ret);
+            compress->backEmpty(un_comp);
+            un_comp = compress->getUnCompressData();
+            memcpy(assign_block->data+assign_block->length, un_comp->data,un_comp->length*sizeof(char));
+            assign_block->length += un_comp->length;
+            while (find_divide_pos(assign_block) != assign_block->length){
+//                printf("find divide pos is %d\n",find_divide_pos(assign_block));
+//                printf("assign block length is %d\n",assign_block->length);
+                compress->backEmpty(un_comp);
+                un_comp = compress->getUnCompressData();
+//                printf("assign block length is %d\n",assign_block->length);
+//                printf("assign block data size is %d\n",assign_block->data_size);
+//                printf("un comp length is %d\n",un_comp->length);
+                if (assign_block->length+un_comp->length > assign_block->data_size){
+                    change_data_size(assign_block);
+                }
+                memcpy(assign_block->data+assign_block->length, un_comp->data,un_comp->length*sizeof(char));
+                assign_block->length += un_comp->length;
+//                printf("assign_block->length is oooooooo %d\n",assign_block->length);
+            }
+
+//            printf("OK is Over");
+            bam_number+=find_divide_pos_and_get_read_number(assign_block).second;
+            completeBlock->backEmpty(assign_block);
+            assign_block = completeBlock->getEmpty();
+        } else {
+//            printf("Input Two?\n");
+            if (ret != un_comp->length ) {
+                printf("ai nan ding\n");
+                break;
+            }
+//            printf("1\n");
+//            printf("assign block length is %d\n",assign_block->length);
+//            printf("assign block data size is %d\n",assign_block->data_size);
+//            printf("un comp length is %d\n",un_comp->length);
+            memcpy(assign_block->data+assign_block->length, un_comp->data,ret*sizeof(unsigned char));
+
+//            printf("2\n");
+            assign_block->length += ret ;
+            last_use_block_length = 0;
+            isclean = true;
+            bam_number+=un_comp->bam_number;
+        }
+    }
+//    printf("here??????????????????????\n");
+    if (assign_block->length != 0){
+        completeBlock->backEmpty(assign_block);
+    }
+    completeBlock->is_over();
+    printf("Bam number is %d\n",bam_number);
+    //        if (assign_block->length + un_comp->length >BGZF_MAX_BLOCK_COMPLETE_SIZE){
 //            completeBlock->inputCompleteBlock(assign_block);
 //            assign_block = completeBlock->getEmpty();
 //        }
-//        if (now_push_length > (int)(un_comp->length)-last_use_block_length){ // 该分支未经测试
-//            printf("Input This\n");
-//            printf("last use block length is %d\n",last_use_block_length);
-//            printf("assign block length is %d\n",assign_block->length);
-//            printf("un comp length is %d\n",un_comp->length);
-//            memcpy(assign_block->data+assign_block->length, un_comp->data+last_use_block_length,(un_comp->length - last_use_block_length)*sizeof(char));
-//            input_length = (un_comp->length - last_use_block_length);
-//            assign_block->length += (un_comp->length - last_use_block_length);
-//            printf("need block len is %d\n",need_block_len);
-//            printf("BGZF_MAX_BLOCK_COMPLETE_SIZE is %d\n",BGZF_MAX_BLOCK_COMPLETE_SIZE);
-//            while (input_length < need_block_len){
-//                printf("Input length is %d\nneed block len is %d\n",input_length,need_block_len);
-//                compress->backEmpty(un_comp);
-//                un_comp = compress->getUnCompressData();
-//                printf("un comp length in this is %d\n",un_comp->length);
-//                if ((un_comp->length)<(need_block_len-input_length)){
-//                    memcpy(assign_block->data+assign_block->length, un_comp->data,un_comp->length*sizeof(char));
-//                    assign_block->length += un_comp->length;
-//                    input_length += un_comp->length;
-//                    last_use_block_length = 0;
-//                    isclean = true;
-//                } else {
-//                    memcpy(assign_block->data+assign_block->length, un_comp->data,(need_block_len-input_length)*sizeof(char));
-//                    assign_block->length += (need_block_len-input_length) ;
-//                    last_use_block_length = (need_block_len-input_length);
-//                    printf("last use block change is %d\n",last_use_block_length);
-//                    input_length += (need_block_len-input_length);
-//                    isclean = false;
-//                }
-//
-//            }
-//
-//        } else {
-//            printf("Input Two?\n");
-//            if (ret != un_comp->length ) {
-//                printf("ai nan ding\n");
-//                break;
-//            }
-//            memcpy(assign_block->data+assign_block->length, un_comp->data+last_use_block_length,ret-last_use_block_length*sizeof(char));
-//            assign_block->length += ret -last_use_block_length ;
-//            last_use_block_length = 0;
-//            isclean = true;
-//        }
-//    }
-//    printf("here??????????????????????\n");
-//    if (assign_block->length != 0){
-//        completeBlock->inputCompleteBlock(assign_block);
-//    }
-//    completeBlock->is_over();
-//    //        if (assign_block->length + un_comp->length >BGZF_MAX_BLOCK_COMPLETE_SIZE){
-////            completeBlock->inputCompleteBlock(assign_block);
-////            assign_block = completeBlock->getEmpty();
-////        }
-//
-////        int ret = find_divide_pos(un_comp);
-////        if (ret != un_comp->length){
-////            printf("ret == %d  block length == %d\n",ret,un_comp->length);
-////        }
-////        memcpy(assign_block->data+assign_block->length, un_comp->data,un_comp->length*sizeof(char));
-////        assign_block->length += un_comp->length;
-////        compress->backEmpty(un_comp);
-//
-//}
 
-void benchmark_pack(BamCompleteBlock* completeBlock){
+//        int ret = find_divide_pos(un_comp);
+//        if (ret != un_comp->length){
+//            printf("ret == %d  block length == %d\n",ret,un_comp->length);
+//        }
+//        memcpy(assign_block->data+assign_block->length, un_comp->data,un_comp->length*sizeof(char));
+//        assign_block->length += un_comp->length;
+//        compress->backEmpty(un_comp);
+
+}
+
+void benchmark_bam_pack(BamCompleteBlock* completeBlock){
 
     bam1_t *b;
     if ((b = bam_init1()) == NULL) {
@@ -321,10 +342,13 @@ void benchmark_pack(BamCompleteBlock* completeBlock){
 }
 int main(int argc,char* argv[]){
     CLI::App app("RabbitBAM");
+//    printf("yesyesyesyes\n");
     CLI::App *bam2fq = app.add_subcommand("bam2fq", "BAM format turn to FastQ format");
     CLI::App *bamstatus = app.add_subcommand("bamstatus", "Analyze BAM files");
     CLI::App *benchmark = app.add_subcommand("benchmark", "Performance Testing");
+//    printf("yesyesyesyes\n");
     string inputfile;
+
     string outputfile("./BAMStatus.html");
     int n_thread=1;
     bam2fq->add_option("-i", inputfile, "input File name")->required();
@@ -338,7 +362,7 @@ int main(int argc,char* argv[]){
     benchmark->add_option("-i", inputfile, "input File name")->required();
     benchmark->add_option("-o", outputfile, "output File name");
     benchmark->add_option("-w,-@,-n,--threads",n_thread,"thread number");
-
+//    printf("yesyesyesyes\n");
     CLI11_PARSE(app, argc, argv);
     if (app.get_subcommands().size()>1){
         printf("you should input one command!!!\n");
@@ -364,9 +388,9 @@ int main(int argc,char* argv[]){
         /*
          *  读取和处理准备
          */
-        BamRead read(8000);
-        BamCompress compress(4000,n_thread);
-        BamCompleteBlock completeBlock(4000);
+        BamRead read(2000);
+        BamCompress compress(2000,n_thread);
+        BamCompleteBlock completeBlock(10);
 
         printf("Malloc Memory is Over\n");
         /*
@@ -378,16 +402,12 @@ int main(int argc,char* argv[]){
         for (int i=0;i<n_thread;i++){
             compress_thread[i]=new thread(&compress_pack,&read,&compress);
         }
-        thread *assign_thread = new thread(&assign_pack,&compress,&completeBlock);
+        thread *assign_thread = new thread(&benchmark_pack,&compress,&completeBlock);
 //        thread *consumer_thread = new thread(&benchmark_pack,&completeBlock);
-        int  consumer_thread_number = 2;
-        thread **consumer_thread = new thread*[consumer_thread_number];
-        for (int i=0;i<consumer_thread_number;i++) consumer_thread[i] = new thread(&benchmark_pack,&completeBlock);
         read_thread->join();
         for (int i=0;i<n_thread;i++) compress_thread[i]->join();
         assign_thread->join();
 //        consumer_thread->join();
-        for (int i=0;i<consumer_thread_number;i++) consumer_thread[i]->join();
         sam_close(sin);
         printf("Wait num is %d\n",compress.wait_num);
         TEND(fq)
@@ -396,26 +416,55 @@ int main(int argc,char* argv[]){
 
 }
 
-/*
-    BufferConfig config(150,n_thread,10000000);
-    Buffer buffer(&config,&fout);
-    BamBlockConfig bamconfig(20000);
-    BamBlock block(&bamconfig);
-    thread **Bam = new thread *[n_thread+2];
-    Bam[0]=new thread(&read_pack,sin->fp.bgzf,&block);
-    for (int i=1;i<=n_thread;i++)
-        Bam[i]=new thread(&consumer_pack,&block,&buffer,i);
-    Bam[n_thread+1]=new thread(&write_pack,&buffer);
-    for (int i=0;i<n_thread+2;i++)
-        Bam[i]->join();
-    long long N=0,M=0;
-    for (int i=0;i<=n_thread;i++) N+=NUM_N[i];
-    for (int i=0;i<=n_thread;i++) M+=NUM_M[i];
-    printf("total read is %lld\n",N);
-    printf("totol process is %lld\n",M);
-
-    260419685
-*/
+//if (strcmp(app.get_subcommands()[0]->get_name().c_str(), "benchmark")==0){
+//TDEF(fq)
+//TSTART(fq)
+//printf("Starting Running Benchmark\n");
+//printf("BGZF_MAX_BLOCK_COMPLETE_SIZE is %d\n",BGZF_MAX_BLOCK_COMPLETE_SIZE);
+//if (strcmp(outputfile.substr(outputfile.size()-4).c_str(),"html")==0) outputfile=("./output.fastq");
+//samFile *sin;
+//sam_hdr_t *hdr;
+//ofstream fout;
+//fout.open(outputfile);
+//if ((sin=sam_open(inputfile.c_str(),"r"))==NULL){
+//printf("Can`t open this file!\n");
+//return 0;
+//}
+//if ((hdr = sam_hdr_read(sin)) == NULL) {
+//return  0;
+//}
+///*
+// *  读取和处理准备
+// */
+//BamRead read(8000);
+//BamCompress compress(4000,n_thread);
+//BamCompleteBlock completeBlock(4000);
+//
+//printf("Malloc Memory is Over\n");
+///*
+// * 分析准备
+// */
+//thread *read_thread = new thread(&read_pack,sin->fp.bgzf,&read);
+//thread **compress_thread = new thread *[n_thread];
+//
+//for (int i=0;i<n_thread;i++){
+//compress_thread[i]=new thread(&compress_pack,&read,&compress);
+//}
+//thread *assign_thread = new thread(&assign_pack,&compress,&completeBlock);
+////        thread *consumer_thread = new thread(&benchmark_pack,&completeBlock);
+//int  consumer_thread_number = 1;
+//thread **consumer_thread = new thread*[consumer_thread_number];
+//for (int i=0;i<consumer_thread_number;i++) consumer_thread[i] = new thread(&benchmark_bam_pack,&completeBlock);
+//read_thread->join();
+//for (int i=0;i<n_thread;i++) compress_thread[i]->join();
+//assign_thread->join();
+////        consumer_thread->join();
+//for (int i=0;i<consumer_thread_number;i++) consumer_thread[i]->join();
+//sam_close(sin);
+//printf("Wait num is %d\n",compress.wait_num);
+//TEND(fq)
+//TPRINT(fq,"time is : ");
+//}
 
 /*
  * check.bam
