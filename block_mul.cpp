@@ -389,7 +389,7 @@ int main(int argc,char* argv[]){
          *  读取和处理准备
          */
         BamRead read(2000);
-        BamCompress compress(2000,n_thread);
+        BamCompress compress(8000,n_thread);
         BamCompleteBlock completeBlock(10);
 
         printf("Malloc Memory is Over\n");

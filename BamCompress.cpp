@@ -17,6 +17,9 @@ BamCompress::BamCompress(int BufferSize,int threadNumber){
     consumer_ed=0;
     consumer_size=BufferSize+5;
     consumer_data=new bam_block*[consumer_size];
+    is_ok = new bool[consumer_size];
+    for (int i=0;i<consumer_size;i++) is_ok[i]=false;
+
 
     compressThread = threadNumber;
 
@@ -47,13 +50,36 @@ bam_block* BamCompress::getEmpty(){
  * 输出：  无
  */
 
+//void BamCompress::inputUnCompressData(bam_block* data,int block_num) {
+////    std::this_thread::sleep_for(std::chrono::milliseconds(blockNum-block_num));
+//    mtx_input.lock();
+//    while ((block_num - blockNum + 1) >= ((consumer_size) - 3 - (consumer_ed-consumer_bg + consumer_size )%consumer_size)) {
+//        wait_num+=1;
+//        mtx_input.unlock();
+//        std::this_thread::sleep_for(std::chrono::nanoseconds(block_num-blockNum -  (consumer_ed - consumer_bg + consumer_size)%consumer_size )/4);
+//        mtx_input.lock();
+//    }
+//
+//    consumer_data[(consumer_ed + (block_num - blockNum + 1)) % consumer_size] = data;
+//    is_ok[(consumer_ed + (block_num - blockNum + 1)) % consumer_size] = true;
+//    while (is_ok[(consumer_ed+1)%consumer_size]){
+//        consumer_ed = (consumer_ed + 1) % consumer_size;
+//        blockNum++;
+//    }
+//
+//
+//    mtx_input.unlock();
+////    printf("block Num is %d\n",blockNum);
+//}
+
+
 void BamCompress::inputUnCompressData(bam_block* data,int block_num) {
-//    std::this_thread::sleep_for(std::chrono::milliseconds(blockNum-block_num));
+    std::this_thread::sleep_for(std::chrono::milliseconds(blockNum-block_num));
     mtx_input.lock();
-    while (block_num!=blockNum) {
+    while (block_num != blockNum) {
         wait_num+=1;
         mtx_input.unlock();
-        std::this_thread::sleep_for(std::chrono::nanoseconds(block_num-blockNum)/2);
+        std::this_thread::sleep_for(std::chrono::nanoseconds(block_num-blockNum)/8);
         mtx_input.lock();
     }
 
@@ -64,14 +90,13 @@ void BamCompress::inputUnCompressData(bam_block* data,int block_num) {
 //    printf("block Num is %d\n",blockNum);
 }
 
-
 //void BamCompress::inputUnCompressData(bam_block* data,int block_num) {
 //    std::this_thread::sleep_for(std::chrono::milliseconds(blockNum-block_num));
 //    mtx_input.lock();
 //    while (block_num != blockNum) {
 //        wait_num+=1;
 //        mtx_input.unlock();
-//        std::this_thread::sleep_for(std::chrono::milliseconds(blockNum-block_num));
+//        std::this_thread::sleep_for(std::chrono::nanoseconds(block_num-blockNum)/8);
 //        mtx_input.lock();
 //    }
 //
@@ -81,6 +106,7 @@ void BamCompress::inputUnCompressData(bam_block* data,int block_num) {
 //    mtx_input.unlock();
 ////    printf("block Num is %d\n",blockNum);
 //}
+
 
 
 ///*
@@ -111,6 +137,7 @@ bam_block* BamCompress::getUnCompressData(){
         if (compressThread==0 && (consumer_ed+1)%consumer_size == consumer_bg) return nullptr;
     }
     int num = consumer_bg;
+    is_ok[compress_bg]=false;
     consumer_bg = (consumer_bg+1)%consumer_size;
     return consumer_data[num];
 }

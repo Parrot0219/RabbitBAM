@@ -87,6 +87,7 @@ private:
     int consumer_bg;
     int consumer_ed;
     int consumer_size;
+    bool *is_ok;
 
     /*
      *  管理是否输出完成
