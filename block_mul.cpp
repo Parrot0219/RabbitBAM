@@ -6,6 +6,7 @@
 #include <htslib/hfile.h>
 #include <zlib.h>
 #include <htslib/khash.h>
+#include <htslib/thread_pool.h>
 #include <stdint.h>
 #include <chrono>
 #include "config.h"
@@ -111,7 +112,7 @@ void assign_pack(BamCompress* compress,BamCompleteBlock* completeBlock){
         /*
          *  放满一整个 bam_complete_block
          */
-        printf("here???\n");
+//        printf("here???\n");
 //        printf("last use block len is %d\n",last_use_block_length);
 
         ret = un_comp -> split_pos;
@@ -129,7 +130,7 @@ void assign_pack(BamCompress* compress,BamCompleteBlock* completeBlock){
             completeBlock->inputCompleteBlock(assign_block);
             assign_block = completeBlock->getEmpty();
         }
-        if (ret!=un_comp->length){ // 该分支未经测试
+        if (ret!=un_comp->length){
 //            printf("Input This\n");
 
 //            printf("un comp length is %d\n",un_comp->length);
@@ -149,9 +150,9 @@ void assign_pack(BamCompress* compress,BamCompleteBlock* completeBlock){
 //                printf("assign block length is %d\n",assign_block->length);
                 compress->backEmpty(un_comp);
                 un_comp = compress->getUnCompressData();
-                printf("assign block length is %d\n",assign_block->length);
-                printf("assign block data size is %d\n",assign_block->data_size);
-                printf("un comp length is %d\n",un_comp->length);
+//                printf("assign block length is %d\n",assign_block->length);
+//                printf("assign block data size is %d\n",assign_block->data_size);
+//                printf("un comp length is %d\n",un_comp->length);
                 if (assign_block->length+un_comp->length > assign_block->data_size){
                     change_data_size(assign_block);
                 }
@@ -346,6 +347,8 @@ int main(int argc,char* argv[]){
     CLI::App *bam2fq = app.add_subcommand("bam2fq", "BAM format turn to FastQ format");
     CLI::App *bamstatus = app.add_subcommand("bamstatus", "Analyze BAM files");
     CLI::App *benchmark = app.add_subcommand("benchmark", "Performance Testing");
+    CLI::App *htslib_test = app.add_subcommand("htslib_test", "Htslib sam_read API Performance Testing");
+    CLI::App *benchmark_count = app.add_subcommand("benchmark_count", "Banchmark Count Performance Testing");
 //    printf("yesyesyesyes\n");
     string inputfile;
 
@@ -362,6 +365,15 @@ int main(int argc,char* argv[]){
     benchmark->add_option("-i", inputfile, "input File name")->required();
     benchmark->add_option("-o", outputfile, "output File name");
     benchmark->add_option("-w,-@,-n,--threads",n_thread,"thread number");
+
+    htslib_test->add_option("-i", inputfile, "input File name")->required();
+    htslib_test->add_option("-o", outputfile, "output File name");
+    htslib_test->add_option("-w,-@,-n,--threads",n_thread,"thread number");
+
+
+    benchmark_count->add_option("-i", inputfile, "input File name")->required();
+    benchmark_count->add_option("-o", outputfile, "output File name");
+    benchmark_count->add_option("-w,-@,-n,--threads",n_thread,"thread number");
 //    printf("yesyesyesyes\n");
     CLI11_PARSE(app, argc, argv);
     if (app.get_subcommands().size()>1){
@@ -372,6 +384,87 @@ int main(int argc,char* argv[]){
         TDEF(fq)
         TSTART(fq)
         printf("Starting Running Benchmark\n");
+        printf("BGZF_MAX_BLOCK_COMPLETE_SIZE is %d\n",BGZF_MAX_BLOCK_COMPLETE_SIZE);
+        if (strcmp(outputfile.substr(outputfile.size()-4).c_str(),"html")==0) outputfile=("./output.fastq");
+        samFile *sin;
+        sam_hdr_t *hdr;
+        ofstream fout;
+        fout.open(outputfile);
+        if ((sin=sam_open(inputfile.c_str(),"r"))==NULL){
+            printf("Can`t open this file!\n");
+            return 0;
+        }
+        if ((hdr = sam_hdr_read(sin)) == NULL) {
+            return  0;
+        }
+        /*
+        *  读取和处理准备
+        */
+        BamRead read(8000);
+        BamCompress compress(4000,n_thread);
+        BamCompleteBlock completeBlock(200);
+
+        printf("Malloc Memory is Over\n");
+        /*
+        * 分析准备
+        */
+        thread *read_thread = new thread(&read_pack,sin->fp.bgzf,&read);
+        thread **compress_thread = new thread *[n_thread];
+
+        for (int i=0;i<n_thread;i++){
+            compress_thread[i]=new thread(&compress_pack,&read,&compress);
+        }
+        thread *assign_thread = new thread(&assign_pack,&compress,&completeBlock);
+        //thread *consumer_thread = new thread(&benchmark_pack,&completeBlock);
+        int  consumer_thread_number = 1;
+        thread **consumer_thread = new thread*[consumer_thread_number];
+        for (int i=0;i<consumer_thread_number;i++) consumer_thread[i] = new thread(&benchmark_bam_pack,&completeBlock);
+        read_thread->join();
+        for (int i=0;i<n_thread;i++) compress_thread[i]->join();
+        assign_thread->join();
+        //consumer_thread->join();
+        for (int i=0;i<consumer_thread_number;i++) consumer_thread[i]->join();
+        sam_close(sin);
+        printf("Wait num is %d\n",compress.wait_num);
+        TEND(fq)
+        TPRINT(fq,"time is : ");
+    }
+    if (strcmp(app.get_subcommands()[0]->get_name().c_str(), "htslib_test")==0){
+        TDEF(fq)
+        TSTART(fq)
+        printf("Starting Htslib sam_read API Running Benchmark\n");
+        if (strcmp(outputfile.substr(outputfile.size()-4).c_str(),"html")==0) outputfile=("./output.fastq");
+        samFile *sin;
+        sam_hdr_t *hdr;
+        ofstream fout;
+        fout.open(outputfile);
+        if ((sin=sam_open(inputfile.c_str(),"r"))==NULL){
+            printf("Can`t open this file!\n");
+            return 0;
+        }
+        if ((hdr = sam_hdr_read(sin)) == NULL) {
+            return  0;
+        }
+        bam1_t *b;
+        if ((b = bam_init1()) == NULL) {
+            fprintf(stderr, "[E::%s] Out of memory allocating BAM struct.\n", __func__);
+        }
+        htsThreadPool p = {NULL, 0};
+        p.pool = hts_tpool_init(n_thread);
+        hts_set_opt(sin,  HTS_OPT_THREAD_POOL, &p);
+        int num = 0;
+        while(sam_read1(sin, hdr, b)>=0){
+            num++;
+        }
+        printf("Bam Number is %d\n",num);
+        sam_close(sin);
+        TEND(fq)
+        TPRINT(fq,"time is : ");
+    }
+    if (strcmp(app.get_subcommands()[0]->get_name().c_str(), "benchmark_count")==0){
+        TDEF(fq)
+        TSTART(fq)
+        printf("Starting Running Benchmark Count\n");
         printf("BGZF_MAX_BLOCK_COMPLETE_SIZE is %d\n",BGZF_MAX_BLOCK_COMPLETE_SIZE);
         if (strcmp(outputfile.substr(outputfile.size()-4).c_str(),"html")==0) outputfile=("./output.fastq");
         samFile *sin;

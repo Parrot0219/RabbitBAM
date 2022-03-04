@@ -6,6 +6,7 @@
 #define BAMSTATUS_BAMCOMPRESS_H
 #include "BamTools.h"
 #include <thread>
+#include <atomic>
 
 /*
  *  给出解压空间，给出有序的解压内容
@@ -69,7 +70,7 @@ private:
     /*
      * 管理插入序列编号
      */
-    int blockNum;
+    std::atomic<int> blockNum;
 
     /*
      *  空白内存的管理部分

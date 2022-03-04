@@ -23,7 +23,7 @@
 #define BLOCK_HEADER_LENGTH 18
 #define BLOCK_FOOTER_LENGTH 8
 //#define BGZF_MAX_BLOCK_SIZE 0x10000
-#define BGZF_MAX_BLOCK_COMPLETE_SIZE 0x20000
+#define BGZF_MAX_BLOCK_COMPLETE_SIZE 0x60000
 typedef struct {
     int size;
     uint8_t *block;

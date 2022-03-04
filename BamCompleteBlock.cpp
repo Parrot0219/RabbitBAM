@@ -60,7 +60,7 @@ bam_complete_block* BamCompleteBlock::getCompleteBlock(){
     mtx_consumer.lock();
     while ((consumer_ed+1)%consumer_size == consumer_bg){
         mtx_consumer.unlock();
-        std::this_thread::sleep_for(std::chrono::milliseconds(5));
+        std::this_thread::sleep_for(std::chrono::nanoseconds(1));
         if (BlockComplete && (consumer_ed+1)%consumer_size == consumer_bg ) return nullptr;
         mtx_consumer.lock();
     }

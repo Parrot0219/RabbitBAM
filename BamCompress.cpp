@@ -73,20 +73,20 @@ bam_block* BamCompress::getEmpty(){
 //}
 
 
-void BamCompress::inputUnCompressData(bam_block* data,int block_num) {
-    std::this_thread::sleep_for(std::chrono::milliseconds(blockNum-block_num));
-    mtx_input.lock();
-    while (block_num != blockNum) {
+void BamCompress::inputUnCompressData(bam_block* data,int block_num){
+    //std::this_thread::sleep_for(std::chrono::milliseconds(blockNum-block_num));
+//    mtx_input.lock();
+    while (block_num != blockNum.load(std::memory_order_acq_rel)) {
         wait_num+=1;
-        mtx_input.unlock();
+//        mtx_input.unlock();
         std::this_thread::sleep_for(std::chrono::nanoseconds(block_num-blockNum)/8);
-        mtx_input.lock();
+//        mtx_input.lock();
     }
 
     consumer_data[(consumer_ed + 1) % consumer_size] = data;
     consumer_ed = (consumer_ed + 1) % consumer_size;
-    blockNum++;
-    mtx_input.unlock();
+    blockNum.store(blockNum.load(std::memory_order_acq_rel)+1,std::memory_order_acq_rel);
+//    mtx_input.unlock();
 //    printf("block Num is %d\n",blockNum);
 }
 
@@ -149,3 +149,5 @@ void BamCompress::backEmpty(bam_block* data){
     compress_data[(compress_ed+1)%compress_size] = data;
     compress_ed = (compress_ed+1)%compress_size;
 }
+
+
