@@ -16,7 +16,8 @@
 #include "Duplicate.h"
 #include "Overrepresent.h"
 #include "CLI/CLI.hpp"
-
+#include <sched.h>
+#include <unistd.h>
 #include "BamRead.h"
 #include "BamCompress.h"
 #include "BamCompleteBlock.h"
@@ -411,12 +412,18 @@ int main(int argc,char* argv[]){
         thread *read_thread = new thread(&read_pack,sin->fp.bgzf,&read);
         thread **compress_thread = new thread *[n_thread];
 
+
+
         for (int i=0;i<n_thread;i++){
+            cpu_set_t cpuset;
+            CPU_ZERO(&cpuset);
+            CPU_SET(i,&cpuset);
             compress_thread[i]=new thread(&compress_pack,&read,&compress);
+            int rc =pthread_setaffinity_np(compress_thread[i]->native_handle(),sizeof(cpu_set_t), &cpuset);
         }
         thread *assign_thread = new thread(&assign_pack,&compress,&completeBlock);
         //thread *consumer_thread = new thread(&benchmark_pack,&completeBlock);
-        int  consumer_thread_number = 1;
+        int  consumer_thread_number = 2;
         thread **consumer_thread = new thread*[consumer_thread_number];
         for (int i=0;i<consumer_thread_number;i++) consumer_thread[i] = new thread(&benchmark_bam_pack,&completeBlock);
         read_thread->join();
@@ -493,7 +500,12 @@ int main(int argc,char* argv[]){
         thread **compress_thread = new thread *[n_thread];
 
         for (int i=0;i<n_thread;i++){
+            cpu_set_t cpuset;
+            CPU_ZERO(&cpuset);
+            CPU_SET(i,&cpuset);
             compress_thread[i]=new thread(&compress_pack,&read,&compress);
+            int rc =pthread_setaffinity_np(compress_thread[i]->native_handle(),sizeof(cpu_set_t), &cpuset);
+
         }
         thread *assign_thread = new thread(&benchmark_pack,&compress,&completeBlock);
 //        thread *consumer_thread = new thread(&benchmark_pack,&completeBlock);
