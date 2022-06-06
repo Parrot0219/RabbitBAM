@@ -1,0 +1,1 @@
+/usr/local/Cellar/gcc@9/9.3.0_1/bin/g++-9 -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/BamStatus.dir/main.cpp.o -o BamStatus   -L/Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/build/lib  -Wl,-rpath,/Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/build/lib -lhts 

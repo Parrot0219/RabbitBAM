@@ -1,0 +1,792 @@
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of EA_WES_T_1.sorted.bam
+Approx 5% complete for EA_WES_T_1.sorted.bam
+Approx 10% complete for EA_WES_T_1.sorted.bam
+Approx 15% complete for EA_WES_T_1.sorted.bam
+Approx 20% complete for EA_WES_T_1.sorted.bam
+Approx 25% complete for EA_WES_T_1.sorted.bam
+Approx 30% complete for EA_WES_T_1.sorted.bam
+Approx 35% complete for EA_WES_T_1.sorted.bam
+Approx 40% complete for EA_WES_T_1.sorted.bam
+Approx 45% complete for EA_WES_T_1.sorted.bam
+Approx 50% complete for EA_WES_T_1.sorted.bam
+Approx 55% complete for EA_WES_T_1.sorted.bam
+Approx 60% complete for EA_WES_T_1.sorted.bam
+Approx 65% complete for EA_WES_T_1.sorted.bam
+Approx 70% complete for EA_WES_T_1.sorted.bam
+Approx 75% complete for EA_WES_T_1.sorted.bam
+Approx 80% complete for EA_WES_T_1.sorted.bam
+Approx 85% complete for EA_WES_T_1.sorted.bam
+Approx 90% complete for EA_WES_T_1.sorted.bam
+Approx 95% complete for EA_WES_T_1.sorted.bam
+Approx 100% complete for EA_WES_T_1.sorted.bam
+Analysis complete for EA_WES_T_1.sorted.bam
+
+real	18m25.307s
+user	18m18.806s
+sys	0m5.847s
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of EA_WES_T_1.sorted.bam
+Approx 5% complete for EA_WES_T_1.sorted.bam
+Approx 10% complete for EA_WES_T_1.sorted.bam
+Approx 15% complete for EA_WES_T_1.sorted.bam
+Approx 20% complete for EA_WES_T_1.sorted.bam
+Approx 25% complete for EA_WES_T_1.sorted.bam
+Approx 30% complete for EA_WES_T_1.sorted.bam
+Approx 35% complete for EA_WES_T_1.sorted.bam
+Approx 40% complete for EA_WES_T_1.sorted.bam
+Approx 45% complete for EA_WES_T_1.sorted.bam
+Approx 50% complete for EA_WES_T_1.sorted.bam
+Approx 55% complete for EA_WES_T_1.sorted.bam
+Approx 60% complete for EA_WES_T_1.sorted.bam
+Approx 65% complete for EA_WES_T_1.sorted.bam
+Approx 70% complete for EA_WES_T_1.sorted.bam
+Approx 75% complete for EA_WES_T_1.sorted.bam
+Approx 80% complete for EA_WES_T_1.sorted.bam
+Approx 85% complete for EA_WES_T_1.sorted.bam
+Approx 90% complete for EA_WES_T_1.sorted.bam
+Approx 95% complete for EA_WES_T_1.sorted.bam
+Approx 100% complete for EA_WES_T_1.sorted.bam
+Analysis complete for EA_WES_T_1.sorted.bam
+
+real	17m59.319s
+user	17m55.870s
+sys	0m4.777s
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of EA_WES_T_1.sorted.bam
+Approx 5% complete for EA_WES_T_1.sorted.bam
+Approx 10% complete for EA_WES_T_1.sorted.bam
+Approx 15% complete for EA_WES_T_1.sorted.bam
+Approx 20% complete for EA_WES_T_1.sorted.bam
+Approx 25% complete for EA_WES_T_1.sorted.bam
+Approx 30% complete for EA_WES_T_1.sorted.bam
+Approx 35% complete for EA_WES_T_1.sorted.bam
+Approx 40% complete for EA_WES_T_1.sorted.bam
+Approx 45% complete for EA_WES_T_1.sorted.bam
+Approx 50% complete for EA_WES_T_1.sorted.bam
+Approx 55% complete for EA_WES_T_1.sorted.bam
+Approx 60% complete for EA_WES_T_1.sorted.bam
+Approx 65% complete for EA_WES_T_1.sorted.bam
+Approx 70% complete for EA_WES_T_1.sorted.bam
+Approx 75% complete for EA_WES_T_1.sorted.bam
+Approx 80% complete for EA_WES_T_1.sorted.bam
+Approx 85% complete for EA_WES_T_1.sorted.bam
+Approx 90% complete for EA_WES_T_1.sorted.bam
+Approx 95% complete for EA_WES_T_1.sorted.bam
+Approx 100% complete for EA_WES_T_1.sorted.bam
+Analysis complete for EA_WES_T_1.sorted.bam
+
+real	18m48.317s
+user	18m44.365s
+sys	0m4.616s
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of EA_WES_T_1.sorted.bam
+Approx 5% complete for EA_WES_T_1.sorted.bam
+Approx 10% complete for EA_WES_T_1.sorted.bam
+Approx 15% complete for EA_WES_T_1.sorted.bam
+Approx 20% complete for EA_WES_T_1.sorted.bam
+Approx 25% complete for EA_WES_T_1.sorted.bam
+Approx 30% complete for EA_WES_T_1.sorted.bam
+Approx 35% complete for EA_WES_T_1.sorted.bam
+Approx 40% complete for EA_WES_T_1.sorted.bam
+Approx 45% complete for EA_WES_T_1.sorted.bam
+Approx 50% complete for EA_WES_T_1.sorted.bam
+Approx 55% complete for EA_WES_T_1.sorted.bam
+Approx 60% complete for EA_WES_T_1.sorted.bam
+Approx 65% complete for EA_WES_T_1.sorted.bam
+Approx 70% complete for EA_WES_T_1.sorted.bam
+Approx 75% complete for EA_WES_T_1.sorted.bam
+Approx 80% complete for EA_WES_T_1.sorted.bam
+Approx 85% complete for EA_WES_T_1.sorted.bam
+Approx 90% complete for EA_WES_T_1.sorted.bam
+Approx 95% complete for EA_WES_T_1.sorted.bam
+Approx 100% complete for EA_WES_T_1.sorted.bam
+Analysis complete for EA_WES_T_1.sorted.bam
+
+real	18m16.305s
+user	18m12.789s
+sys	0m4.793s
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of EA_WES_T_1.sorted.bam
+Approx 5% complete for EA_WES_T_1.sorted.bam
+Approx 10% complete for EA_WES_T_1.sorted.bam
+Approx 15% complete for EA_WES_T_1.sorted.bam
+Approx 20% complete for EA_WES_T_1.sorted.bam
+Approx 25% complete for EA_WES_T_1.sorted.bam
+Approx 30% complete for EA_WES_T_1.sorted.bam
+Approx 35% complete for EA_WES_T_1.sorted.bam
+Approx 40% complete for EA_WES_T_1.sorted.bam
+Approx 45% complete for EA_WES_T_1.sorted.bam
+Approx 50% complete for EA_WES_T_1.sorted.bam
+Approx 55% complete for EA_WES_T_1.sorted.bam
+Approx 60% complete for EA_WES_T_1.sorted.bam
+Approx 65% complete for EA_WES_T_1.sorted.bam
+Approx 70% complete for EA_WES_T_1.sorted.bam
+Approx 75% complete for EA_WES_T_1.sorted.bam
+Approx 80% complete for EA_WES_T_1.sorted.bam
+Approx 85% complete for EA_WES_T_1.sorted.bam
+Approx 90% complete for EA_WES_T_1.sorted.bam
+Approx 95% complete for EA_WES_T_1.sorted.bam
+Approx 100% complete for EA_WES_T_1.sorted.bam
+Analysis complete for EA_WES_T_1.sorted.bam
+
+real	18m17.314s
+user	18m13.473s
+sys	0m4.967s
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of EA_WES_T_1.sorted.bam
+Approx 5% complete for EA_WES_T_1.sorted.bam
+Approx 10% complete for EA_WES_T_1.sorted.bam
+Approx 15% complete for EA_WES_T_1.sorted.bam
+Approx 20% complete for EA_WES_T_1.sorted.bam
+Approx 25% complete for EA_WES_T_1.sorted.bam
+Approx 30% complete for EA_WES_T_1.sorted.bam
+Approx 35% complete for EA_WES_T_1.sorted.bam
+Approx 40% complete for EA_WES_T_1.sorted.bam
+Approx 45% complete for EA_WES_T_1.sorted.bam
+Approx 50% complete for EA_WES_T_1.sorted.bam
+Approx 55% complete for EA_WES_T_1.sorted.bam
+Approx 60% complete for EA_WES_T_1.sorted.bam
+Approx 65% complete for EA_WES_T_1.sorted.bam
+Approx 70% complete for EA_WES_T_1.sorted.bam
+Approx 75% complete for EA_WES_T_1.sorted.bam
+Approx 80% complete for EA_WES_T_1.sorted.bam
+Approx 85% complete for EA_WES_T_1.sorted.bam
+Approx 90% complete for EA_WES_T_1.sorted.bam
+Approx 95% complete for EA_WES_T_1.sorted.bam
+Approx 100% complete for EA_WES_T_1.sorted.bam
+Analysis complete for EA_WES_T_1.sorted.bam
+
+real	18m17.328s
+user	18m14.437s
+sys	0m4.739s
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of EA_WES_T_1.sorted.bam
+Approx 5% complete for EA_WES_T_1.sorted.bam
+Approx 10% complete for EA_WES_T_1.sorted.bam
+Approx 15% complete for EA_WES_T_1.sorted.bam
+Approx 20% complete for EA_WES_T_1.sorted.bam
+Approx 25% complete for EA_WES_T_1.sorted.bam
+Approx 30% complete for EA_WES_T_1.sorted.bam
+Approx 35% complete for EA_WES_T_1.sorted.bam
+Approx 40% complete for EA_WES_T_1.sorted.bam
+Approx 45% complete for EA_WES_T_1.sorted.bam
+Approx 50% complete for EA_WES_T_1.sorted.bam
+Approx 55% complete for EA_WES_T_1.sorted.bam
+Approx 60% complete for EA_WES_T_1.sorted.bam
+Approx 65% complete for EA_WES_T_1.sorted.bam
+Approx 70% complete for EA_WES_T_1.sorted.bam
+Approx 75% complete for EA_WES_T_1.sorted.bam
+Approx 80% complete for EA_WES_T_1.sorted.bam
+Approx 85% complete for EA_WES_T_1.sorted.bam
+Approx 90% complete for EA_WES_T_1.sorted.bam
+Approx 95% complete for EA_WES_T_1.sorted.bam
+Approx 100% complete for EA_WES_T_1.sorted.bam
+Analysis complete for EA_WES_T_1.sorted.bam
+
+real	19m15.322s
+user	19m10.771s
+sys	0m4.996s
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of EA_WES_T_1.sorted.bam
+Approx 5% complete for EA_WES_T_1.sorted.bam
+Approx 10% complete for EA_WES_T_1.sorted.bam
+Approx 15% complete for EA_WES_T_1.sorted.bam
+Approx 20% complete for EA_WES_T_1.sorted.bam
+Approx 25% complete for EA_WES_T_1.sorted.bam
+Approx 30% complete for EA_WES_T_1.sorted.bam
+Approx 35% complete for EA_WES_T_1.sorted.bam
+Approx 40% complete for EA_WES_T_1.sorted.bam
+Approx 45% complete for EA_WES_T_1.sorted.bam
+Approx 50% complete for EA_WES_T_1.sorted.bam
+Approx 55% complete for EA_WES_T_1.sorted.bam
+Approx 60% complete for EA_WES_T_1.sorted.bam
+Approx 65% complete for EA_WES_T_1.sorted.bam
+Approx 70% complete for EA_WES_T_1.sorted.bam
+Approx 75% complete for EA_WES_T_1.sorted.bam
+Approx 80% complete for EA_WES_T_1.sorted.bam
+Approx 85% complete for EA_WES_T_1.sorted.bam
+Approx 90% complete for EA_WES_T_1.sorted.bam
+Approx 95% complete for EA_WES_T_1.sorted.bam
+Approx 100% complete for EA_WES_T_1.sorted.bam
+Analysis complete for EA_WES_T_1.sorted.bam
+
+real	18m44.374s
+user	18m40.306s
+sys	0m4.875s
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of EA_WES_T_1.sorted.bam
+Approx 5% complete for EA_WES_T_1.sorted.bam
+Approx 10% complete for EA_WES_T_1.sorted.bam
+Approx 15% complete for EA_WES_T_1.sorted.bam
+Approx 20% complete for EA_WES_T_1.sorted.bam
+Approx 25% complete for EA_WES_T_1.sorted.bam
+Approx 30% complete for EA_WES_T_1.sorted.bam
+Approx 35% complete for EA_WES_T_1.sorted.bam
+Approx 40% complete for EA_WES_T_1.sorted.bam
+Approx 45% complete for EA_WES_T_1.sorted.bam
+Approx 50% complete for EA_WES_T_1.sorted.bam
+Approx 55% complete for EA_WES_T_1.sorted.bam
+Approx 60% complete for EA_WES_T_1.sorted.bam
+Approx 65% complete for EA_WES_T_1.sorted.bam
+Approx 70% complete for EA_WES_T_1.sorted.bam
+Approx 75% complete for EA_WES_T_1.sorted.bam
+Approx 80% complete for EA_WES_T_1.sorted.bam
+Approx 85% complete for EA_WES_T_1.sorted.bam
+Approx 90% complete for EA_WES_T_1.sorted.bam
+Approx 95% complete for EA_WES_T_1.sorted.bam
+Approx 100% complete for EA_WES_T_1.sorted.bam
+Analysis complete for EA_WES_T_1.sorted.bam
+
+real	19m16.417s
+user	19m11.973s
+sys	0m4.930s
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of EA_WES_T_1.sorted.bam
+Approx 5% complete for EA_WES_T_1.sorted.bam
+Approx 10% complete for EA_WES_T_1.sorted.bam
+Approx 15% complete for EA_WES_T_1.sorted.bam
+Approx 20% complete for EA_WES_T_1.sorted.bam
+Approx 25% complete for EA_WES_T_1.sorted.bam
+Approx 30% complete for EA_WES_T_1.sorted.bam
+Approx 35% complete for EA_WES_T_1.sorted.bam
+Approx 40% complete for EA_WES_T_1.sorted.bam
+Approx 45% complete for EA_WES_T_1.sorted.bam
+Approx 50% complete for EA_WES_T_1.sorted.bam
+Approx 55% complete for EA_WES_T_1.sorted.bam
+Approx 60% complete for EA_WES_T_1.sorted.bam
+Approx 65% complete for EA_WES_T_1.sorted.bam
+Approx 70% complete for EA_WES_T_1.sorted.bam
+Approx 75% complete for EA_WES_T_1.sorted.bam
+Approx 80% complete for EA_WES_T_1.sorted.bam
+Approx 85% complete for EA_WES_T_1.sorted.bam
+Approx 90% complete for EA_WES_T_1.sorted.bam
+Approx 95% complete for EA_WES_T_1.sorted.bam
+Approx 100% complete for EA_WES_T_1.sorted.bam
+Analysis complete for EA_WES_T_1.sorted.bam
+
+real	19m22.388s
+user	19m17.317s
+sys	0m5.590s
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of EA_WES_T_1.sorted.bam
+Approx 5% complete for EA_WES_T_1.sorted.bam
+Approx 10% complete for EA_WES_T_1.sorted.bam
+Approx 15% complete for EA_WES_T_1.sorted.bam
+Approx 20% complete for EA_WES_T_1.sorted.bam
+Approx 25% complete for EA_WES_T_1.sorted.bam
+Approx 30% complete for EA_WES_T_1.sorted.bam
+Approx 35% complete for EA_WES_T_1.sorted.bam
+Approx 40% complete for EA_WES_T_1.sorted.bam
+Approx 45% complete for EA_WES_T_1.sorted.bam
+Approx 50% complete for EA_WES_T_1.sorted.bam
+Approx 55% complete for EA_WES_T_1.sorted.bam
+Approx 60% complete for EA_WES_T_1.sorted.bam
+Approx 65% complete for EA_WES_T_1.sorted.bam
+Approx 70% complete for EA_WES_T_1.sorted.bam
+Approx 75% complete for EA_WES_T_1.sorted.bam
+Approx 80% complete for EA_WES_T_1.sorted.bam
+Approx 85% complete for EA_WES_T_1.sorted.bam
+Approx 90% complete for EA_WES_T_1.sorted.bam
+Approx 95% complete for EA_WES_T_1.sorted.bam
+Approx 100% complete for EA_WES_T_1.sorted.bam
+Analysis complete for EA_WES_T_1.sorted.bam
+
+real	19m7.370s
+user	19m2.620s
+sys	0m6.102s
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of EA_WES_T_1.sorted.bam
+Approx 5% complete for EA_WES_T_1.sorted.bam
+Approx 10% complete for EA_WES_T_1.sorted.bam
+Approx 15% complete for EA_WES_T_1.sorted.bam
+Approx 20% complete for EA_WES_T_1.sorted.bam
+Approx 25% complete for EA_WES_T_1.sorted.bam
+Approx 30% complete for EA_WES_T_1.sorted.bam
+Approx 35% complete for EA_WES_T_1.sorted.bam
+Approx 40% complete for EA_WES_T_1.sorted.bam
+Approx 45% complete for EA_WES_T_1.sorted.bam
+Approx 50% complete for EA_WES_T_1.sorted.bam
+Approx 55% complete for EA_WES_T_1.sorted.bam
+Approx 60% complete for EA_WES_T_1.sorted.bam
+Approx 65% complete for EA_WES_T_1.sorted.bam
+Approx 70% complete for EA_WES_T_1.sorted.bam
+Approx 75% complete for EA_WES_T_1.sorted.bam
+Approx 80% complete for EA_WES_T_1.sorted.bam
+Approx 85% complete for EA_WES_T_1.sorted.bam
+Approx 90% complete for EA_WES_T_1.sorted.bam
+Approx 95% complete for EA_WES_T_1.sorted.bam
+Approx 100% complete for EA_WES_T_1.sorted.bam
+Analysis complete for EA_WES_T_1.sorted.bam
+
+real	18m55.422s
+user	18m51.208s
+sys	0m5.801s
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of EA_WES_T_1.sorted.bam
+Approx 5% complete for EA_WES_T_1.sorted.bam
+Approx 10% complete for EA_WES_T_1.sorted.bam
+Approx 15% complete for EA_WES_T_1.sorted.bam
+Approx 20% complete for EA_WES_T_1.sorted.bam
+Approx 25% complete for EA_WES_T_1.sorted.bam
+Approx 30% complete for EA_WES_T_1.sorted.bam
+Approx 35% complete for EA_WES_T_1.sorted.bam
+Approx 40% complete for EA_WES_T_1.sorted.bam
+Approx 45% complete for EA_WES_T_1.sorted.bam
+Approx 50% complete for EA_WES_T_1.sorted.bam
+Approx 55% complete for EA_WES_T_1.sorted.bam
+Approx 60% complete for EA_WES_T_1.sorted.bam
+Approx 65% complete for EA_WES_T_1.sorted.bam
+Approx 70% complete for EA_WES_T_1.sorted.bam
+Approx 75% complete for EA_WES_T_1.sorted.bam
+Approx 80% complete for EA_WES_T_1.sorted.bam
+Approx 85% complete for EA_WES_T_1.sorted.bam
+Approx 90% complete for EA_WES_T_1.sorted.bam
+Approx 95% complete for EA_WES_T_1.sorted.bam
+Approx 100% complete for EA_WES_T_1.sorted.bam
+Analysis complete for EA_WES_T_1.sorted.bam
+
+real	18m50.392s
+user	18m46.233s
+sys	0m5.687s
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of EA_WES_T_1.sorted.bam
+Approx 5% complete for EA_WES_T_1.sorted.bam
+Approx 10% complete for EA_WES_T_1.sorted.bam
+Approx 15% complete for EA_WES_T_1.sorted.bam
+Approx 20% complete for EA_WES_T_1.sorted.bam
+Approx 25% complete for EA_WES_T_1.sorted.bam
+Approx 30% complete for EA_WES_T_1.sorted.bam
+Approx 35% complete for EA_WES_T_1.sorted.bam
+Approx 40% complete for EA_WES_T_1.sorted.bam
+Approx 45% complete for EA_WES_T_1.sorted.bam
+Approx 50% complete for EA_WES_T_1.sorted.bam
+Approx 55% complete for EA_WES_T_1.sorted.bam
+Approx 60% complete for EA_WES_T_1.sorted.bam
+Approx 65% complete for EA_WES_T_1.sorted.bam
+Approx 70% complete for EA_WES_T_1.sorted.bam
+Approx 75% complete for EA_WES_T_1.sorted.bam
+Approx 80% complete for EA_WES_T_1.sorted.bam
+Approx 85% complete for EA_WES_T_1.sorted.bam
+Approx 90% complete for EA_WES_T_1.sorted.bam
+Approx 95% complete for EA_WES_T_1.sorted.bam
+Approx 100% complete for EA_WES_T_1.sorted.bam
+Analysis complete for EA_WES_T_1.sorted.bam
+
+real	19m27.434s
+user	19m21.660s
+sys	0m5.707s
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of EA_WES_T_1.sorted.bam
+Approx 5% complete for EA_WES_T_1.sorted.bam
+Approx 10% complete for EA_WES_T_1.sorted.bam
+Approx 15% complete for EA_WES_T_1.sorted.bam
+Approx 20% complete for EA_WES_T_1.sorted.bam
+Approx 25% complete for EA_WES_T_1.sorted.bam
+Approx 30% complete for EA_WES_T_1.sorted.bam
+Approx 35% complete for EA_WES_T_1.sorted.bam
+Approx 40% complete for EA_WES_T_1.sorted.bam
+Approx 45% complete for EA_WES_T_1.sorted.bam
+Approx 50% complete for EA_WES_T_1.sorted.bam
+Approx 55% complete for EA_WES_T_1.sorted.bam
+Approx 60% complete for EA_WES_T_1.sorted.bam
+Approx 65% complete for EA_WES_T_1.sorted.bam
+Approx 70% complete for EA_WES_T_1.sorted.bam
+Approx 75% complete for EA_WES_T_1.sorted.bam
+Approx 80% complete for EA_WES_T_1.sorted.bam
+Approx 85% complete for EA_WES_T_1.sorted.bam
+Approx 90% complete for EA_WES_T_1.sorted.bam
+Approx 95% complete for EA_WES_T_1.sorted.bam
+Approx 100% complete for EA_WES_T_1.sorted.bam
+Analysis complete for EA_WES_T_1.sorted.bam
+
+real	18m48.412s
+user	18m43.900s
+sys	0m5.733s
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of EA_WES_T_1.sorted.bam
+Approx 5% complete for EA_WES_T_1.sorted.bam
+Approx 10% complete for EA_WES_T_1.sorted.bam
+Approx 15% complete for EA_WES_T_1.sorted.bam
+Approx 20% complete for EA_WES_T_1.sorted.bam
+Approx 25% complete for EA_WES_T_1.sorted.bam
+Approx 30% complete for EA_WES_T_1.sorted.bam
+Approx 35% complete for EA_WES_T_1.sorted.bam
+Approx 40% complete for EA_WES_T_1.sorted.bam
+Approx 45% complete for EA_WES_T_1.sorted.bam
+Approx 50% complete for EA_WES_T_1.sorted.bam
+Approx 55% complete for EA_WES_T_1.sorted.bam
+Approx 60% complete for EA_WES_T_1.sorted.bam
+Approx 65% complete for EA_WES_T_1.sorted.bam
+Approx 70% complete for EA_WES_T_1.sorted.bam
+Approx 75% complete for EA_WES_T_1.sorted.bam
+Approx 80% complete for EA_WES_T_1.sorted.bam
+Approx 85% complete for EA_WES_T_1.sorted.bam
+Approx 90% complete for EA_WES_T_1.sorted.bam
+Approx 95% complete for EA_WES_T_1.sorted.bam
+Approx 100% complete for EA_WES_T_1.sorted.bam
+Analysis complete for EA_WES_T_1.sorted.bam
+
+real	18m47.451s
+user	18m41.923s
+sys	0m6.609s
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of EA_WES_T_1.sorted.bam
+Approx 5% complete for EA_WES_T_1.sorted.bam
+Approx 10% complete for EA_WES_T_1.sorted.bam
+Approx 15% complete for EA_WES_T_1.sorted.bam
+Approx 20% complete for EA_WES_T_1.sorted.bam
+Approx 25% complete for EA_WES_T_1.sorted.bam
+Approx 30% complete for EA_WES_T_1.sorted.bam
+Approx 35% complete for EA_WES_T_1.sorted.bam
+Approx 40% complete for EA_WES_T_1.sorted.bam
+Approx 45% complete for EA_WES_T_1.sorted.bam
+Approx 50% complete for EA_WES_T_1.sorted.bam
+Approx 55% complete for EA_WES_T_1.sorted.bam
+Approx 60% complete for EA_WES_T_1.sorted.bam
+Approx 65% complete for EA_WES_T_1.sorted.bam
+Approx 70% complete for EA_WES_T_1.sorted.bam
+Approx 75% complete for EA_WES_T_1.sorted.bam
+Approx 80% complete for EA_WES_T_1.sorted.bam
+Approx 85% complete for EA_WES_T_1.sorted.bam
+Approx 90% complete for EA_WES_T_1.sorted.bam
+Approx 95% complete for EA_WES_T_1.sorted.bam
+Approx 100% complete for EA_WES_T_1.sorted.bam
+Analysis complete for EA_WES_T_1.sorted.bam
+
+real	18m47.436s
+user	18m39.292s
+sys	0m8.846s
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of EA_WES_T_1.sorted.bam
+Approx 5% complete for EA_WES_T_1.sorted.bam
+Approx 10% complete for EA_WES_T_1.sorted.bam
+Approx 15% complete for EA_WES_T_1.sorted.bam
+Approx 20% complete for EA_WES_T_1.sorted.bam
+Approx 25% complete for EA_WES_T_1.sorted.bam
+Approx 30% complete for EA_WES_T_1.sorted.bam
+Approx 35% complete for EA_WES_T_1.sorted.bam
+Approx 40% complete for EA_WES_T_1.sorted.bam
+Approx 45% complete for EA_WES_T_1.sorted.bam
+Approx 50% complete for EA_WES_T_1.sorted.bam
+Approx 55% complete for EA_WES_T_1.sorted.bam
+Approx 60% complete for EA_WES_T_1.sorted.bam
+Approx 65% complete for EA_WES_T_1.sorted.bam
+Approx 70% complete for EA_WES_T_1.sorted.bam
+Approx 75% complete for EA_WES_T_1.sorted.bam
+Approx 80% complete for EA_WES_T_1.sorted.bam
+Approx 85% complete for EA_WES_T_1.sorted.bam
+Approx 90% complete for EA_WES_T_1.sorted.bam
+Approx 95% complete for EA_WES_T_1.sorted.bam
+Approx 100% complete for EA_WES_T_1.sorted.bam
+Analysis complete for EA_WES_T_1.sorted.bam
+
+real	18m41.442s
+user	18m35.418s
+sys	0m6.647s
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of EA_WES_T_1.sorted.bam
+Approx 5% complete for EA_WES_T_1.sorted.bam
+Approx 10% complete for EA_WES_T_1.sorted.bam
+Approx 15% complete for EA_WES_T_1.sorted.bam
+Approx 20% complete for EA_WES_T_1.sorted.bam
+Approx 25% complete for EA_WES_T_1.sorted.bam
+Approx 30% complete for EA_WES_T_1.sorted.bam
+Approx 35% complete for EA_WES_T_1.sorted.bam
+Approx 40% complete for EA_WES_T_1.sorted.bam
+Approx 45% complete for EA_WES_T_1.sorted.bam
+Approx 50% complete for EA_WES_T_1.sorted.bam
+Approx 55% complete for EA_WES_T_1.sorted.bam
+Approx 60% complete for EA_WES_T_1.sorted.bam
+Approx 65% complete for EA_WES_T_1.sorted.bam
+Approx 70% complete for EA_WES_T_1.sorted.bam
+Approx 75% complete for EA_WES_T_1.sorted.bam
+Approx 80% complete for EA_WES_T_1.sorted.bam
+Approx 85% complete for EA_WES_T_1.sorted.bam
+Approx 90% complete for EA_WES_T_1.sorted.bam
+Approx 95% complete for EA_WES_T_1.sorted.bam
+Approx 100% complete for EA_WES_T_1.sorted.bam
+Analysis complete for EA_WES_T_1.sorted.bam
+
+real	19m20.515s
+user	19m15.799s
+sys	0m6.241s
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of EA_WES_T_1.sorted.bam
+Approx 5% complete for EA_WES_T_1.sorted.bam
+Approx 10% complete for EA_WES_T_1.sorted.bam
+Approx 15% complete for EA_WES_T_1.sorted.bam
+Approx 20% complete for EA_WES_T_1.sorted.bam
+Approx 25% complete for EA_WES_T_1.sorted.bam
+Approx 30% complete for EA_WES_T_1.sorted.bam
+Approx 35% complete for EA_WES_T_1.sorted.bam
+Approx 40% complete for EA_WES_T_1.sorted.bam
+Approx 45% complete for EA_WES_T_1.sorted.bam
+Approx 50% complete for EA_WES_T_1.sorted.bam
+Approx 55% complete for EA_WES_T_1.sorted.bam
+Approx 60% complete for EA_WES_T_1.sorted.bam
+Approx 65% complete for EA_WES_T_1.sorted.bam
+Approx 70% complete for EA_WES_T_1.sorted.bam
+Approx 75% complete for EA_WES_T_1.sorted.bam
+Approx 80% complete for EA_WES_T_1.sorted.bam
+Approx 85% complete for EA_WES_T_1.sorted.bam
+Approx 90% complete for EA_WES_T_1.sorted.bam
+Approx 95% complete for EA_WES_T_1.sorted.bam
+Approx 100% complete for EA_WES_T_1.sorted.bam
+Analysis complete for EA_WES_T_1.sorted.bam
+
+real	18m52.484s
+user	18m46.631s
+sys	0m6.783s
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of EA_WES_T_1.sorted.bam
+Approx 5% complete for EA_WES_T_1.sorted.bam
+Approx 10% complete for EA_WES_T_1.sorted.bam
+Approx 15% complete for EA_WES_T_1.sorted.bam
+Approx 20% complete for EA_WES_T_1.sorted.bam
+Approx 25% complete for EA_WES_T_1.sorted.bam
+Approx 30% complete for EA_WES_T_1.sorted.bam
+Approx 35% complete for EA_WES_T_1.sorted.bam
+Approx 40% complete for EA_WES_T_1.sorted.bam
+Approx 45% complete for EA_WES_T_1.sorted.bam
+Approx 50% complete for EA_WES_T_1.sorted.bam
+Approx 55% complete for EA_WES_T_1.sorted.bam
+Approx 60% complete for EA_WES_T_1.sorted.bam
+Approx 65% complete for EA_WES_T_1.sorted.bam
+Approx 70% complete for EA_WES_T_1.sorted.bam
+Approx 75% complete for EA_WES_T_1.sorted.bam
+Approx 80% complete for EA_WES_T_1.sorted.bam
+Approx 85% complete for EA_WES_T_1.sorted.bam
+Approx 90% complete for EA_WES_T_1.sorted.bam
+Approx 95% complete for EA_WES_T_1.sorted.bam
+Approx 100% complete for EA_WES_T_1.sorted.bam
+Analysis complete for EA_WES_T_1.sorted.bam
+
+real	19m4.497s
+user	18m55.046s
+sys	0m8.315s
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of EA_WES_T_1.sorted.bam
+Approx 5% complete for EA_WES_T_1.sorted.bam
+Approx 10% complete for EA_WES_T_1.sorted.bam
+Approx 15% complete for EA_WES_T_1.sorted.bam
+Approx 20% complete for EA_WES_T_1.sorted.bam
+Approx 25% complete for EA_WES_T_1.sorted.bam
+Approx 30% complete for EA_WES_T_1.sorted.bam
+Approx 35% complete for EA_WES_T_1.sorted.bam
+Approx 40% complete for EA_WES_T_1.sorted.bam
+Approx 45% complete for EA_WES_T_1.sorted.bam
+Approx 50% complete for EA_WES_T_1.sorted.bam
+Approx 55% complete for EA_WES_T_1.sorted.bam
+Approx 60% complete for EA_WES_T_1.sorted.bam
+Approx 65% complete for EA_WES_T_1.sorted.bam
+Approx 70% complete for EA_WES_T_1.sorted.bam
+Approx 75% complete for EA_WES_T_1.sorted.bam
+Approx 80% complete for EA_WES_T_1.sorted.bam
+Approx 85% complete for EA_WES_T_1.sorted.bam
+Approx 90% complete for EA_WES_T_1.sorted.bam
+Approx 95% complete for EA_WES_T_1.sorted.bam
+Approx 100% complete for EA_WES_T_1.sorted.bam
+Analysis complete for EA_WES_T_1.sorted.bam
+
+real	18m29.486s
+user	18m23.767s
+sys	0m7.454s
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of EA_WES_T_1.sorted.bam
+Approx 5% complete for EA_WES_T_1.sorted.bam
+Approx 10% complete for EA_WES_T_1.sorted.bam
+Approx 15% complete for EA_WES_T_1.sorted.bam
+Approx 20% complete for EA_WES_T_1.sorted.bam
+Approx 25% complete for EA_WES_T_1.sorted.bam
+Approx 30% complete for EA_WES_T_1.sorted.bam
+Approx 35% complete for EA_WES_T_1.sorted.bam
+Approx 40% complete for EA_WES_T_1.sorted.bam
+Approx 45% complete for EA_WES_T_1.sorted.bam
+Approx 50% complete for EA_WES_T_1.sorted.bam
+Approx 55% complete for EA_WES_T_1.sorted.bam
+Approx 60% complete for EA_WES_T_1.sorted.bam
+Approx 65% complete for EA_WES_T_1.sorted.bam
+Approx 70% complete for EA_WES_T_1.sorted.bam
+Approx 75% complete for EA_WES_T_1.sorted.bam
+Approx 80% complete for EA_WES_T_1.sorted.bam
+Approx 85% complete for EA_WES_T_1.sorted.bam
+Approx 90% complete for EA_WES_T_1.sorted.bam
+Approx 95% complete for EA_WES_T_1.sorted.bam
+Approx 100% complete for EA_WES_T_1.sorted.bam
+Analysis complete for EA_WES_T_1.sorted.bam
+
+real	18m54.504s
+user	18m47.132s
+sys	0m7.343s
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LANG = "zh_CN.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+Started analysis of EA_WES_T_1.sorted.bam
+Approx 5% complete for EA_WES_T_1.sorted.bam
+Approx 10% complete for EA_WES_T_1.sorted.bam
+Approx 15% complete for EA_WES_T_1.sorted.bam
+Approx 20% complete for EA_WES_T_1.sorted.bam
+Approx 25% complete for EA_WES_T_1.sorted.bam
+Approx 30% complete for EA_WES_T_1.sorted.bam
+Approx 35% complete for EA_WES_T_1.sorted.bam
+Approx 40% complete for EA_WES_T_1.sorted.bam
+Approx 45% complete for EA_WES_T_1.sorted.bam
+Approx 50% complete for EA_WES_T_1.sorted.bam
+Approx 55% complete for EA_WES_T_1.sorted.bam
+Approx 60% complete for EA_WES_T_1.sorted.bam
+Approx 65% complete for EA_WES_T_1.sorted.bam
+Approx 70% complete for EA_WES_T_1.sorted.bam
+Approx 75% complete for EA_WES_T_1.sorted.bam
+Approx 80% complete for EA_WES_T_1.sorted.bam
+Approx 85% complete for EA_WES_T_1.sorted.bam
+Approx 90% complete for EA_WES_T_1.sorted.bam
+Approx 95% complete for EA_WES_T_1.sorted.bam
+Approx 100% complete for EA_WES_T_1.sorted.bam
+Analysis complete for EA_WES_T_1.sorted.bam
+
+real	19m15.050s
+user	19m4.478s
+sys	0m8.868s
