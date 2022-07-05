@@ -552,6 +552,88 @@ int find_divide_pos(bam_block *block,int last_pos){
     return divide_pos;
 }
 
+int rabbit_bgzf_compress(void *_dst, size_t *dlen, const void *src, size_t slen, int level)
+{
+    if (slen == 0) {
+        // EOF block
+        if (*dlen < 28) return -1;
+        memcpy(_dst, "\037\213\010\4\0\0\0\0\0\377\6\0\102\103\2\0\033\0\3\0\0\0\0\0\0\0\0\0", 28);
+        *dlen = 28;
+        return 0;
+    }
+
+    uint8_t *dst = (uint8_t*)_dst;
+
+    if (level == 0) {
+        // Uncompressed data
+//        printf("Compress 1\n");
+        if (*dlen < slen+5 + BLOCK_HEADER_LENGTH + BLOCK_FOOTER_LENGTH) return -1;
+//        printf("Compress 2\n");
+        dst[BLOCK_HEADER_LENGTH] = 1; // BFINAL=1, BTYPE=00; see RFC1951
+//        printf("Compress 3\n");
+        u16_to_le(slen,  &dst[BLOCK_HEADER_LENGTH+1]); // length
+//        printf("Compress 4\n");
+        u16_to_le(~slen, &dst[BLOCK_HEADER_LENGTH+3]); // ones-complement length
+//        printf("Compress 5\n");
+        memcpy(dst + BLOCK_HEADER_LENGTH+5, src, slen);
+//        printf("Compress 6\n");
+        *dlen = slen+5 + BLOCK_HEADER_LENGTH + BLOCK_FOOTER_LENGTH;
+//        printf("Compress 7\n");
+    } else {
+        level = level > 0 ? level : 6; // libdeflate doesn't honour -1 as default
+        // NB levels go up to 12 here.
+        struct libdeflate_compressor *z = libdeflate_alloc_compressor(level);
+        if (!z) return -1;
+
+        // Raw deflate
+        size_t clen =
+                libdeflate_deflate_compress(z, src, slen,
+                                            dst + BLOCK_HEADER_LENGTH,
+                                            *dlen - BLOCK_HEADER_LENGTH - BLOCK_FOOTER_LENGTH);
+
+        if (clen <= 0) {
+            hts_log_error("Call to libdeflate_deflate_compress failed");
+            libdeflate_free_compressor(z);
+            return -1;
+        }
+
+        *dlen = clen + BLOCK_HEADER_LENGTH + BLOCK_FOOTER_LENGTH;
+
+        libdeflate_free_compressor(z);
+    }
+
+    // write the header
+    memcpy(dst, g_magic, BLOCK_HEADER_LENGTH); // the last two bytes are a place holder for the length of the block
+    packInt16(&dst[16], *dlen - 1); // write the compressed length; -1 to fit 2 bytes
+
+    // write the footer
+    uint32_t crc = libdeflate_crc32(0, src, slen);
+    packInt32((uint8_t*)&dst[*dlen - 8], crc);
+    packInt32((uint8_t*)&dst[*dlen - 4], slen);
+    return 0;
+}
+int rabbit_bgzf_gzip_compress(BGZF *fp, void *_dst, size_t *dlen, const void *src, size_t slen, int level)
+{
+    uint8_t *dst = (uint8_t*)_dst;
+    z_stream *zs = fp->gz_stream;
+    int flush = slen ? Z_PARTIAL_FLUSH : Z_FINISH;
+    zs->next_in   = (Bytef*)src;
+    zs->avail_in  = slen;
+    zs->next_out  = dst;
+    zs->avail_out = *dlen;
+    int ret = deflate(zs, flush);
+    if (ret == Z_STREAM_ERROR) {
+        hts_log_error("Deflate operation failed: %s", bgzf_zerr(ret, NULL));
+        return -1;
+    }
+    if (zs->avail_in != 0) {
+        hts_log_error("Deflate block too large for output buffer");
+        return -1;
+    }
+    *dlen = *dlen - zs->avail_out;
+    return 0;
+}
+
 int find_divide_pos(bam_complete_block *block,int last_pos){
     int divide_pos = last_pos;
     int ret = 0;

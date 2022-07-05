@@ -91,7 +91,8 @@ void Rabbit_memcpy(void *target,unsigned char *source,unsigned int length);
 int Rabbit_bgzf_read(struct bam_complete_block *fq,void *data,unsigned int length);
 int read_bam(struct bam_block *fq,bam1_t *b,int is_be);
 int read_bam(struct bam_complete_block *fq,bam1_t *b,int is_be);
-
+int rabbit_bgzf_compress(void *_dst, size_t *dlen, const void *src, size_t slen, int level);
+int rabbit_bgzf_gzip_compress(BGZF *fp, void *_dst, size_t *dlen, const void *src, size_t slen, int level);
 
 
 /*
