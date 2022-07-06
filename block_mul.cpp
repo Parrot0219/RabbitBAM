@@ -308,7 +308,6 @@ void compress_test_pack(BamCompress* compress){
 
     }
 }
-
 void benchmark_pack(BamCompress* compress,BamCompleteBlock* completeBlock){
     bam_block *un_comp = nullptr;
     bam_complete_block *assign_block = completeBlock->getEmpty();
@@ -425,7 +424,6 @@ void benchmark_pack(BamCompress* compress,BamCompleteBlock* completeBlock){
 //        compress->backEmpty(un_comp);
 
 }
-
 void benchmark_bam_pack(BamCompleteBlock* completeBlock,samFile *output,sam_hdr_t *hdr){
 
     bam1_t *b;
@@ -459,8 +457,14 @@ void benchmark_bam_pack(BamCompleteBlock* completeBlock,samFile *output,sam_hdr_
     printf("Block  Number is %lld\n",res);
 }
 
-int rabbit_write_deflate_block(BGZF *fp, int block_length)
-{
+struct bam_write_block{
+    int status=0; // 0:uncompress 1:compress
+    int block_offset;
+    uint8_t* data;
+};
+
+
+int rabbit_write_deflate_block(BGZF *fp, int block_length){
     size_t comp_size = BGZF_MAX_BLOCK_SIZE;
     int ret;
    if ( !fp->is_gzip )
@@ -477,7 +481,7 @@ int rabbit_write_deflate_block(BGZF *fp, int block_length)
     fp->block_offset = 0;
     return comp_size;
 }
-int rabbit_bgzf_flush(BGZF *fp)
+int rabbit_bgzf_flush(BGZF *fp,bam_write_block* write_block)
 {
     while (fp->block_offset > 0) {
         int block_length;
@@ -500,7 +504,7 @@ int rabbit_bgzf_flush(BGZF *fp)
     }
     return 0;
 }
-int rabbit_bgzf_write(BGZF *fp, const void *data, size_t length)
+int rabbit_bgzf_write(BGZF *fp, bam_write_block* write_block,const void *data, size_t length)
 {
     const uint8_t *input = (const uint8_t*)data;
     ssize_t remaining = length;
@@ -514,19 +518,19 @@ int rabbit_bgzf_write(BGZF *fp, const void *data, size_t length)
         input += copy_length;
         remaining -= copy_length;
         if (fp->block_offset == BGZF_BLOCK_SIZE) {
-            if (rabbit_bgzf_flush(fp) != 0) return -1;
+            if (rabbit_bgzf_flush(fp,write_block) != 0) return -1;
         }
     }
     return length - remaining;
 }
-int rabbit_bgzf_flush_try(BGZF *fp, ssize_t size)
+int rabbit_bgzf_flush_try(BGZF *fp, bam_write_block* write_block,ssize_t size)
 {
     if (fp->block_offset + size > BGZF_BLOCK_SIZE) {
-        return rabbit_bgzf_flush(fp);
+        return rabbit_bgzf_flush(fp,write_block);
     }
     return 0;
 }
-int rabbit_bam_write_test(BGZF *fp,bam1_t *b){
+int rabbit_bam_write_test(BGZF *fp,bam_write_block* write_block,bam1_t *b){
     const bam1_core_t *c = &b->core;
     uint32_t x[8], block_len = b->l_data - c->l_extranul + 32, y;
     int i, ok;
@@ -551,23 +555,23 @@ int rabbit_bam_write_test(BGZF *fp,bam1_t *b){
     x[5] = c->mtid;
     x[6] = c->mpos;
     x[7] = c->isize;
-    ok = (rabbit_bgzf_flush_try(fp, 4 + block_len) >= 0);
+    ok = (rabbit_bgzf_flush_try(fp, write_block, 4 + block_len) >= 0);
     if (fp->is_be) {
         for (i = 0; i < 8; ++i) ed_swap_4p(x + i);
         y = block_len;
-        if (ok) ok = (rabbit_bgzf_write(fp, ed_swap_4p(&y), 4) >= 0);
+        if (ok) ok = (rabbit_bgzf_write(fp, write_block,ed_swap_4p(&y), 4) >= 0);
         swap_data(c, b->l_data, b->data, 1);
     } else {
         if (ok) {
-            ok = (rabbit_bgzf_write(fp, &block_len, 4) >= 0);
+            ok = (rabbit_bgzf_write(fp, write_block, &block_len, 4) >= 0);
         }
     }
     if (ok) {
-        ok = (rabbit_bgzf_write(fp, x, 32) >= 0);
+        ok = (rabbit_bgzf_write(fp, write_block, x, 32) >= 0);
     }
-    if (ok) ok = (rabbit_bgzf_write(fp, b->data, c->l_qname - c->l_extranul) >= 0);
+    if (ok) ok = (rabbit_bgzf_write(fp, write_block, b->data, c->l_qname - c->l_extranul) >= 0);
     if (c->n_cigar <= 0xffff) { // no long CIGAR; write normally
-        if (ok) ok = (rabbit_bgzf_write(fp, b->data + c->l_qname, b->l_data - c->l_qname) >= 0);
+        if (ok) ok = (rabbit_bgzf_write(fp, write_block, b->data + c->l_qname, b->l_data - c->l_qname) >= 0);
     } else { // with long CIGAR, insert a fake CIGAR record and move the real CIGAR to the CG:B,I tag
         uint8_t buf[8];
         uint32_t cigar_st, cigar_en, cigar[2];
@@ -587,20 +591,20 @@ int rabbit_bam_write_test(BGZF *fp,bam1_t *b){
         u32_to_le(cigar[0], buf);
         u32_to_le(cigar[1], buf + 4);
         if (ok) {
-            ok = (rabbit_bgzf_write(fp, buf, 8) >= 0); // write cigar: <read_length>S<ref_length>N
+            ok = (rabbit_bgzf_write(fp, write_block, buf, 8) >= 0); // write cigar: <read_length>S<ref_length>N
         }
         if (ok) {
-            ok = (rabbit_bgzf_write(fp, &b->data[cigar_en], b->l_data - cigar_en) >= 0); // write data after CIGAR
+            ok = (rabbit_bgzf_write(fp, write_block, &b->data[cigar_en], b->l_data - cigar_en) >= 0); // write data after CIGAR
         }
         if (ok) {
-            ok = (rabbit_bgzf_write(fp, "CGBI", 4) >= 0); // write CG:B,I
+            ok = (rabbit_bgzf_write(fp, write_block, "CGBI", 4) >= 0); // write CG:B,I
         }
         u32_to_le(c->n_cigar, buf);
         if (ok) {
-            ok = (rabbit_bgzf_write(fp, buf, 4) >= 0); // write the true CIGAR length
+            ok = (rabbit_bgzf_write(fp, write_block, buf, 4) >= 0); // write the true CIGAR length
         }
         if (ok) {
-            ok = (rabbit_bgzf_write(fp, &b->data[cigar_st], c->n_cigar * 4) >= 0); // write the real CIGAR
+            ok = (rabbit_bgzf_write(fp, write_block, &b->data[cigar_st], c->n_cigar * 4) >= 0); // write the real CIGAR
         }
     }
     if (fp->is_be) swap_data(c, b->l_data, b->data, 0);
@@ -627,7 +631,10 @@ void benchmark_write_pack(BamCompleteBlock* completeBlock,samFile *output,sam_hd
     bam_complete_block* un_comp;
     long long ans = 0;
     long long res = 0;
-
+    bam_write_block *write_block=new bam_write_block();
+    write_block->block_offset=0;
+    write_block->data=new uint8_t[BGZF_BLOCK_SIZE];
+    write_block->status=0;
     while (1){
         un_comp = completeBlock->getCompleteBlock();
         if (un_comp == nullptr){
@@ -642,7 +649,7 @@ void benchmark_write_pack(BamCompleteBlock* completeBlock,samFile *output,sam_hd
  *  尝试单线程输出
  */
 //            sam_write1(output,hdr,b);
-            rabbit_bam_write_test(output->fp.bgzf,b);
+            rabbit_bam_write_test(output->fp.bgzf,write_block,b);
             ans++;
         }
         res++;

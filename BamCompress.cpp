@@ -50,82 +50,22 @@ bam_block* BamCompress::getEmpty(){
  * 输出：  无
  */
 
-//void BamCompress::inputUnCompressData(bam_block* data,int block_num) {
-////    std::this_thread::sleep_for(std::chrono::milliseconds(blockNum-block_num));
-//    mtx_input.lock();
-//    while ((block_num - blockNum + 1) >= ((consumer_size) - 3 - (consumer_ed-consumer_bg + consumer_size )%consumer_size)) {
-//        wait_num+=1;
-//        mtx_input.unlock();
-//        std::this_thread::sleep_for(std::chrono::nanoseconds(block_num-blockNum -  (consumer_ed - consumer_bg + consumer_size)%consumer_size )/4);
-//        mtx_input.lock();
-//    }
-//
-//    consumer_data[(consumer_ed + (block_num - blockNum + 1)) % consumer_size] = data;
-//    is_ok[(consumer_ed + (block_num - blockNum + 1)) % consumer_size] = true;
-//    while (is_ok[(consumer_ed+1)%consumer_size]){
-//        consumer_ed = (consumer_ed + 1) % consumer_size;
-//        blockNum++;
-//    }
-//
-//
-//    mtx_input.unlock();
-////    printf("block Num is %d\n",blockNum);
-//}
-
-
 void BamCompress::inputUnCompressData(bam_block* data,int block_num){
-    //std::this_thread::sleep_for(std::chrono::milliseconds(blockNum-block_num));
-//    mtx_input.lock();
+
     while (block_num != blockNum.load(std::memory_order_acq_rel)) {
         wait_num+=1;
-//        mtx_input.unlock();
         std::this_thread::sleep_for(std::chrono::nanoseconds(block_num-blockNum)/8);
-//        mtx_input.lock();
     }
 
     consumer_data[(consumer_ed + 1) % consumer_size] = data;
     consumer_ed = (consumer_ed + 1) % consumer_size;
     blockNum.store(blockNum.load(std::memory_order_acq_rel)+1,std::memory_order_acq_rel);
-//    mtx_input.unlock();
-//    printf("block Num is %d\n",blockNum);
 }
 
-//void BamCompress::inputUnCompressData(bam_block* data,int block_num) {
-//    std::this_thread::sleep_for(std::chrono::milliseconds(blockNum-block_num));
-//    mtx_input.lock();
-//    while (block_num != blockNum) {
-//        wait_num+=1;
-//        mtx_input.unlock();
-//        std::this_thread::sleep_for(std::chrono::nanoseconds(block_num-blockNum)/8);
-//        mtx_input.lock();
-//    }
-//
-//    consumer_data[(consumer_ed + 1) % consumer_size] = data;
-//    consumer_ed = (consumer_ed + 1) % consumer_size;
-//    blockNum++;
-//    mtx_input.unlock();
-////    printf("block Num is %d\n",blockNum);
-//}
 
 
 
-///*
-// * 按照顺序尝试插入输出队列
-// * 输入：  bam_block* : 解压完成的数据
-// *        int ：读入的顺序编号
-// * 输出：  无
-// */
-//bool BamCompress::tryinputUnCompressData(bam_block* data,int block_num) {
-//    if  (block_num != blockNum) {
-//        wait_num+=1;
-//        return false;
-//    }
-//    consumer_data[(consumer_ed + 1) % consumer_size] = data;
-//    consumer_ed = (consumer_ed + 1) % consumer_size;
-//    blockNum++;
-//    return true;
-////    printf("block Num is %d\n",blockNum);
-//}
+
 /*
  * 按照顺序获取解压完成的数据
  * 输入：无
