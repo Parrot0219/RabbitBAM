@@ -58,6 +58,7 @@ struct bam_write_block{
     int status=0; // 0:uncompress 1:compress
     int block_num=-1; // -1 : not used correctly
     int block_offset;
+    int block_length;
     uint8_t* uncompressed_data;
     uint8_t* compressed_data;
 };

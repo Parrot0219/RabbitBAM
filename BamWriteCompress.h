@@ -5,6 +5,8 @@
 #ifndef BAMSTATUS_BAMWRITECOMPRESS_H
 #define BAMSTATUS_BAMWRITECOMPRESS_H
 #include "BamTools.h"
+#include <thread>
+#include <atomic>
 /*
  *  功能上为一个对于处理完成的
  */
@@ -61,6 +63,7 @@ public:
         compressThread--;
         mtx_compressThread.unlock();
     }
+    void WriteComplete(){isWriteComplete=true;}
 public:
     /*
      * 记录等待次数
@@ -106,6 +109,11 @@ private:
      */
     int compressThread;
     std::mutex mtx_compressThread;
+
+    /*
+     * 检测需要输出的文件是否已经完全进入队列
+     */
+    bool isWriteComplete=false;
 
 };
 

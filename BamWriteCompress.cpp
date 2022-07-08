@@ -8,6 +8,8 @@
 //
 BamWriteCompress::BamWriteCompress(int BufferSize,int threadNumber){
     blockNum=0;
+    isWriteComplete=false;
+
 
     compress_bg = 0;
     compress_ed = BufferSize-1;
@@ -71,6 +73,7 @@ bam_write_block* BamWriteCompress::getUnCompressData(){
         mtx_need_compress.unlock();
         std::this_thread::sleep_for(std::chrono::milliseconds(5));
         mtx_need_compress.lock();
+        if (isWriteComplete && (need_compress_bg+1)%need_compress_size==need_compress_ed) return nullptr;
     }
     int num=need_compress_bg;
     need_compress_bg=(need_compress_bg+1)%need_compress_size;
