@@ -457,20 +457,16 @@ void benchmark_bam_pack(BamCompleteBlock* completeBlock,samFile *output,sam_hdr_
     printf("Block  Number is %lld\n",res);
 }
 
-struct bam_write_block{
-    int status=0; // 0:uncompress 1:compress
-    int block_offset;
-    uint8_t* data;
-};
 
 
-int rabbit_write_deflate_block(BGZF *fp, int block_length){
+
+int rabbit_write_deflate_block(BGZF *fp, bam_write_block* write_block){
     size_t comp_size = BGZF_MAX_BLOCK_SIZE;
     int ret;
    if ( !fp->is_gzip )
-        ret = rabbit_bgzf_compress(fp->compressed_block, &comp_size, fp->uncompressed_block, block_length, fp->compress_level);
+        ret = rabbit_bgzf_compress(write_block->compressed_data, &comp_size, write_block->uncompressed_data, write_block->block_offset, fp->compress_level);
     else
-        ret = rabbit_bgzf_gzip_compress(fp, fp->compressed_block, &comp_size, fp->uncompressed_block, block_length, fp->compress_level);
+        ret = rabbit_bgzf_gzip_compress(fp, write_block->compressed_data, &comp_size, write_block->uncompressed_data, write_block->block_offset, fp->compress_level);
 
     if ( ret != 0 )
     {
@@ -483,15 +479,15 @@ int rabbit_write_deflate_block(BGZF *fp, int block_length){
 }
 int rabbit_bgzf_flush(BGZF *fp,bam_write_block* write_block)
 {
-    while (fp->block_offset > 0) {
+    while (write_block->block_offset > 0) {
         int block_length;
-        block_length = rabbit_write_deflate_block(fp, fp->block_offset);
+        block_length = rabbit_write_deflate_block(fp, write_block);
         if (block_length < 0) {
             hts_log_debug("Deflate block operation failed: %s", bgzf_zerr(block_length, NULL));
             return -1;
         }
 
-        if (hwrite(fp->fp, fp->compressed_block, block_length) != block_length) {
+        if (hwrite(fp->fp, write_block->compressed_data, block_length) != block_length) {
             printf("Write Failed\n");
             hts_log_error("File write failed (wrong size)");
             fp->errcode |= BGZF_ERR_IO; // possibly truncated file
@@ -499,7 +495,7 @@ int rabbit_bgzf_flush(BGZF *fp,bam_write_block* write_block)
         }
 
 
-//        fp->block_offset=0;
+        write_block->block_offset=0;
         fp->block_address += block_length;
     }
     return 0;
@@ -510,19 +506,38 @@ int rabbit_bgzf_write(BGZF *fp, bam_write_block* write_block,const void *data, s
     ssize_t remaining = length;
 //    assert(fp->is_write);
     while (remaining > 0) {
-        uint8_t* buffer = (uint8_t*)fp->uncompressed_block;
-        int copy_length = BGZF_BLOCK_SIZE - fp->block_offset;
+        uint8_t* buffer = (uint8_t*)write_block->uncompressed_data;
+        int copy_length = BGZF_BLOCK_SIZE - write_block->block_offset;
         if (copy_length > remaining) copy_length = remaining;
-        memcpy(buffer + fp->block_offset, input, copy_length);
-        fp->block_offset += copy_length;
+        memcpy(buffer + write_block->block_offset, input, copy_length);
+        write_block->block_offset += copy_length;
         input += copy_length;
         remaining -= copy_length;
-        if (fp->block_offset == BGZF_BLOCK_SIZE) {
+        if (write_block->block_offset == BGZF_BLOCK_SIZE) {
             if (rabbit_bgzf_flush(fp,write_block) != 0) return -1;
         }
     }
     return length - remaining;
 }
+//int rabbit_bgzf_write(BGZF *fp, bam_write_block* write_block,const void *data, size_t length)
+//{
+//    const uint8_t *input = (const uint8_t*)data;
+//    ssize_t remaining = length;
+////    assert(fp->is_write);
+//    while (remaining > 0) {
+//        uint8_t* buffer = (uint8_t*)fp->uncompressed_block;
+//        int copy_length = BGZF_BLOCK_SIZE - fp->block_offset;
+//        if (copy_length > remaining) copy_length = remaining;
+//        memcpy(buffer + fp->block_offset, input, copy_length);
+//        fp->block_offset += copy_length;
+//        input += copy_length;
+//        remaining -= copy_length;
+//        if (fp->block_offset == BGZF_BLOCK_SIZE) {
+//            if (rabbit_bgzf_flush(fp,write_block) != 0) return -1;
+//        }
+//    }
+//    return length - remaining;
+//}
 int rabbit_bgzf_flush_try(BGZF *fp, bam_write_block* write_block,ssize_t size)
 {
     if (fp->block_offset + size > BGZF_BLOCK_SIZE) {
@@ -613,8 +628,8 @@ int rabbit_bam_write_test(BGZF *fp,bam_write_block* write_block,bam1_t *b){
 
 void benchmark_write_pack(BamCompleteBlock* completeBlock,samFile *output,sam_hdr_t *hdr,int level){
 
-    uint8_t* compress_block_test = new uint8_t[2*BGZF_BLOCK_SIZE];
-    uint8_t* uncompress_block_test = new uint8_t[2*BGZF_BLOCK_SIZE];
+    uint8_t* compress_block_test = new uint8_t[BGZF_BLOCK_SIZE];
+    uint8_t* uncompress_block_test = new uint8_t[BGZF_BLOCK_SIZE];
     output->fp.bgzf->block_offset=0;
     output->fp.bgzf->uncompressed_block=uncompress_block_test;
     output->fp.bgzf->compressed_block=compress_block_test;
@@ -623,7 +638,6 @@ void benchmark_write_pack(BamCompleteBlock* completeBlock,samFile *output,sam_hd
     if ((b = bam_init1()) == NULL) {
         fprintf(stderr, "[E::%s] Out of memory allocating BAM struct.\n", __func__);
     }
-//    hts_set_threads(output, 20);
     if (sam_hdr_write(output, hdr) != 0){
         printf("HDR Write False!\n");
         return ;
@@ -633,7 +647,8 @@ void benchmark_write_pack(BamCompleteBlock* completeBlock,samFile *output,sam_hd
     long long res = 0;
     bam_write_block *write_block=new bam_write_block();
     write_block->block_offset=0;
-    write_block->data=new uint8_t[BGZF_BLOCK_SIZE];
+    write_block->uncompressed_data=new uint8_t[BGZF_BLOCK_SIZE];
+    write_block->compressed_data=new uint8_t[BGZF_BLOCK_SIZE];
     write_block->status=0;
     while (1){
         un_comp = completeBlock->getCompleteBlock();

@@ -19,11 +19,13 @@
 #include <cstdlib>
 #include <mutex>
 #include <libdeflate.h>
-
+#include <thread>
+#include <atomic>
 #define BLOCK_HEADER_LENGTH 18
 #define BLOCK_FOOTER_LENGTH 8
 //#define BGZF_MAX_BLOCK_SIZE 0x10000
 #define BGZF_MAX_BLOCK_COMPLETE_SIZE 0x40000
+
 typedef struct {
     int size;
     uint8_t *block;
@@ -50,6 +52,14 @@ struct bam_complete_block{
     unsigned int length;
     unsigned int pos;
     int64_t block_address;
+};
+
+struct bam_write_block{
+    int status=0; // 0:uncompress 1:compress
+    int block_num=-1; // -1 : not used correctly
+    int block_offset;
+    uint8_t* uncompressed_data;
+    uint8_t* compressed_data;
 };
 
 struct bgzf_cache_t {

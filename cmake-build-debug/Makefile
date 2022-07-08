@@ -299,29 +299,53 @@ BamTools.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Config.dir/build.make CMakeFiles/Config.dir/BamTools.cpp.s
 .PHONY : BamTools.cpp.s
 
-BamWrite.o: BamWrite.cpp.o
-.PHONY : BamWrite.o
+BamWriteBlock.o: BamWriteBlock.cpp.o
+.PHONY : BamWriteBlock.o
 
 # target to build an object file
-BamWrite.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Config.dir/build.make CMakeFiles/Config.dir/BamWrite.cpp.o
-.PHONY : BamWrite.cpp.o
+BamWriteBlock.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Config.dir/build.make CMakeFiles/Config.dir/BamWriteBlock.cpp.o
+.PHONY : BamWriteBlock.cpp.o
 
-BamWrite.i: BamWrite.cpp.i
-.PHONY : BamWrite.i
+BamWriteBlock.i: BamWriteBlock.cpp.i
+.PHONY : BamWriteBlock.i
 
 # target to preprocess a source file
-BamWrite.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Config.dir/build.make CMakeFiles/Config.dir/BamWrite.cpp.i
-.PHONY : BamWrite.cpp.i
+BamWriteBlock.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Config.dir/build.make CMakeFiles/Config.dir/BamWriteBlock.cpp.i
+.PHONY : BamWriteBlock.cpp.i
 
-BamWrite.s: BamWrite.cpp.s
-.PHONY : BamWrite.s
+BamWriteBlock.s: BamWriteBlock.cpp.s
+.PHONY : BamWriteBlock.s
 
 # target to generate assembly for a file
-BamWrite.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Config.dir/build.make CMakeFiles/Config.dir/BamWrite.cpp.s
-.PHONY : BamWrite.cpp.s
+BamWriteBlock.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Config.dir/build.make CMakeFiles/Config.dir/BamWriteBlock.cpp.s
+.PHONY : BamWriteBlock.cpp.s
+
+BamWriteCompress.o: BamWriteCompress.cpp.o
+.PHONY : BamWriteCompress.o
+
+# target to build an object file
+BamWriteCompress.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Config.dir/build.make CMakeFiles/Config.dir/BamWriteCompress.cpp.o
+.PHONY : BamWriteCompress.cpp.o
+
+BamWriteCompress.i: BamWriteCompress.cpp.i
+.PHONY : BamWriteCompress.i
+
+# target to preprocess a source file
+BamWriteCompress.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Config.dir/build.make CMakeFiles/Config.dir/BamWriteCompress.cpp.i
+.PHONY : BamWriteCompress.cpp.i
+
+BamWriteCompress.s: BamWriteCompress.cpp.s
+.PHONY : BamWriteCompress.s
+
+# target to generate assembly for a file
+BamWriteCompress.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Config.dir/build.make CMakeFiles/Config.dir/BamWriteCompress.cpp.s
+.PHONY : BamWriteCompress.cpp.s
 
 Buffer.o: Buffer.cpp.o
 .PHONY : Buffer.o
@@ -1342,9 +1366,12 @@ help:
 	@echo "... BamTools.o"
 	@echo "... BamTools.i"
 	@echo "... BamTools.s"
-	@echo "... BamWrite.o"
-	@echo "... BamWrite.i"
-	@echo "... BamWrite.s"
+	@echo "... BamWriteBlock.o"
+	@echo "... BamWriteBlock.i"
+	@echo "... BamWriteBlock.s"
+	@echo "... BamWriteCompress.o"
+	@echo "... BamWriteCompress.i"
+	@echo "... BamWriteCompress.s"
 	@echo "... Buffer.o"
 	@echo "... Buffer.i"
 	@echo "... Buffer.s"

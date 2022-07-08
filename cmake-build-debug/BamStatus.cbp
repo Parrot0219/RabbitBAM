@@ -212,10 +212,16 @@
 		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamTools.h">
 			<Option target="Config"/>
 		</Unit>
-		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWrite.cpp">
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriteBlock.cpp">
 			<Option target="Config"/>
 		</Unit>
-		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWrite.h">
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriteBlock.h">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriteCompress.cpp">
+			<Option target="Config"/>
+		</Unit>
+		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriteCompress.h">
 			<Option target="Config"/>
 		</Unit>
 		<Unit filename="/Users/zhaozhan/CLionProjects/BamUniversalStatus/Buffer.cpp">

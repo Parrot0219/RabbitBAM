@@ -1,19 +1,17 @@
 //
-// Created by 赵展 on 2021/3/10.
+// Created by 赵展 on 2022/7/7.
 //
 
-#include "BamBlock.h"
-#include "BamTools.h"
-
-BamBlockConfig::BamBlockConfig(){};
-BamBlockConfig::BamBlockConfig(int Buffer_number){
+#include "BamWriteBlock.h"
+BamWriteBlockConfig::BamBlockConfig(){};
+BamWriteBlockConfig::BamBlockConfig(int Buffer_number){
     this->Buffer_number=Buffer_number;
     this->write_number=Buffer_number+10;
     this->complete=0;
 }
 
-BamBlock::BamBlock(){};
-BamBlock::BamBlock(BamBlockConfig *config){
+BamWriteBlock::BamBlock(){};
+BamWriteBlock::BamBlock(BamBlockConfig *config){
     this->config= config;
     this->buffer=new bam_block*[this->config->Buffer_number];
     for (int i=0;i<this->config->Buffer_number;++i) this->buffer[i]=new bam_block;
@@ -25,7 +23,7 @@ BamBlock::BamBlock(BamBlockConfig *config){
     this->read_ed=this->config->Buffer_number;
     for (int i=this->read_bg;i<this->read_ed;i++) this->read[i]=i;
 }
-pair<bam_block *,int> BamBlock::getEmpty(){
+pair<bam_block *,int> BamWriteBlock::getEmpty(){
     while (read_bg==read_ed){
         this_thread::sleep_for(chrono::milliseconds(5));
         //this_thread::yield();
@@ -35,11 +33,11 @@ pair<bam_block *,int> BamBlock::getEmpty(){
     return pair<bam_block *,int>(this->buffer[read[num]],read[num]);
 
 }
-void BamBlock::inputblock(int id){
+void BamWriteBlock::inputblock(int id){
     compress[compress_ed]=id;
     compress_ed=(compress_ed+1)%config->write_number;
 }
-pair<bam_block *,int> BamBlock::getCompressdata(){
+pair<bam_block *,int> BamWriteBlock::getCompressdata(){
     mtx_compress.lock();
     while (compress_ed==compress_bg){
         mtx_compress.unlock();
@@ -53,15 +51,15 @@ pair<bam_block *,int> BamBlock::getCompressdata(){
     mtx_compress.unlock();
     return pair<bam_block *,int>(this->buffer[compress[num]],compress[num]);
 }
-void BamBlock::backempty(int id){
+void BamWriteBlock::backempty(int id){
     mtx_read.lock();
     read[read_ed]=id;
     read_ed=(read_ed+1)%config->write_number;
     mtx_read.unlock();
 }
-bool BamBlock::isComplete(){
+bool BamWriteBlock::isComplete(){
     return config->complete;
 };
-void BamBlock::ReadComplete() {
+void BamWriteBlock::ReadComplete() {
     config->complete=1;
 }

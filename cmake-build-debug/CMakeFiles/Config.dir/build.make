@@ -677,18 +677,31 @@ CMakeFiles/Config.dir/BamTools.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Config.dir/BamTools.cpp.s"
 	/usr/local/Cellar/gcc@9/9.3.0_1/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamTools.cpp -o CMakeFiles/Config.dir/BamTools.cpp.s
 
-CMakeFiles/Config.dir/BamWrite.cpp.o: CMakeFiles/Config.dir/flags.make
-CMakeFiles/Config.dir/BamWrite.cpp.o: ../BamWrite.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object CMakeFiles/Config.dir/BamWrite.cpp.o"
-	/usr/local/Cellar/gcc@9/9.3.0_1/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/BamWrite.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWrite.cpp
+CMakeFiles/Config.dir/BamWriteBlock.cpp.o: CMakeFiles/Config.dir/flags.make
+CMakeFiles/Config.dir/BamWriteBlock.cpp.o: ../BamWriteBlock.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object CMakeFiles/Config.dir/BamWriteBlock.cpp.o"
+	/usr/local/Cellar/gcc@9/9.3.0_1/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/BamWriteBlock.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriteBlock.cpp
 
-CMakeFiles/Config.dir/BamWrite.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Config.dir/BamWrite.cpp.i"
-	/usr/local/Cellar/gcc@9/9.3.0_1/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWrite.cpp > CMakeFiles/Config.dir/BamWrite.cpp.i
+CMakeFiles/Config.dir/BamWriteBlock.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Config.dir/BamWriteBlock.cpp.i"
+	/usr/local/Cellar/gcc@9/9.3.0_1/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriteBlock.cpp > CMakeFiles/Config.dir/BamWriteBlock.cpp.i
 
-CMakeFiles/Config.dir/BamWrite.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Config.dir/BamWrite.cpp.s"
-	/usr/local/Cellar/gcc@9/9.3.0_1/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWrite.cpp -o CMakeFiles/Config.dir/BamWrite.cpp.s
+CMakeFiles/Config.dir/BamWriteBlock.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Config.dir/BamWriteBlock.cpp.s"
+	/usr/local/Cellar/gcc@9/9.3.0_1/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriteBlock.cpp -o CMakeFiles/Config.dir/BamWriteBlock.cpp.s
+
+CMakeFiles/Config.dir/BamWriteCompress.cpp.o: CMakeFiles/Config.dir/flags.make
+CMakeFiles/Config.dir/BamWriteCompress.cpp.o: ../BamWriteCompress.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object CMakeFiles/Config.dir/BamWriteCompress.cpp.o"
+	/usr/local/Cellar/gcc@9/9.3.0_1/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/BamWriteCompress.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriteCompress.cpp
+
+CMakeFiles/Config.dir/BamWriteCompress.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Config.dir/BamWriteCompress.cpp.i"
+	/usr/local/Cellar/gcc@9/9.3.0_1/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriteCompress.cpp > CMakeFiles/Config.dir/BamWriteCompress.cpp.i
+
+CMakeFiles/Config.dir/BamWriteCompress.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Config.dir/BamWriteCompress.cpp.s"
+	/usr/local/Cellar/gcc@9/9.3.0_1/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriteCompress.cpp -o CMakeFiles/Config.dir/BamWriteCompress.cpp.s
 
 # Object files for target Config
 Config_OBJECTS = \
@@ -739,7 +752,8 @@ Config_OBJECTS = \
 "CMakeFiles/Config.dir/BamCompress.cpp.o" \
 "CMakeFiles/Config.dir/BamCompleteBlock.cpp.o" \
 "CMakeFiles/Config.dir/BamTools.cpp.o" \
-"CMakeFiles/Config.dir/BamWrite.cpp.o"
+"CMakeFiles/Config.dir/BamWriteBlock.cpp.o" \
+"CMakeFiles/Config.dir/BamWriteCompress.cpp.o"
 
 # External object files for target Config
 Config_EXTERNAL_OBJECTS =
@@ -791,10 +805,11 @@ Config: CMakeFiles/Config.dir/BamRead.cpp.o
 Config: CMakeFiles/Config.dir/BamCompress.cpp.o
 Config: CMakeFiles/Config.dir/BamCompleteBlock.cpp.o
 Config: CMakeFiles/Config.dir/BamTools.cpp.o
-Config: CMakeFiles/Config.dir/BamWrite.cpp.o
+Config: CMakeFiles/Config.dir/BamWriteBlock.cpp.o
+Config: CMakeFiles/Config.dir/BamWriteCompress.cpp.o
 Config: CMakeFiles/Config.dir/build.make
 Config: CMakeFiles/Config.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Linking CXX executable Config"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Linking CXX executable Config"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Config.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
