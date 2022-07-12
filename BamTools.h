@@ -55,6 +55,14 @@ struct bam_complete_block{
 };
 
 struct bam_write_block{
+//    bam_write_block(){
+//        block_length=0;
+//        block_offset=0;
+//        status=0;
+//        block_num=-1;
+//        uncompressed_data=new uint8_t[BGZF_BLOCK_SIZE];
+//        compressed_data=new uint8_t[BGZF_MAX_BLOCK_SIZE];
+//    }
     int status=0; // 0:uncompress 1:compress
     int block_num=-1; // -1 : not used correctly
     int block_offset;
