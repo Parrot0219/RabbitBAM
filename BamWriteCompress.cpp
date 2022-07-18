@@ -53,9 +53,6 @@ BamWriteCompress::BamWriteCompress(int BufferSize,int threadNumber){
  */
 bam_write_block* BamWriteCompress::getEmpty(){
 //    mtx_compress.lock();
-    if (WriteDeBug){
-        printf("Get Empty This Thread ID : %d\n",std::this_thread::get_id());
-    }
     while ((compress_ed+1)%compress_size == compress_bg){
         mtx_compress.unlock();
         std::this_thread::sleep_for(std::chrono::nanoseconds(5));
@@ -97,10 +94,11 @@ bam_write_block* BamWriteCompress::getUnCompressData(){
 //        printf("Compress Sleep Start\n");
         std::this_thread::sleep_for(std::chrono::nanoseconds(1));
 //        printf("Compress Sleep End\n");
-        mtx_need_compress.lock();
         if (isWriteComplete && (need_compress_ed+1)%need_compress_size==need_compress_bg){
             return nullptr;
         }
+        mtx_need_compress.lock();
+
     }
 //    printf("need compress bg : %d\n"
 //           "need compress ed : %d\n",need_compress_bg,need_compress_ed);
@@ -132,6 +130,8 @@ void BamWriteCompress::inputCompressData(bam_write_block* data){
 //           "consumer ed : %d\n",consumer_bg,consumer_ed);
     consumer_data[(consumer_ed + 1) % consumer_size] = data;
     consumer_ed = (consumer_ed + 1) % consumer_size;
+//    printf("Input Compress Data consumer bg : %d\n"
+//           "Input Compress Data consumer ed : %d\n",consumer_bg,consumer_ed);
     blockNum.store(blockNum.load(std::memory_order_acq_rel)+1,std::memory_order_acq_rel);
 }
 
@@ -153,6 +153,8 @@ bam_write_block* BamWriteCompress::getCompressData(){
     }
     int num = consumer_bg;
 //    is_ok[compress_bg]=false;
+//    printf("Get Compress Data consumer bg : %d\n"
+//           "Get Compress Data consumer ed : %d\n",consumer_bg,consumer_ed);
     consumer_bg = (consumer_bg+1)%consumer_size;
     return consumer_data[num];
 }
@@ -161,8 +163,10 @@ bam_write_block* BamWriteCompress::getCompressData(){
  *
  */
 void BamWriteCompress::backEmpty(bam_write_block* data){
+//    mtx_compress.lock();
     compress_data[(compress_ed+1)%compress_size] = data;
     compress_ed = (compress_ed+1)%compress_size;
+//    mtx_compress.unlock();
 }
 
 

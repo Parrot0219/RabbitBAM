@@ -52,6 +52,8 @@ typedef std::chrono::high_resolution_clock Clock;
 //uint8_t Base[16] = {0, 65, 67, 0, 71, 0, 0, 0, 84, 0, 0, 0, 0, 0, 0, 78};
 //uint8_t BaseRever[16] = {0, 84, 71, 0, 67, 0, 0, 0, 65, 0, 0, 0, 0, 0, 0, 78};
 
+int InputBlockNum=0;
+
 long long NUM_N[100]={0};
 long long NUM_M[100]={0};
 long long NUM_TID[100][1000]={0};
@@ -482,12 +484,15 @@ int rabbit_bgzf_flush(BGZF *fp,bam_write_block* write_block)
     //TODO 此处可能会出现问题
     while (write_block->block_offset > 0) {
         int block_length;
+        printf("Write Block Offset : %d\n",write_block->block_offset);
         block_length = rabbit_write_deflate_block(fp, write_block);
         if (block_length < 0) {
             hts_log_debug("Deflate block operation failed: %s", bgzf_zerr(block_length, NULL));
             return -1;
         }
-
+        if (write_block== nullptr){
+            printf("Write Game Over!!!\n");
+        }
         if (hwrite(fp->fp, write_block->compressed_data, block_length) != block_length) {
             printf("Write Failed\n");
             hts_log_error("File write failed (wrong size)");
@@ -505,6 +510,8 @@ int rabbit_bgzf_flush(BGZF *fp,bam_write_block* write_block)
 int rabbit_bgzf_mul_flush(BGZF *fp,BamWriteCompress *bam_write_compress,bam_write_block* &write_block)
 {
 //    printf("Try to input One Uncompressed data\n");
+//    InputBlockNum++;
+//    printf("Write Block Offset : %d\n",write_block->block_offset);
     bam_write_compress->inputUnCompressData(write_block);
     write_block=bam_write_compress->getEmpty();
 //    printf("Get Another Empty Block Block Num : %d\n",write_block->block_num);
@@ -569,11 +576,16 @@ int rabbit_bgzf_mul_flush_try(BGZF *fp,BamWriteCompress* bam_write_compress,bam_
 int bam_write_pack(BGZF *fp,BamWriteCompress *bam_write_compress){
     bam_write_block* block;
     while(1){
+//        printf("Try to Get Compress Data\n");
         block=bam_write_compress->getCompressData();
-//        printf("Has Get One Compress Data\n"
-//               "Try to Write it\n");
-        if (block== nullptr){
-            break;
+//        printf("Has Get One Compress Data\n");
+        if (block == nullptr){
+            return 0;
+        }
+//        std::this_thread::sleep_for(std::chrono::nanoseconds(5));
+        if (block->block_length < 0) {
+            hts_log_debug("Deflate block operation failed: %s", bgzf_zerr(block->block_length, NULL));
+            return -1;
         }
         if (hwrite(fp->fp, block->compressed_data, block->block_length) != block->block_length) {
 //            printf("Write Failed\n");
@@ -588,32 +600,34 @@ int bam_write_pack(BGZF *fp,BamWriteCompress *bam_write_compress){
     }
 }
 void bam_write_compress_pack(BGZF *fp,BamWriteCompress *bam_write_compress){
-    printf("Start Compress\n");
+//    printf("Start Compress\n");
     bam_write_block * block;
     while (1){
         // fg = getRead(comp);
         //printf("%d is not get One compressed data\n",id);
+//        printf("Has Start Try to Get One Uncompress\n");
         block=bam_write_compress->getUnCompressData();
-        printf("Has get One Uncompress data\n");
-        printf("This Uncompress data block num : %d\n",block->block_num);
+//        printf("Has get One Uncompress data\n");
+
         //printf("%d is get One compressed data\n",id);
-        if (block== nullptr) {
+        if (block == nullptr) {
             //printf("%d is Over\n",id);
             break;
         }
+//        printf("This Uncompress data block num : %d\n",block->block_num);
         /*
          * 压缩
          */
-
+//        int block_num=block->block_num;
         block->block_length = rabbit_write_deflate_block(fp, block);
-        printf("Has Compress One Block\n");
+//        printf("Has Compress One Block\n");
         bam_write_compress->inputCompressData(block);
-        printf("Can,t input Compress Data\n");
+//        printf("Can,t input Compress Data\n");
 //        while (!compress->tryinputUnCompressData(un_comp,comp.second)){
 //            std::this_thread::sleep_for(std::chrono::milliseconds(1));
 //        }
     }
-    printf("One Compress Thread has been over!\n");
+//    printf("One Compress Thread has been over!\n");
     bam_write_compress->CompressThreadComplete();
 }
 
@@ -842,9 +856,10 @@ void benchmark_write_mul_pack(BamCompleteBlock* completeBlock,BamWriteCompress* 
     long long ans = 0;
     long long res = 0;
     bam_write_block *write_block=bam_write_compress->getEmpty();
-    printf("Write Pack Num : %d\n",write_block->block_num);
-    printf("Write Pack Block Offset : %d\n",write_block->block_offset);
-    printf("Has get One Empty!\n");
+//    printf("Write Pack Num : %d\n",write_block->block_num);
+//    printf("Write Pack Block Offset : %d\n",write_block->block_offset);
+//    printf("Has get One Empty!\n");
+    int bam_num=1;
     while (1){
         un_comp = completeBlock->getCompleteBlock();
         if (un_comp == nullptr){
@@ -859,17 +874,22 @@ void benchmark_write_mul_pack(BamCompleteBlock* completeBlock,BamWriteCompress* 
  *  尝试单线程输出
  */
 //            sam_write1(output,hdr,b);
-            printf("Try to output one Bam1_t\n");
+//            printf("Try to output one Bam1_t : %d\n",bam_num++);
             rabbit_bam_write_mul_test(output->fp.bgzf,bam_write_compress,write_block,b);
             ans++;
         }
         res++;
         completeBlock->backEmpty(un_comp);
     }
-    rabbit_bgzf_mul_flush(output->fp.bgzf,bam_write_compress,write_block);
+    if (write_block->block_offset>0) {
+        InputBlockNum++;
+//        rabbit_bgzf_mul_flush(output->fp.bgzf,bam_write_compress,write_block);
+        bam_write_compress->inputUnCompressData(write_block);
+    }
+//    printf("The Input Block Num : %d\n",InputBlockNum);
     bam_write_compress->WriteComplete();
-    printf("Bam1_t Number is %lld\n",ans);
-    printf("Block  Number is %lld\n",res);
+//    printf("Bam1_t Number is %lld\n",ans);
+//    printf("Block  Number is %lld\n",res);
 }
 
 void basic_status_pack(BamCompleteBlock* completeBlock,BamStatus *status){
@@ -1348,9 +1368,14 @@ int main(int argc,char* argv[]){
         read_thread->join();
         for (int i=0;i<n_thread;i++) compress_thread[i]->join();
         assign_thread->join();
+
+        printf("Read Thread Has Been Over!!!\n");
         for (int i=0;i<consumer_thread_number;i++) consumer_thread[i]->join();
+        printf("Consumer Thread Over!!!\n");
         for (int i=0;i<n_thread_write;i++) write_compress_thread[i]->join();
+        printf("Write Compress Thread Over!!!\n");
         write_output_thread->join();
+        printf("Write Output Thread Over!!!\n");
 
         sam_close(sin);
         sam_close(output);

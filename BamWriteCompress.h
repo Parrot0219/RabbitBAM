@@ -63,7 +63,12 @@ public:
         compressThread--;
         mtx_compressThread.unlock();
     }
-    void WriteComplete(){isWriteComplete=true;}
+    void WriteComplete(){
+        isWriteComplete=true;
+//        printf("Input Uncompress Data Over!\n"
+//               "Read Complete need compress bg : %d\n"
+//               "Read Complete need compress ed : %d\n",need_compress_bg,need_compress_ed);
+    }
 public:
     /*
      * 记录等待次数
