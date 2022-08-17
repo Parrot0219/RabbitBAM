@@ -69,15 +69,15 @@ include CMakeFiles/BamStatus.dir/flags.make
 CMakeFiles/BamStatus.dir/main.cpp.o: CMakeFiles/BamStatus.dir/flags.make
 CMakeFiles/BamStatus.dir/main.cpp.o: ../main.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/BamStatus.dir/main.cpp.o"
-	/usr/local/Cellar/gcc@9/9.3.0_1/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/BamStatus.dir/main.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/main.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/BamStatus.dir/main.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/main.cpp
 
 CMakeFiles/BamStatus.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/BamStatus.dir/main.cpp.i"
-	/usr/local/Cellar/gcc@9/9.3.0_1/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/main.cpp > CMakeFiles/BamStatus.dir/main.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/main.cpp > CMakeFiles/BamStatus.dir/main.cpp.i
 
 CMakeFiles/BamStatus.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/BamStatus.dir/main.cpp.s"
-	/usr/local/Cellar/gcc@9/9.3.0_1/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/main.cpp -o CMakeFiles/BamStatus.dir/main.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/main.cpp -o CMakeFiles/BamStatus.dir/main.cpp.s
 
 # Object files for target BamStatus
 BamStatus_OBJECTS = \

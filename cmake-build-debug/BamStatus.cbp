@@ -45,13 +45,12 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0/x86_64-apple-darwin20"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0/backward"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/include"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/include-fixed"/>
-					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
 					<Build command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 test_header"/>
@@ -68,13 +67,12 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0/x86_64-apple-darwin20"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0/backward"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/include"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/include-fixed"/>
-					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
 					<Build command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 test_header/fast"/>
@@ -91,13 +89,12 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0/x86_64-apple-darwin20"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0/backward"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/include"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/include-fixed"/>
-					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
 					<Build command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 BamStatus"/>
@@ -114,13 +111,12 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0/x86_64-apple-darwin20"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0/backward"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/include"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/include-fixed"/>
-					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
 					<Build command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 BamStatus/fast"/>
@@ -137,13 +133,12 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0/x86_64-apple-darwin20"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0/backward"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/include"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/include-fixed"/>
-					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
 					<Build command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 Config"/>
@@ -160,13 +155,12 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0/x86_64-apple-darwin20"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/../../../../../../include/c++/9.3.0/backward"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/include"/>
-					<Add directory="/usr/local/Cellar/gcc@9/9.3.0_1/lib/gcc/9/gcc/x86_64-apple-darwin20/9.3.0/include-fixed"/>
-					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include"/>
-					<Add directory="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/13.1.6/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
 				</Compiler>
 				<MakeCommands>
 					<Build command="/usr/bin/make -j16 -f &quot;/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/Makefile&quot;  VERBOSE=1 Config/fast"/>
