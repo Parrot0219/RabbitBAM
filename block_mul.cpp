@@ -914,6 +914,11 @@ void basic_status_pack(BamCompleteBlock* completeBlock,BamStatus *status){
 }
 
 int main(int argc,char* argv[]){
+
+
+
+
+
     CLI::App app("RabbitBAM");
 //    printf("yesyesyesyes\n");
     CLI::App *bam2fq = app.add_subcommand("bam2fq", "BAM format turn to FastQ format");
@@ -931,37 +936,37 @@ int main(int argc,char* argv[]){
     int n_thread=1;
     int n_thread_write=1;
     int level = 9;
-    bam2fq->add_option("-i", inputfile, "input File name")->required();
+    bam2fq->add_option("-i", inputfile, "input File name")->required()->check(CLI::ExistingFile);
     bam2fq->add_option("-o", outputfile, "output File name");
     bam2fq->add_option("-w,-@,-n,--threads",n_thread,"thread number");
 
-    bamstatus->add_option("-i", inputfile, "input File name")->required();
+    bamstatus->add_option("-i", inputfile, "input File name")->required()->check(CLI::ExistingFile);
     bamstatus->add_option("-o", outputfile, "output File name");
     bamstatus->add_option("-w,-@,-n,--threads",n_thread,"thread number");
 
-    benchmark->add_option("-i", inputfile, "input File name")->required();
+    benchmark->add_option("-i", inputfile, "input File name")->required()->check(CLI::ExistingFile);
     benchmark->add_option("-o", outputfile, "output File name");
     benchmark->add_option("-w,-@,-n,--threads",n_thread,"thread number");
 
-    htslib_test->add_option("-i", inputfile, "input File name")->required();
+    htslib_test->add_option("-i", inputfile, "input File name")->required()->check(CLI::ExistingFile);
     htslib_test->add_option("-o", outputfile, "output File name");
     htslib_test->add_option("-w,-@,-n,--threads",n_thread,"thread number");
 
 
-    benchmark_count->add_option("-i", inputfile, "input File name")->required();
+    benchmark_count->add_option("-i", inputfile, "input File name")->required()->check(CLI::ExistingFile);
     benchmark_count->add_option("-o", outputfile, "output File name");
     benchmark_count->add_option("-w,-@,-n,--threads",n_thread,"thread number");
 
-    compress_test->add_option("-i", inputfile, "input File name")->required();
+    compress_test->add_option("-i", inputfile, "input File name")->required()->check(CLI::ExistingFile);
     compress_test->add_option("-o", outputfile, "output File name");
     compress_test->add_option("-w,-@,-n,--threads",n_thread,"thread number");
 
-    write_test->add_option("-i", inputfile, "input File name")->required();
+    write_test->add_option("-i", inputfile, "input File name")->required()->check(CLI::ExistingFile);
     write_test->add_option("-o", outputfile, "output File name");
     write_test->add_option("-w,-@,-n,--threads",n_thread,"thread number");
     write_test->add_option("-l,--level",level,"zip level");
 
-    write_mul_test->add_option("-i", inputfile, "input File name")->required();
+    write_mul_test->add_option("-i", inputfile, "input File name")->required()->check(CLI::ExistingFile);
     write_mul_test->add_option("-o", outputfile, "output File name");
     write_mul_test->add_option("--nr",n_thread,"Read thread number");
     write_mul_test->add_option("--nw",n_thread_write,"Write thread number");
