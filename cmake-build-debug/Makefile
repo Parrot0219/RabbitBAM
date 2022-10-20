@@ -251,6 +251,30 @@ BamRead.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Config.dir/build.make CMakeFiles/Config.dir/BamRead.cpp.s
 .PHONY : BamRead.cpp.s
 
+BamReader.o: BamReader.cpp.o
+.PHONY : BamReader.o
+
+# target to build an object file
+BamReader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Config.dir/build.make CMakeFiles/Config.dir/BamReader.cpp.o
+.PHONY : BamReader.cpp.o
+
+BamReader.i: BamReader.cpp.i
+.PHONY : BamReader.i
+
+# target to preprocess a source file
+BamReader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Config.dir/build.make CMakeFiles/Config.dir/BamReader.cpp.i
+.PHONY : BamReader.cpp.i
+
+BamReader.s: BamReader.cpp.s
+.PHONY : BamReader.s
+
+# target to generate assembly for a file
+BamReader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Config.dir/build.make CMakeFiles/Config.dir/BamReader.cpp.s
+.PHONY : BamReader.cpp.s
+
 BamStatus.o: BamStatus.cpp.o
 .PHONY : BamStatus.o
 
@@ -346,6 +370,30 @@ BamWriteCompress.s: BamWriteCompress.cpp.s
 BamWriteCompress.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Config.dir/build.make CMakeFiles/Config.dir/BamWriteCompress.cpp.s
 .PHONY : BamWriteCompress.cpp.s
+
+BamWriter.o: BamWriter.cpp.o
+.PHONY : BamWriter.o
+
+# target to build an object file
+BamWriter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Config.dir/build.make CMakeFiles/Config.dir/BamWriter.cpp.o
+.PHONY : BamWriter.cpp.o
+
+BamWriter.i: BamWriter.cpp.i
+.PHONY : BamWriter.i
+
+# target to preprocess a source file
+BamWriter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Config.dir/build.make CMakeFiles/Config.dir/BamWriter.cpp.i
+.PHONY : BamWriter.cpp.i
+
+BamWriter.s: BamWriter.cpp.s
+.PHONY : BamWriter.s
+
+# target to generate assembly for a file
+BamWriter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Config.dir/build.make CMakeFiles/Config.dir/BamWriter.cpp.s
+.PHONY : BamWriter.cpp.s
 
 Buffer.o: Buffer.cpp.o
 .PHONY : Buffer.o
@@ -1360,6 +1408,9 @@ help:
 	@echo "... BamRead.o"
 	@echo "... BamRead.i"
 	@echo "... BamRead.s"
+	@echo "... BamReader.o"
+	@echo "... BamReader.i"
+	@echo "... BamReader.s"
 	@echo "... BamStatus.o"
 	@echo "... BamStatus.i"
 	@echo "... BamStatus.s"
@@ -1372,6 +1423,9 @@ help:
 	@echo "... BamWriteCompress.o"
 	@echo "... BamWriteCompress.i"
 	@echo "... BamWriteCompress.s"
+	@echo "... BamWriter.o"
+	@echo "... BamWriter.i"
+	@echo "... BamWriter.s"
 	@echo "... Buffer.o"
 	@echo "... Buffer.i"
 	@echo "... Buffer.s"

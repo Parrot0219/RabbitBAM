@@ -10,6 +10,23 @@
 class BamCompleteBlock {
 public:
 
+   /*
+    * 只初始化该类
+    */
+    BamCompleteBlock();
+
+    /*
+     * 重新根据BufferSize进行初始化
+     */
+    void resize(int BufferSize);
+
+
+
+
+    /*
+     * 根据输入的BufferSize进行初始化
+     *
+     */
     BamCompleteBlock(int BufferSize);
 
     /*

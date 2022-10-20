@@ -3,6 +3,48 @@
 //
 
 #include "BamCompress.h"
+
+
+
+/*
+ * 只初始化函数
+ */
+BamCompress::BamCompress(){
+
+};
+
+
+/*
+ * 重新分配BamCompress
+ */
+void BamCompress::resize(int BufferSize,int threadNumber){
+
+    blockNum=0;
+
+    compress_bg = 0;
+    compress_ed = BufferSize-1;
+    compress_size = BufferSize+1;
+    compress_data = new bam_block*[compress_size];
+    for (int i=compress_bg;i<=compress_ed;i++) compress_data[i] = new bam_block;
+
+
+    consumer_bg=1;
+    consumer_ed=0;
+    consumer_size=BufferSize+5;
+    consumer_data=new bam_block*[consumer_size];
+    is_ok = new bool[consumer_size];
+    for (int i=0;i<consumer_size;i++) is_ok[i]=false;
+
+
+    compressThread = threadNumber;
+
+    wait_num=0;
+
+}
+
+
+
+
 BamCompress::BamCompress(int BufferSize,int threadNumber){
     blockNum=0;
 

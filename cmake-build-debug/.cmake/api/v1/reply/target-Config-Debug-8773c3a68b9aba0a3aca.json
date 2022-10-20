@@ -140,7 +140,9 @@
 				56,
 				58,
 				60,
-				62
+				62,
+				64,
+				66
 			]
 		}
 	],
@@ -226,7 +228,9 @@
 				56,
 				58,
 				60,
-				62
+				62,
+				64,
+				66
 			]
 		},
 		{
@@ -247,7 +251,9 @@
 				57,
 				59,
 				61,
-				63
+				63,
+				65,
+				67
 			]
 		}
 	],
@@ -620,6 +626,28 @@
 		{
 			"backtrace" : 1,
 			"path" : "BamWriteCompress.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "BamWriter.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "BamWriter.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 1,
+			"path" : "BamReader.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "BamReader.h",
 			"sourceGroupIndex" : 1
 		}
 	],

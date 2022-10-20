@@ -19,11 +19,23 @@
 class BamRead {
 
 public:
+
+    /*
+     * 只初始化但是什么也不干；
+     */
+    BamRead();
+
     /*
      * 初始化函数
      * 使用BufferSize进行管理
      */
     BamRead(int BufferSize);
+
+
+    /*
+     * 重新调整BufferSize
+     */
+    void resize(int BufferSize);
 
     /*
      * 获取一个空的bam_block，进行读取

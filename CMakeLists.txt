@@ -26,7 +26,10 @@ add_executable(Config ${SAMTOOLS} ${HTSLIB} ${HTSLIB_TEXT}
         BamCompleteBlock.cpp BamCompleteBlock.h
         BamTools.cpp BamTools.h
         BamWriteBlock.cpp BamWriteBlock.h
-        BamWriteCompress.cpp BamWriteCompress.h)
+        BamWriteCompress.cpp BamWriteCompress.h
+        BamWriter.cpp BamWriter.h
+        BamReader.cpp BamReader.h)
+
 
 
 add_executable(BamStatus main.cpp)

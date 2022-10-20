@@ -5,6 +5,36 @@
 #include "BamCompleteBlock.h"
 
 
+BamCompleteBlock::BamCompleteBlock() {
+}
+
+
+void BamCompleteBlock::resize(int BufferSize){
+
+    BlockComplete=false;
+
+    complete_bg=0;
+    complete_ed=BufferSize-1;
+    complete_size=BufferSize+1;
+    complete_data = new bam_complete_block*[complete_size];
+    for (int i=complete_bg;i<=complete_ed;i++) {
+        complete_data[i] = new bam_complete_block;
+        complete_data[i]->data_size= BGZF_MAX_BLOCK_COMPLETE_SIZE;
+        //        printf("dadakjbkjansdkjandasdasd\n");
+        complete_data[i]->data = new unsigned char[complete_data[i]->data_size]; //????
+        complete_data[i]->pos=0;
+        complete_data[i]->length=0;
+    }
+
+
+
+    consumer_bg = 1;
+    consumer_ed = 0;
+    consumer_size = BufferSize+5;
+
+    consumer_data = new bam_complete_block*[consumer_size];
+}
+
 BamCompleteBlock::BamCompleteBlock(int BufferSize){
 
     BlockComplete=false;
@@ -16,7 +46,7 @@ BamCompleteBlock::BamCompleteBlock(int BufferSize){
     for (int i=complete_bg;i<=complete_ed;i++) {
         complete_data[i] = new bam_complete_block;
         complete_data[i]->data_size= BGZF_MAX_BLOCK_COMPLETE_SIZE;
-//        printf("dadakjbkjansdkjandasdasd\n");
+        //        printf("dadakjbkjansdkjandasdasd\n");
         complete_data[i]->data = new unsigned char[complete_data[i]->data_size]; //????
         complete_data[i]->pos=0;
         complete_data[i]->length=0;
@@ -30,6 +60,7 @@ BamCompleteBlock::BamCompleteBlock(int BufferSize){
     consumer_data = new bam_complete_block*[consumer_size];
 
 }
+
 
 
 

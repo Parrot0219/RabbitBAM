@@ -43,7 +43,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/vcf_sweep.c" "/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles/Config.dir/htslib/vcf_sweep.c.o"
   "/Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/vcfutils.c" "/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles/Config.dir/htslib/vcfutils.c.o"
   )
-set(CMAKE_C_COMPILER_ID "AppleClang")
+set(CMAKE_C_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
@@ -54,10 +54,12 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamCompleteBlock.cpp" "/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles/Config.dir/BamCompleteBlock.cpp.o"
   "/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamCompress.cpp" "/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles/Config.dir/BamCompress.cpp.o"
   "/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamRead.cpp" "/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles/Config.dir/BamRead.cpp.o"
+  "/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamReader.cpp" "/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles/Config.dir/BamReader.cpp.o"
   "/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamStatus.cpp" "/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles/Config.dir/BamStatus.cpp.o"
   "/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamTools.cpp" "/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles/Config.dir/BamTools.cpp.o"
   "/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriteBlock.cpp" "/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles/Config.dir/BamWriteBlock.cpp.o"
   "/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriteCompress.cpp" "/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles/Config.dir/BamWriteCompress.cpp.o"
+  "/Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriter.cpp" "/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles/Config.dir/BamWriter.cpp.o"
   "/Users/zhaozhan/CLionProjects/BamUniversalStatus/Buffer.cpp" "/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles/Config.dir/Buffer.cpp.o"
   "/Users/zhaozhan/CLionProjects/BamUniversalStatus/Duplicate.cpp" "/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles/Config.dir/Duplicate.cpp.o"
   "/Users/zhaozhan/CLionProjects/BamUniversalStatus/Overrepresent.cpp" "/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles/Config.dir/Overrepresent.cpp.o"
@@ -67,7 +69,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_sam.cpp" "/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles/Config.dir/test/test_sam.cpp.o"
   "/Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_sam_read.cpp" "/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles/Config.dir/test/test_sam_read.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "AppleClang")
+set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH

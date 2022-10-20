@@ -17,6 +17,23 @@
  */
 class BamCompress {
 public:
+
+    /*
+     * 只初始化函数
+     */
+    BamCompress();
+
+
+    /*
+     * 重新分配BamCompress
+     */
+    void resize(int BufferSize,int threadNumber);
+
+
+    /*
+     * 直接按照BufferSize 进行初始化
+     */
+
     BamCompress(int BufferSize,int threadNumber);
 
     /*

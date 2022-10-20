@@ -680,7 +680,7 @@ int rabbit_bam_write_test(BGZF *fp,bam_write_block* write_block,bam1_t *b){
         if (cigreflen >= (1<<28)) {
             // Length of reference covered is greater than the biggest
             // CIGAR operation currently allowed.
-            hts_log_error("Record %s with %d CIGAR ops and ref length %"PRIhts_pos
+            hts_log_error("Record %s with %d CIGAR ops and ref length %" PRIhts_pos
                                   " cannot be written in BAM.  Try writing SAM or CRAM instead.\n",
                           bam_get_qname(b), c->n_cigar, cigreflen);
             return -1;
@@ -760,7 +760,7 @@ int rabbit_bam_write_mul_test(BGZF *fp,BamWriteCompress *bam_write_compress,bam_
         if (cigreflen >= (1<<28)) {
             // Length of reference covered is greater than the biggest
             // CIGAR operation currently allowed.
-            hts_log_error("Record %s with %d CIGAR ops and ref length %"PRIhts_pos
+            hts_log_error("Record %s with %d CIGAR ops and ref length %" PRIhts_pos
                                   " cannot be written in BAM.  Try writing SAM or CRAM instead.\n",
                           bam_get_qname(b), c->n_cigar, cigreflen);
             return -1;
@@ -930,7 +930,7 @@ int main(int argc,char* argv[]){
     string outputfile("./BAMStatus.html");
     int n_thread=1;
     int n_thread_write=1;
-    int level = 6;
+    int level = 9;
     bam2fq->add_option("-i", inputfile, "input File name")->required();
     bam2fq->add_option("-o", outputfile, "output File name");
     bam2fq->add_option("-w,-@,-n,--threads",n_thread,"thread number");
@@ -1100,7 +1100,6 @@ int main(int argc,char* argv[]){
         TDEF(fq)
         TSTART(fq)
         printf("Starting Htslib sam_read API Running Benchmark\n");
-        if (strcmp(outputfile.substr(outputfile.size()-4).c_str(),"html")==0) outputfile=("./output.fastq");
         samFile *sin;
         sam_hdr_t *hdr;
         samFile *output;
@@ -1125,6 +1124,7 @@ int main(int argc,char* argv[]){
         hts_set_opt(sin,  HTS_OPT_THREAD_POOL, &p);
         hts_set_threads(output, n_thread);
 //        int num = 0;
+//        output->format.format=bam;
         while(sam_read1(sin, hdr, b)>=0){
 //            num++;
             sam_write1(output,hdr,b);
