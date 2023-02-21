@@ -33,8 +33,7 @@ typedef struct {
 } cache_t;
 KHASH_MAP_INIT_INT64(cache, cache_t)
 static const uint8_t g_magic[19] = "\037\213\010\4\0\0\0\0\0\377\6\0\102\103\2\0\0\0";
-typedef struct bam_block bam_block;
-typedef struct bam_complete_block bam_complete_block;
+
 struct bam_block{
     unsigned int errcode;
     unsigned char data[BGZF_MAX_BLOCK_SIZE];//0x1000
@@ -75,6 +74,13 @@ struct bgzf_cache_t {
     khash_t(cache) *h;
     khint_t last_pos;
 };
+
+
+
+typedef struct bam_block bam_block;
+typedef struct bam_complete_block bam_complete_block;
+typedef struct bam_write_block bam_write_block;
+
 
 inline void packInt16(uint8_t *buffer, uint16_t value)
 {
@@ -139,6 +145,21 @@ std::pair<int,int> find_divide_pos_and_get_read_number(bam_block *block,int last
 std::pair<int,int> find_divide_pos_and_get_read_number(bam_complete_block *block,int last_pos=0);
 
 int change_data_size(bam_complete_block *block);
+
+//int rabbit_write_deflate_block(BGZF *fp, bam_write_block* write_block);
+//
+//int rabbit_bgzf_flush(BGZF *fp,bam_write_block* write_block);
+//
+//int rabbit_bgzf_mul_flush(BGZF *fp,BamWriteCompress *bam_write_compress,bam_write_block* &write_block);
+//int rabbit_bgzf_write(BGZF *fp,bam_write_block* &write_block,const void *data, size_t length);
+//int rabbit_bgzf_mul_write(BGZF *fp, BamWriteCompress *bam_write_compress,bam_write_block* &write_block,const void *data, size_t length);
+//int rabbit_bgzf_flush_try(BGZF *fp, bam_write_block* write_block,ssize_t size);
+//int rabbit_bgzf_mul_flush_try(BGZF *fp,BamWriteCompress* bam_write_compress,bam_write_block* &write_block,ssize_t size);
+//int bam_write_pack(BGZF *fp,BamWriteCompress *bam_write_compress);
+//void bam_write_compress_pack(BGZF *fp,BamWriteCompress *bam_write_compress);
+//
+//int rabbit_bam_write_test(BGZF *fp,bam_write_block* write_block,bam1_t *b);
+//int rabbit_bam_write_mul_test(BGZF *fp,BamWriteCompress *bam_write_compress,bam_write_block* &write_block,bam1_t *b);
 
 
 #endif //BAMSTATUS_BAMTOOLS_H

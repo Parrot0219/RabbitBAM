@@ -23,6 +23,8 @@
 #include "BamCompleteBlock.h"
 #include "BamTools.h"
 #include "BamWriteCompress.h"
+#include "BamWriter.h"
+#include "BamReader.h"
 #define BLOCK_HEADER_LENGTH 18
 #define BLOCK_FOOTER_LENGTH 8
 
@@ -463,434 +465,434 @@ void benchmark_bam_pack(BamCompleteBlock* completeBlock,samFile *output,sam_hdr_
 
 
 
-int rabbit_write_deflate_block(BGZF *fp, bam_write_block* write_block){
-    size_t comp_size = BGZF_MAX_BLOCK_SIZE;
-    int ret;
-   if ( !fp->is_gzip )
-        ret = rabbit_bgzf_compress(write_block->compressed_data, &comp_size, write_block->uncompressed_data, write_block->block_offset, fp->compress_level);
-    else
-        ret = rabbit_bgzf_gzip_compress(fp, write_block->compressed_data, &comp_size, write_block->uncompressed_data, write_block->block_offset, fp->compress_level);
-
-    if ( ret != 0 )
-    {
-        hts_log_debug("Compression error %d", ret);
-        fp->errcode |= BGZF_ERR_ZLIB;
-        return -1;
-    }
-    return comp_size;
-}
-int rabbit_bgzf_flush(BGZF *fp,bam_write_block* write_block)
-{
-    //TODO 此处可能会出现问题
-    while (write_block->block_offset > 0) {
-        int block_length;
-        printf("Write Block Offset : %d\n",write_block->block_offset);
-        block_length = rabbit_write_deflate_block(fp, write_block);
-        if (block_length < 0) {
-            hts_log_debug("Deflate block operation failed: %s", bgzf_zerr(block_length, NULL));
-            return -1;
-        }
-        if (write_block== nullptr){
-            printf("Write Game Over!!!\n");
-        }
-        if (hwrite(fp->fp, write_block->compressed_data, block_length) != block_length) {
-            printf("Write Failed\n");
-            hts_log_error("File write failed (wrong size)");
-            fp->errcode |= BGZF_ERR_IO; // possibly truncated file
-            return -1;
-        }
-
-
-        write_block->block_offset=0;
-        fp->block_address += block_length;
-    }
-    write_block->block_offset=0;
-    return 0;
-}
-int rabbit_bgzf_mul_flush(BGZF *fp,BamWriteCompress *bam_write_compress,bam_write_block* &write_block)
-{
-//    printf("Try to input One Uncompressed data\n");
-//    InputBlockNum++;
-//    printf("Write Block Offset : %d\n",write_block->block_offset);
-    bam_write_compress->inputUnCompressData(write_block);
-    write_block=bam_write_compress->getEmpty();
-//    printf("Get Another Empty Block Block Num : %d\n",write_block->block_num);
-    return 0;
-}
-int rabbit_bgzf_write(BGZF *fp,bam_write_block* &write_block,const void *data, size_t length)
-{
-    const uint8_t *input = (const uint8_t*)data;
-    ssize_t remaining = length;
-//    assert(fp->is_write);
-    while (remaining > 0) {
-        uint8_t* buffer = (uint8_t*)write_block->uncompressed_data;
-        int copy_length = BGZF_BLOCK_SIZE - write_block->block_offset;
-        if (copy_length > remaining) copy_length = remaining;
-        memcpy(buffer + write_block->block_offset, input, copy_length);
-        write_block->block_offset += copy_length;
-        input += copy_length;
-        remaining -= copy_length;
-        if (write_block->block_offset == BGZF_BLOCK_SIZE) {
-            //BUG  write block 不是 引用，所以没有改变
-            if (rabbit_bgzf_flush(fp,write_block) != 0) return -1;
-        }
-    }
-    return length - remaining;
-}
-int rabbit_bgzf_mul_write(BGZF *fp, BamWriteCompress *bam_write_compress,bam_write_block* &write_block,const void *data, size_t length)
-{
-    const uint8_t *input = (const uint8_t*)data;
-    ssize_t remaining = length;
-//    assert(fp->is_write);
-    while (remaining > 0) {
-        uint8_t* buffer = (uint8_t*)write_block->uncompressed_data;
-//        printf("In rabbit bgzf mul write block Block Num : %d\n",write_block->block_num);
-        int copy_length = BGZF_BLOCK_SIZE - write_block->block_offset;
-        if (copy_length > remaining) copy_length = remaining;
-//        printf("In rabbit bgzf mul write block Block Num : %d\n",write_block->block_num);
-        memcpy(buffer + write_block->block_offset, input, copy_length);
-        write_block->block_offset += copy_length;
-//        printf("In rabbit bgzf mul write block Block Num : %d\n",write_block->block_num);
-        input += copy_length;
-        remaining -= copy_length;
-        if (write_block->block_offset == BGZF_BLOCK_SIZE) {
-            if (rabbit_bgzf_mul_flush(fp,bam_write_compress,write_block) != 0) return -1;
-        }
-    }
-    return length - remaining;
-}
-int rabbit_bgzf_flush_try(BGZF *fp, bam_write_block* write_block,ssize_t size)
-{
-    if (write_block->block_offset + size > BGZF_BLOCK_SIZE) {
-        return rabbit_bgzf_flush(fp,write_block);
-    }
-    return 0;
-}
-int rabbit_bgzf_mul_flush_try(BGZF *fp,BamWriteCompress* bam_write_compress,bam_write_block* &write_block,ssize_t size)
-{
-    if (write_block->block_offset + size > BGZF_BLOCK_SIZE) {
-        return rabbit_bgzf_mul_flush(fp,bam_write_compress,write_block);
-    }
-    return 0;
-}
-int bam_write_pack(BGZF *fp,BamWriteCompress *bam_write_compress){
-    bam_write_block* block;
-    while(1){
-//        printf("Try to Get Compress Data\n");
-        block=bam_write_compress->getCompressData();
-//        printf("Has Get One Compress Data\n");
-        if (block == nullptr){
-            return 0;
-        }
-//        std::this_thread::sleep_for(std::chrono::nanoseconds(5));
-        if (block->block_length < 0) {
-            hts_log_debug("Deflate block operation failed: %s", bgzf_zerr(block->block_length, NULL));
-            return -1;
-        }
-        if (hwrite(fp->fp, block->compressed_data, block->block_length) != block->block_length) {
-//            printf("Write Failed\n");
-            hts_log_error("File write failed (wrong size)");
-            fp->errcode |= BGZF_ERR_IO; // possibly truncated file
-            return -1;
-        }
-//        printf("Has write One Block\n");
-        block->block_offset=0;
-        fp->block_address += block->block_length;
-        bam_write_compress->backEmpty(block);
-    }
-}
-void bam_write_compress_pack(BGZF *fp,BamWriteCompress *bam_write_compress){
-//    printf("Start Compress\n");
-    bam_write_block * block;
-    while (1){
-        // fg = getRead(comp);
-        //printf("%d is not get One compressed data\n",id);
-//        printf("Has Start Try to Get One Uncompress\n");
-        block=bam_write_compress->getUnCompressData();
-//        printf("Has get One Uncompress data\n");
-
-        //printf("%d is get One compressed data\n",id);
-        if (block == nullptr) {
-            //printf("%d is Over\n",id);
-            break;
-        }
-//        printf("This Uncompress data block num : %d\n",block->block_num);
-        /*
-         * 压缩
-         */
-//        int block_num=block->block_num;
-        block->block_length = rabbit_write_deflate_block(fp, block);
-//        printf("Has Compress One Block\n");
-        bam_write_compress->inputCompressData(block);
-//        printf("Can,t input Compress Data\n");
-//        while (!compress->tryinputUnCompressData(un_comp,comp.second)){
-//            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+//int rabbit_write_deflate_block(BGZF *fp, bam_write_block* write_block){
+//    size_t comp_size = BGZF_MAX_BLOCK_SIZE;
+//    int ret;
+//   if ( !fp->is_gzip )
+//        ret = rabbit_bgzf_compress(write_block->compressed_data, &comp_size, write_block->uncompressed_data, write_block->block_offset, fp->compress_level);
+//    else
+//        ret = rabbit_bgzf_gzip_compress(fp, write_block->compressed_data, &comp_size, write_block->uncompressed_data, write_block->block_offset, fp->compress_level);
+//
+//    if ( ret != 0 )
+//    {
+//        hts_log_debug("Compression error %d", ret);
+//        fp->errcode |= BGZF_ERR_ZLIB;
+//        return -1;
+//    }
+//    return comp_size;
+//}
+//int rabbit_bgzf_flush(BGZF *fp,bam_write_block* write_block)
+//{
+//    //TODO 此处可能会出现问题
+//    while (write_block->block_offset > 0) {
+//        int block_length;
+//        printf("Write Block Offset : %d\n",write_block->block_offset);
+//        block_length = rabbit_write_deflate_block(fp, write_block);
+//        if (block_length < 0) {
+//            hts_log_debug("Deflate block operation failed: %s", bgzf_zerr(block_length, NULL));
+//            return -1;
 //        }
-    }
-//    printf("One Compress Thread has been over!\n");
-    bam_write_compress->CompressThreadComplete();
-}
+//        if (write_block== nullptr){
+//            printf("Write Game Over!!!\n");
+//        }
+//        if (hwrite(fp->fp, write_block->compressed_data, block_length) != block_length) {
+//            printf("Write Failed\n");
+//            hts_log_error("File write failed (wrong size)");
+//            fp->errcode |= BGZF_ERR_IO; // possibly truncated file
+//            return -1;
+//        }
+//
+//
+//        write_block->block_offset=0;
+//        fp->block_address += block_length;
+//    }
+//    write_block->block_offset=0;
+//    return 0;
+//}
+//int rabbit_bgzf_mul_flush(BGZF *fp,BamWriteCompress *bam_write_compress,bam_write_block* &write_block)
+//{
+////    printf("Try to input One Uncompressed data\n");
+////    InputBlockNum++;
+////    printf("Write Block Offset : %d\n",write_block->block_offset);
+//    bam_write_compress->inputUnCompressData(write_block);
+//    write_block=bam_write_compress->getEmpty();
+////    printf("Get Another Empty Block Block Num : %d\n",write_block->block_num);
+//    return 0;
+//}
+//int rabbit_bgzf_write(BGZF *fp,bam_write_block* &write_block,const void *data, size_t length)
+//{
+//    const uint8_t *input = (const uint8_t*)data;
+//    ssize_t remaining = length;
+////    assert(fp->is_write);
+//    while (remaining > 0) {
+//        uint8_t* buffer = (uint8_t*)write_block->uncompressed_data;
+//        int copy_length = BGZF_BLOCK_SIZE - write_block->block_offset;
+//        if (copy_length > remaining) copy_length = remaining;
+//        memcpy(buffer + write_block->block_offset, input, copy_length);
+//        write_block->block_offset += copy_length;
+//        input += copy_length;
+//        remaining -= copy_length;
+//        if (write_block->block_offset == BGZF_BLOCK_SIZE) {
+//            //BUG  write block 不是 引用，所以没有改变
+//            if (rabbit_bgzf_flush(fp,write_block) != 0) return -1;
+//        }
+//    }
+//    return length - remaining;
+//}
+//int rabbit_bgzf_mul_write(BGZF *fp, BamWriteCompress *bam_write_compress,bam_write_block* &write_block,const void *data, size_t length)
+//{
+//    const uint8_t *input = (const uint8_t*)data;
+//    ssize_t remaining = length;
+////    assert(fp->is_write);
+//    while (remaining > 0) {
+//        uint8_t* buffer = (uint8_t*)write_block->uncompressed_data;
+////        printf("In rabbit bgzf mul write block Block Num : %d\n",write_block->block_num);
+//        int copy_length = BGZF_BLOCK_SIZE - write_block->block_offset;
+//        if (copy_length > remaining) copy_length = remaining;
+////        printf("In rabbit bgzf mul write block Block Num : %d\n",write_block->block_num);
+//        memcpy(buffer + write_block->block_offset, input, copy_length);
+//        write_block->block_offset += copy_length;
+////        printf("In rabbit bgzf mul write block Block Num : %d\n",write_block->block_num);
+//        input += copy_length;
+//        remaining -= copy_length;
+//        if (write_block->block_offset == BGZF_BLOCK_SIZE) {
+//            if (rabbit_bgzf_mul_flush(fp,bam_write_compress,write_block) != 0) return -1;
+//        }
+//    }
+//    return length - remaining;
+//}
+//int rabbit_bgzf_flush_try(BGZF *fp, bam_write_block* write_block,ssize_t size)
+//{
+//    if (write_block->block_offset + size > BGZF_BLOCK_SIZE) {
+//        return rabbit_bgzf_flush(fp,write_block);
+//    }
+//    return 0;
+//}
+//int rabbit_bgzf_mul_flush_try(BGZF *fp,BamWriteCompress* bam_write_compress,bam_write_block* &write_block,ssize_t size)
+//{
+//    if (write_block->block_offset + size > BGZF_BLOCK_SIZE) {
+//        return rabbit_bgzf_mul_flush(fp,bam_write_compress,write_block);
+//    }
+//    return 0;
+//}
+//int bam_write_pack(BGZF *fp,BamWriteCompress *bam_write_compress){
+//    bam_write_block* block;
+//    while(1){
+////        printf("Try to Get Compress Data\n");
+//        block=bam_write_compress->getCompressData();
+////        printf("Has Get One Compress Data\n");
+//        if (block == nullptr){
+//            return 0;
+//        }
+////        std::this_thread::sleep_for(std::chrono::nanoseconds(5));
+//        if (block->block_length < 0) {
+//            hts_log_debug("Deflate block operation failed: %s", bgzf_zerr(block->block_length, NULL));
+//            return -1;
+//        }
+//        if (hwrite(fp->fp, block->compressed_data, block->block_length) != block->block_length) {
+////            printf("Write Failed\n");
+//            hts_log_error("File write failed (wrong size)");
+//            fp->errcode |= BGZF_ERR_IO; // possibly truncated file
+//            return -1;
+//        }
+////        printf("Has write One Block\n");
+//        block->block_offset=0;
+//        fp->block_address += block->block_length;
+//        bam_write_compress->backEmpty(block);
+//    }
+//}
+//void bam_write_compress_pack(BGZF *fp,BamWriteCompress *bam_write_compress){
+////    printf("Start Compress\n");
+//    bam_write_block * block;
+//    while (1){
+//        // fg = getRead(comp);
+//        //printf("%d is not get One compressed data\n",id);
+////        printf("Has Start Try to Get One Uncompress\n");
+//        block=bam_write_compress->getUnCompressData();
+////        printf("Has get One Uncompress data\n");
+//
+//        //printf("%d is get One compressed data\n",id);
+//        if (block == nullptr) {
+//            //printf("%d is Over\n",id);
+//            break;
+//        }
+////        printf("This Uncompress data block num : %d\n",block->block_num);
+//        /*
+//         * 压缩
+//         */
+////        int block_num=block->block_num;
+//        block->block_length = rabbit_write_deflate_block(fp, block);
+////        printf("Has Compress One Block\n");
+//        bam_write_compress->inputCompressData(block);
+////        printf("Can,t input Compress Data\n");
+////        while (!compress->tryinputUnCompressData(un_comp,comp.second)){
+////            std::this_thread::sleep_for(std::chrono::milliseconds(1));
+////        }
+//    }
+////    printf("One Compress Thread has been over!\n");
+//    bam_write_compress->CompressThreadComplete();
+//}
+//
+//int rabbit_bam_write_test(BGZF *fp,bam_write_block* write_block,bam1_t *b){
+//    const bam1_core_t *c = &b->core;
+//    uint32_t x[8], block_len = b->l_data - c->l_extranul + 32, y;
+//    int i, ok;
+//    if (c->l_qname - c->l_extranul > 255) {
+//        hts_log_error("QNAME \"%s\" is longer than 254 characters", bam_get_qname(b));
+//        errno = EOVERFLOW;
+//        return -1;
+//    }
+//    if (c->n_cigar > 0xffff) block_len += 16; // "16" for "CGBI", 4-byte tag length and 8-byte fake CIGAR
+//    if (c->pos > INT_MAX ||
+//        c->mpos > INT_MAX ||
+//        c->isize < INT_MIN || c->isize > INT_MAX) {
+//        hts_log_error("Positional data is too large for BAM format");
+//        return -1;
+//    }
+//    x[0] = c->tid;
+//    x[1] = c->pos;
+//    x[2] = (uint32_t)c->bin<<16 | c->qual<<8 | (c->l_qname - c->l_extranul);
+//    if (c->n_cigar > 0xffff) x[3] = (uint32_t)c->flag << 16 | 2;
+//    else x[3] = (uint32_t)c->flag << 16 | (c->n_cigar & 0xffff);
+//    x[4] = c->l_qseq;
+//    x[5] = c->mtid;
+//    x[6] = c->mpos;
+//    x[7] = c->isize;
+//    ok = (rabbit_bgzf_flush_try(fp, write_block, 4 + block_len) >= 0);
+//    if (fp->is_be) {
+//        for (i = 0; i < 8; ++i) ed_swap_4p(x + i);
+//        y = block_len;
+//        if (ok) ok = (rabbit_bgzf_write(fp, write_block,ed_swap_4p(&y), 4) >= 0);
+//        swap_data(c, b->l_data, b->data, 1);
+//    } else {
+//        if (ok) {
+//            ok = (rabbit_bgzf_write(fp, write_block, &block_len, 4) >= 0);
+//        }
+//    }
+//    if (ok) {
+//        ok = (rabbit_bgzf_write(fp, write_block, x, 32) >= 0);
+//    }
+//    if (ok) ok = (rabbit_bgzf_write(fp, write_block, b->data, c->l_qname - c->l_extranul) >= 0);
+//    if (c->n_cigar <= 0xffff) { // no long CIGAR; write normally
+//        if (ok) ok = (rabbit_bgzf_write(fp, write_block, b->data + c->l_qname, b->l_data - c->l_qname) >= 0);
+//    } else { // with long CIGAR, insert a fake CIGAR record and move the real CIGAR to the CG:B,I tag
+//        uint8_t buf[8];
+//        uint32_t cigar_st, cigar_en, cigar[2];
+//        hts_pos_t cigreflen = bam_cigar2rlen(c->n_cigar, bam_get_cigar(b));
+//        if (cigreflen >= (1<<28)) {
+//            // Length of reference covered is greater than the biggest
+//            // CIGAR operation currently allowed.
+//            hts_log_error("Record %s with %d CIGAR ops and ref length %" PRIhts_pos
+//                                  " cannot be written in BAM.  Try writing SAM or CRAM instead.\n",
+//                          bam_get_qname(b), c->n_cigar, cigreflen);
+//            return -1;
+//        }
+//        cigar_st = (uint8_t*)bam_get_cigar(b) - b->data;
+//        cigar_en = cigar_st + c->n_cigar * 4;
+//        cigar[0] = (uint32_t)c->l_qseq << 4 | BAM_CSOFT_CLIP;
+//        cigar[1] = (uint32_t)cigreflen << 4 | BAM_CREF_SKIP;
+//        u32_to_le(cigar[0], buf);
+//        u32_to_le(cigar[1], buf + 4);
+//        if (ok) {
+//            ok = (rabbit_bgzf_write(fp, write_block, buf, 8) >= 0); // write cigar: <read_length>S<ref_length>N
+//        }
+//        if (ok) {
+//            ok = (rabbit_bgzf_write(fp, write_block, &b->data[cigar_en], b->l_data - cigar_en) >= 0); // write data after CIGAR
+//        }
+//        if (ok) {
+//            ok = (rabbit_bgzf_write(fp, write_block, "CGBI", 4) >= 0); // write CG:B,I
+//        }
+//        u32_to_le(c->n_cigar, buf);
+//        if (ok) {
+//            ok = (rabbit_bgzf_write(fp, write_block, buf, 4) >= 0); // write the true CIGAR length
+//        }
+//        if (ok) {
+//            ok = (rabbit_bgzf_write(fp, write_block, &b->data[cigar_st], c->n_cigar * 4) >= 0); // write the real CIGAR
+//        }
+//    }
+//    if (fp->is_be) swap_data(c, b->l_data, b->data, 0);
+//    return ok? 4 + block_len : -1;
+//}
+//int rabbit_bam_write_mul_test(BGZF *fp,BamWriteCompress *bam_write_compress,bam_write_block* &write_block,bam1_t *b){
+//    const bam1_core_t *c = &b->core;
+//    uint32_t x[8], block_len = b->l_data - c->l_extranul + 32, y;
+//    int i, ok;
+//    if (c->l_qname - c->l_extranul > 255) {
+//        hts_log_error("QNAME \"%s\" is longer than 254 characters", bam_get_qname(b));
+//        errno = EOVERFLOW;
+//        return -1;
+//    }
+//    if (c->n_cigar > 0xffff) block_len += 16; // "16" for "CGBI", 4-byte tag length and 8-byte fake CIGAR
+//    if (c->pos > INT_MAX ||
+//        c->mpos > INT_MAX ||
+//        c->isize < INT_MIN || c->isize > INT_MAX) {
+//        hts_log_error("Positional data is too large for BAM format");
+//        return -1;
+//    }
+//    x[0] = c->tid;
+//    x[1] = c->pos;
+//    x[2] = (uint32_t)c->bin<<16 | c->qual<<8 | (c->l_qname - c->l_extranul);
+//    if (c->n_cigar > 0xffff) x[3] = (uint32_t)c->flag << 16 | 2;
+//    else x[3] = (uint32_t)c->flag << 16 | (c->n_cigar & 0xffff);
+//    x[4] = c->l_qseq;
+//    x[5] = c->mtid;
+//    x[6] = c->mpos;
+//    x[7] = c->isize;
+//    ok = (rabbit_bgzf_mul_flush_try(fp,bam_write_compress, write_block, 4 + block_len) >= 0);
+//    if (fp->is_be) {
+//        for (i = 0; i < 8; ++i) ed_swap_4p(x + i);
+//        y = block_len;
+//        if (ok) ok = (rabbit_bgzf_mul_write(fp, bam_write_compress,write_block,ed_swap_4p(&y), 4) >= 0);
+//        swap_data(c, b->l_data, b->data, 1);
+//    } else {
+//        if (ok) {
+//            ok = (rabbit_bgzf_mul_write(fp,bam_write_compress, write_block, &block_len, 4) >= 0);
+//        }
+//    }
+//    if (ok) {
+//        ok = (rabbit_bgzf_mul_write(fp, bam_write_compress,write_block, x, 32) >= 0);
+//    }
+//    if (ok) ok = (rabbit_bgzf_mul_write(fp, bam_write_compress,write_block, b->data, c->l_qname - c->l_extranul) >= 0);
+//    if (c->n_cigar <= 0xffff) { // no long CIGAR; write normally
+//        if (ok) ok = (rabbit_bgzf_mul_write(fp, bam_write_compress,write_block, b->data + c->l_qname, b->l_data - c->l_qname) >= 0);
+//    } else { // with long CIGAR, insert a fake CIGAR record and move the real CIGAR to the CG:B,I tag
+//        uint8_t buf[8];
+//        uint32_t cigar_st, cigar_en, cigar[2];
+//        hts_pos_t cigreflen = bam_cigar2rlen(c->n_cigar, bam_get_cigar(b));
+//        if (cigreflen >= (1<<28)) {
+//            // Length of reference covered is greater than the biggest
+//            // CIGAR operation currently allowed.
+//            hts_log_error("Record %s with %d CIGAR ops and ref length %" PRIhts_pos
+//                                  " cannot be written in BAM.  Try writing SAM or CRAM instead.\n",
+//                          bam_get_qname(b), c->n_cigar, cigreflen);
+//            return -1;
+//        }
+//        cigar_st = (uint8_t*)bam_get_cigar(b) - b->data;
+//        cigar_en = cigar_st + c->n_cigar * 4;
+//        cigar[0] = (uint32_t)c->l_qseq << 4 | BAM_CSOFT_CLIP;
+//        cigar[1] = (uint32_t)cigreflen << 4 | BAM_CREF_SKIP;
+//        u32_to_le(cigar[0], buf);
+//        u32_to_le(cigar[1], buf + 4);
+//        if (ok) {
+//            ok = (rabbit_bgzf_mul_write(fp,bam_write_compress, write_block, buf, 8) >= 0); // write cigar: <read_length>S<ref_length>N
+//        }
+//        if (ok) {
+//            ok = (rabbit_bgzf_mul_write(fp,bam_write_compress,write_block, &b->data[cigar_en], b->l_data - cigar_en) >= 0); // write data after CIGAR
+//        }
+//        if (ok) {
+//            ok = (rabbit_bgzf_mul_write(fp,bam_write_compress,write_block, "CGBI", 4) >= 0); // write CG:B,I
+//        }
+//        u32_to_le(c->n_cigar, buf);
+//        if (ok) {
+//            ok = (rabbit_bgzf_mul_write(fp, bam_write_compress,write_block, buf, 4) >= 0); // write the true CIGAR length
+//        }
+//        if (ok) {
+//            ok = (rabbit_bgzf_mul_write(fp, bam_write_compress,write_block, &b->data[cigar_st], c->n_cigar * 4) >= 0); // write the real CIGAR
+//        }
+//    }
+//    if (fp->is_be) swap_data(c, b->l_data, b->data, 0);
+//    return ok? 4 + block_len : -1;
+//}
 
-int rabbit_bam_write_test(BGZF *fp,bam_write_block* write_block,bam1_t *b){
-    const bam1_core_t *c = &b->core;
-    uint32_t x[8], block_len = b->l_data - c->l_extranul + 32, y;
-    int i, ok;
-    if (c->l_qname - c->l_extranul > 255) {
-        hts_log_error("QNAME \"%s\" is longer than 254 characters", bam_get_qname(b));
-        errno = EOVERFLOW;
-        return -1;
-    }
-    if (c->n_cigar > 0xffff) block_len += 16; // "16" for "CGBI", 4-byte tag length and 8-byte fake CIGAR
-    if (c->pos > INT_MAX ||
-        c->mpos > INT_MAX ||
-        c->isize < INT_MIN || c->isize > INT_MAX) {
-        hts_log_error("Positional data is too large for BAM format");
-        return -1;
-    }
-    x[0] = c->tid;
-    x[1] = c->pos;
-    x[2] = (uint32_t)c->bin<<16 | c->qual<<8 | (c->l_qname - c->l_extranul);
-    if (c->n_cigar > 0xffff) x[3] = (uint32_t)c->flag << 16 | 2;
-    else x[3] = (uint32_t)c->flag << 16 | (c->n_cigar & 0xffff);
-    x[4] = c->l_qseq;
-    x[5] = c->mtid;
-    x[6] = c->mpos;
-    x[7] = c->isize;
-    ok = (rabbit_bgzf_flush_try(fp, write_block, 4 + block_len) >= 0);
-    if (fp->is_be) {
-        for (i = 0; i < 8; ++i) ed_swap_4p(x + i);
-        y = block_len;
-        if (ok) ok = (rabbit_bgzf_write(fp, write_block,ed_swap_4p(&y), 4) >= 0);
-        swap_data(c, b->l_data, b->data, 1);
-    } else {
-        if (ok) {
-            ok = (rabbit_bgzf_write(fp, write_block, &block_len, 4) >= 0);
-        }
-    }
-    if (ok) {
-        ok = (rabbit_bgzf_write(fp, write_block, x, 32) >= 0);
-    }
-    if (ok) ok = (rabbit_bgzf_write(fp, write_block, b->data, c->l_qname - c->l_extranul) >= 0);
-    if (c->n_cigar <= 0xffff) { // no long CIGAR; write normally
-        if (ok) ok = (rabbit_bgzf_write(fp, write_block, b->data + c->l_qname, b->l_data - c->l_qname) >= 0);
-    } else { // with long CIGAR, insert a fake CIGAR record and move the real CIGAR to the CG:B,I tag
-        uint8_t buf[8];
-        uint32_t cigar_st, cigar_en, cigar[2];
-        hts_pos_t cigreflen = bam_cigar2rlen(c->n_cigar, bam_get_cigar(b));
-        if (cigreflen >= (1<<28)) {
-            // Length of reference covered is greater than the biggest
-            // CIGAR operation currently allowed.
-            hts_log_error("Record %s with %d CIGAR ops and ref length %" PRIhts_pos
-                                  " cannot be written in BAM.  Try writing SAM or CRAM instead.\n",
-                          bam_get_qname(b), c->n_cigar, cigreflen);
-            return -1;
-        }
-        cigar_st = (uint8_t*)bam_get_cigar(b) - b->data;
-        cigar_en = cigar_st + c->n_cigar * 4;
-        cigar[0] = (uint32_t)c->l_qseq << 4 | BAM_CSOFT_CLIP;
-        cigar[1] = (uint32_t)cigreflen << 4 | BAM_CREF_SKIP;
-        u32_to_le(cigar[0], buf);
-        u32_to_le(cigar[1], buf + 4);
-        if (ok) {
-            ok = (rabbit_bgzf_write(fp, write_block, buf, 8) >= 0); // write cigar: <read_length>S<ref_length>N
-        }
-        if (ok) {
-            ok = (rabbit_bgzf_write(fp, write_block, &b->data[cigar_en], b->l_data - cigar_en) >= 0); // write data after CIGAR
-        }
-        if (ok) {
-            ok = (rabbit_bgzf_write(fp, write_block, "CGBI", 4) >= 0); // write CG:B,I
-        }
-        u32_to_le(c->n_cigar, buf);
-        if (ok) {
-            ok = (rabbit_bgzf_write(fp, write_block, buf, 4) >= 0); // write the true CIGAR length
-        }
-        if (ok) {
-            ok = (rabbit_bgzf_write(fp, write_block, &b->data[cigar_st], c->n_cigar * 4) >= 0); // write the real CIGAR
-        }
-    }
-    if (fp->is_be) swap_data(c, b->l_data, b->data, 0);
-    return ok? 4 + block_len : -1;
-}
-int rabbit_bam_write_mul_test(BGZF *fp,BamWriteCompress *bam_write_compress,bam_write_block* &write_block,bam1_t *b){
-    const bam1_core_t *c = &b->core;
-    uint32_t x[8], block_len = b->l_data - c->l_extranul + 32, y;
-    int i, ok;
-    if (c->l_qname - c->l_extranul > 255) {
-        hts_log_error("QNAME \"%s\" is longer than 254 characters", bam_get_qname(b));
-        errno = EOVERFLOW;
-        return -1;
-    }
-    if (c->n_cigar > 0xffff) block_len += 16; // "16" for "CGBI", 4-byte tag length and 8-byte fake CIGAR
-    if (c->pos > INT_MAX ||
-        c->mpos > INT_MAX ||
-        c->isize < INT_MIN || c->isize > INT_MAX) {
-        hts_log_error("Positional data is too large for BAM format");
-        return -1;
-    }
-    x[0] = c->tid;
-    x[1] = c->pos;
-    x[2] = (uint32_t)c->bin<<16 | c->qual<<8 | (c->l_qname - c->l_extranul);
-    if (c->n_cigar > 0xffff) x[3] = (uint32_t)c->flag << 16 | 2;
-    else x[3] = (uint32_t)c->flag << 16 | (c->n_cigar & 0xffff);
-    x[4] = c->l_qseq;
-    x[5] = c->mtid;
-    x[6] = c->mpos;
-    x[7] = c->isize;
-    ok = (rabbit_bgzf_mul_flush_try(fp,bam_write_compress, write_block, 4 + block_len) >= 0);
-    if (fp->is_be) {
-        for (i = 0; i < 8; ++i) ed_swap_4p(x + i);
-        y = block_len;
-        if (ok) ok = (rabbit_bgzf_mul_write(fp, bam_write_compress,write_block,ed_swap_4p(&y), 4) >= 0);
-        swap_data(c, b->l_data, b->data, 1);
-    } else {
-        if (ok) {
-            ok = (rabbit_bgzf_mul_write(fp,bam_write_compress, write_block, &block_len, 4) >= 0);
-        }
-    }
-    if (ok) {
-        ok = (rabbit_bgzf_mul_write(fp, bam_write_compress,write_block, x, 32) >= 0);
-    }
-    if (ok) ok = (rabbit_bgzf_mul_write(fp, bam_write_compress,write_block, b->data, c->l_qname - c->l_extranul) >= 0);
-    if (c->n_cigar <= 0xffff) { // no long CIGAR; write normally
-        if (ok) ok = (rabbit_bgzf_mul_write(fp, bam_write_compress,write_block, b->data + c->l_qname, b->l_data - c->l_qname) >= 0);
-    } else { // with long CIGAR, insert a fake CIGAR record and move the real CIGAR to the CG:B,I tag
-        uint8_t buf[8];
-        uint32_t cigar_st, cigar_en, cigar[2];
-        hts_pos_t cigreflen = bam_cigar2rlen(c->n_cigar, bam_get_cigar(b));
-        if (cigreflen >= (1<<28)) {
-            // Length of reference covered is greater than the biggest
-            // CIGAR operation currently allowed.
-            hts_log_error("Record %s with %d CIGAR ops and ref length %" PRIhts_pos
-                                  " cannot be written in BAM.  Try writing SAM or CRAM instead.\n",
-                          bam_get_qname(b), c->n_cigar, cigreflen);
-            return -1;
-        }
-        cigar_st = (uint8_t*)bam_get_cigar(b) - b->data;
-        cigar_en = cigar_st + c->n_cigar * 4;
-        cigar[0] = (uint32_t)c->l_qseq << 4 | BAM_CSOFT_CLIP;
-        cigar[1] = (uint32_t)cigreflen << 4 | BAM_CREF_SKIP;
-        u32_to_le(cigar[0], buf);
-        u32_to_le(cigar[1], buf + 4);
-        if (ok) {
-            ok = (rabbit_bgzf_mul_write(fp,bam_write_compress, write_block, buf, 8) >= 0); // write cigar: <read_length>S<ref_length>N
-        }
-        if (ok) {
-            ok = (rabbit_bgzf_mul_write(fp,bam_write_compress,write_block, &b->data[cigar_en], b->l_data - cigar_en) >= 0); // write data after CIGAR
-        }
-        if (ok) {
-            ok = (rabbit_bgzf_mul_write(fp,bam_write_compress,write_block, "CGBI", 4) >= 0); // write CG:B,I
-        }
-        u32_to_le(c->n_cigar, buf);
-        if (ok) {
-            ok = (rabbit_bgzf_mul_write(fp, bam_write_compress,write_block, buf, 4) >= 0); // write the true CIGAR length
-        }
-        if (ok) {
-            ok = (rabbit_bgzf_mul_write(fp, bam_write_compress,write_block, &b->data[cigar_st], c->n_cigar * 4) >= 0); // write the real CIGAR
-        }
-    }
-    if (fp->is_be) swap_data(c, b->l_data, b->data, 0);
-    return ok? 4 + block_len : -1;
-}
-
-void benchmark_write_pack(BamCompleteBlock* completeBlock,samFile *output,sam_hdr_t *hdr,int level){
-
-    uint8_t* compress_block_test = new uint8_t[BGZF_BLOCK_SIZE];
-    uint8_t* uncompress_block_test = new uint8_t[BGZF_BLOCK_SIZE];
-    output->fp.bgzf->block_offset=0;
-    output->fp.bgzf->uncompressed_block=uncompress_block_test;
-    output->fp.bgzf->compressed_block=compress_block_test;
-    output->fp.bgzf->compress_level=level;
-    bam1_t *b;
-    if ((b = bam_init1()) == NULL) {
-        fprintf(stderr, "[E::%s] Out of memory allocating BAM struct.\n", __func__);
-    }
-    if (sam_hdr_write(output, hdr) != 0){
-        printf("HDR Write False!\n");
-        return ;
-    }
-    bam_complete_block* un_comp;
-    long long ans = 0;
-    long long res = 0;
-    bam_write_block *write_block=new bam_write_block();
-    write_block->block_offset=0;
-    write_block->uncompressed_data=new uint8_t[BGZF_BLOCK_SIZE];
-    write_block->compressed_data=new uint8_t[BGZF_BLOCK_SIZE];
-    write_block->status=0;
-    while (1){
-        un_comp = completeBlock->getCompleteBlock();
-        if (un_comp == nullptr){
-            break;
-        }
-//        printf("assign over block length is %d\n",un_comp->length);
-        int ret;
-        while ((ret=(read_bam(un_comp,b,0)))>=0) {
-//            printf("One Bam1_t Size is %d\n",ret);
-//            printf("This Bam1_t Char Number is %d\n",b->core.l_qseq);
-/*
- *  尝试单线程输出
- */
-//            sam_write1(output,hdr,b);
-            rabbit_bam_write_test(output->fp.bgzf,write_block,b);
-            ans++;
-        }
-        res++;
-        completeBlock->backEmpty(un_comp);
-    }
-    printf("Bam1_t Number is %lld\n",ans);
-    printf("Block  Number is %lld\n",res);
-}
-
-void benchmark_write_mul_pack(BamCompleteBlock* completeBlock,BamWriteCompress* bam_write_compress,samFile *output,sam_hdr_t *hdr,int level){
-
-    output->fp.bgzf->block_offset=0;
-    output->fp.bgzf->compress_level=level;
-    bam1_t *b;
-    if ((b = bam_init1()) == NULL) {
-        fprintf(stderr, "[E::%s] Out of memory allocating BAM struct.\n", __func__);
-    }
-    if (sam_hdr_write(output, hdr) != 0){
-        printf("HDR Write False!\n");
-        return ;
-    }
-    bam_complete_block* un_comp;
-    long long ans = 0;
-    long long res = 0;
-    bam_write_block *write_block=bam_write_compress->getEmpty();
-//    printf("Write Pack Num : %d\n",write_block->block_num);
-//    printf("Write Pack Block Offset : %d\n",write_block->block_offset);
-//    printf("Has get One Empty!\n");
-    int bam_num=1;
-    while (1){
-        un_comp = completeBlock->getCompleteBlock();
-        if (un_comp == nullptr){
-            break;
-        }
-//        printf("assign over block length is %d\n",un_comp->length);
-        int ret;
-        while ((ret=(read_bam(un_comp,b,0)))>=0) {
-//            printf("One Bam1_t Size is %d\n",ret);
-//            printf("This Bam1_t Char Number is %d\n",b->core.l_qseq);
-/*
- *  尝试单线程输出
- */
-//            sam_write1(output,hdr,b);
-//            printf("Try to output one Bam1_t : %d\n",bam_num++);
-            rabbit_bam_write_mul_test(output->fp.bgzf,bam_write_compress,write_block,b);
-            ans++;
-        }
-        res++;
-        completeBlock->backEmpty(un_comp);
-    }
-    if (write_block->block_offset>0) {
-        InputBlockNum++;
-//        rabbit_bgzf_mul_flush(output->fp.bgzf,bam_write_compress,write_block);
-        bam_write_compress->inputUnCompressData(write_block);
-    }
-//    printf("The Input Block Num : %d\n",InputBlockNum);
-    bam_write_compress->WriteComplete();
+//void benchmark_write_pack(BamCompleteBlock* completeBlock,samFile *output,sam_hdr_t *hdr,int level){
+//
+//    uint8_t* compress_block_test = new uint8_t[BGZF_BLOCK_SIZE];
+//    uint8_t* uncompress_block_test = new uint8_t[BGZF_BLOCK_SIZE];
+//    output->fp.bgzf->block_offset=0;
+//    output->fp.bgzf->uncompressed_block=uncompress_block_test;
+//    output->fp.bgzf->compressed_block=compress_block_test;
+//    output->fp.bgzf->compress_level=level;
+//    bam1_t *b;
+//    if ((b = bam_init1()) == NULL) {
+//        fprintf(stderr, "[E::%s] Out of memory allocating BAM struct.\n", __func__);
+//    }
+//    if (sam_hdr_write(output, hdr) != 0){
+//        printf("HDR Write False!\n");
+//        return ;
+//    }
+//    bam_complete_block* un_comp;
+//    long long ans = 0;
+//    long long res = 0;
+//    bam_write_block *write_block=new bam_write_block();
+//    write_block->block_offset=0;
+//    write_block->uncompressed_data=new uint8_t[BGZF_BLOCK_SIZE];
+//    write_block->compressed_data=new uint8_t[BGZF_BLOCK_SIZE];
+//    write_block->status=0;
+//    while (1){
+//        un_comp = completeBlock->getCompleteBlock();
+//        if (un_comp == nullptr){
+//            break;
+//        }
+////        printf("assign over block length is %d\n",un_comp->length);
+//        int ret;
+//        while ((ret=(read_bam(un_comp,b,0)))>=0) {
+////            printf("One Bam1_t Size is %d\n",ret);
+////            printf("This Bam1_t Char Number is %d\n",b->core.l_qseq);
+///*
+// *  尝试单线程输出
+// */
+////            sam_write1(output,hdr,b);
+//            rabbit_bam_write_test(output->fp.bgzf,write_block,b);
+//            ans++;
+//        }
+//        res++;
+//        completeBlock->backEmpty(un_comp);
+//    }
 //    printf("Bam1_t Number is %lld\n",ans);
 //    printf("Block  Number is %lld\n",res);
-}
+//}
+//
+//void benchmark_write_mul_pack(BamCompleteBlock* completeBlock,BamWriteCompress* bam_write_compress,samFile *output,sam_hdr_t *hdr,int level){
+//
+//    output->fp.bgzf->block_offset=0;
+//    output->fp.bgzf->compress_level=level;
+//    bam1_t *b;
+//    if ((b = bam_init1()) == NULL) {
+//        fprintf(stderr, "[E::%s] Out of memory allocating BAM struct.\n", __func__);
+//    }
+//    if (sam_hdr_write(output, hdr) != 0){
+//        printf("HDR Write False!\n");
+//        return ;
+//    }
+//    bam_complete_block* un_comp;
+//    long long ans = 0;
+//    long long res = 0;
+//    bam_write_block *write_block=bam_write_compress->getEmpty();
+////    printf("Write Pack Num : %d\n",write_block->block_num);
+////    printf("Write Pack Block Offset : %d\n",write_block->block_offset);
+////    printf("Has get One Empty!\n");
+//    int bam_num=1;
+//    while (1){
+//        un_comp = completeBlock->getCompleteBlock();
+//        if (un_comp == nullptr){
+//            break;
+//        }
+////        printf("assign over block length is %d\n",un_comp->length);
+//        int ret;
+//        while ((ret=(read_bam(un_comp,b,0)))>=0) {
+////            printf("One Bam1_t Size is %d\n",ret);
+////            printf("This Bam1_t Char Number is %d\n",b->core.l_qseq);
+///*
+// *  尝试单线程输出
+// */
+////            sam_write1(output,hdr,b);
+////            printf("Try to output one Bam1_t : %d\n",bam_num++);
+//            rabbit_bam_write_mul_test(output->fp.bgzf,bam_write_compress,write_block,b);
+//            ans++;
+//        }
+//        res++;
+//        completeBlock->backEmpty(un_comp);
+//    }
+//    if (write_block->block_offset>0) {
+//        InputBlockNum++;
+////        rabbit_bgzf_mul_flush(output->fp.bgzf,bam_write_compress,write_block);
+//        bam_write_compress->inputUnCompressData(write_block);
+//    }
+////    printf("The Input Block Num : %d\n",InputBlockNum);
+//    bam_write_compress->WriteComplete();
+////    printf("Bam1_t Number is %lld\n",ans);
+////    printf("Block  Number is %lld\n",res);
+//}
 
 void basic_status_pack(BamCompleteBlock* completeBlock,BamStatus *status){
     bam1_t *b;
@@ -920,57 +922,73 @@ int main(int argc,char* argv[]){
 
 
     CLI::App app("RabbitBAM");
-//    printf("yesyesyesyes\n");
-    CLI::App *bam2fq = app.add_subcommand("bam2fq", "BAM format turn to FastQ format");
-    CLI::App *bamstatus = app.add_subcommand("bamstatus", "Analyze BAM files");
-    CLI::App *benchmark = app.add_subcommand("benchmark", "Performance Testing");
-    CLI::App *htslib_test = app.add_subcommand("htslib_test", "Htslib sam_read API Performance Testing");
-    CLI::App *benchmark_count = app.add_subcommand("benchmark_count", "Banchmark Count Performance Testing");
-    CLI::App *compress_test = app.add_subcommand("compress_test", "Compress Performance Testing");
-    CLI::App *write_test = app.add_subcommand("write_test", "Write Testing One thread");
-    CLI::App *write_mul_test = app.add_subcommand("write_mul_test", "Write Testing with multi thread");
-//    printf("yesyesyesyes\n");
+
     string inputfile;
 
     string outputfile("./BAMStatus.html");
     int n_thread=1;
     int n_thread_write=1;
     int level = 9;
+
+    CLI::App *bam2fq = app.add_subcommand("bam2fq", "BAM format turn to FastQ format");
     bam2fq->add_option("-i", inputfile, "input File name")->required()->check(CLI::ExistingFile);
     bam2fq->add_option("-o", outputfile, "output File name");
     bam2fq->add_option("-w,-@,-n,--threads",n_thread,"thread number");
 
+
+    CLI::App *bamstatus = app.add_subcommand("bamstatus", "Analyze BAM files");
     bamstatus->add_option("-i", inputfile, "input File name")->required()->check(CLI::ExistingFile);
     bamstatus->add_option("-o", outputfile, "output File name");
     bamstatus->add_option("-w,-@,-n,--threads",n_thread,"thread number");
 
+
+    CLI::App *benchmark = app.add_subcommand("benchmark", "Performance Testing");
     benchmark->add_option("-i", inputfile, "input File name")->required()->check(CLI::ExistingFile);
     benchmark->add_option("-o", outputfile, "output File name");
     benchmark->add_option("-w,-@,-n,--threads",n_thread,"thread number");
 
+
+    CLI::App *htslib_test = app.add_subcommand("htslib_test", "Htslib sam_read API Performance Testing");
     htslib_test->add_option("-i", inputfile, "input File name")->required()->check(CLI::ExistingFile);
     htslib_test->add_option("-o", outputfile, "output File name");
     htslib_test->add_option("-w,-@,-n,--threads",n_thread,"thread number");
 
 
+    CLI::App *benchmark_count = app.add_subcommand("benchmark_count", "Banchmark Count Performance Testing");
     benchmark_count->add_option("-i", inputfile, "input File name")->required()->check(CLI::ExistingFile);
     benchmark_count->add_option("-o", outputfile, "output File name");
     benchmark_count->add_option("-w,-@,-n,--threads",n_thread,"thread number");
 
+
+
+    CLI::App *compress_test = app.add_subcommand("compress_test", "Compress Performance Testing");
     compress_test->add_option("-i", inputfile, "input File name")->required()->check(CLI::ExistingFile);
     compress_test->add_option("-o", outputfile, "output File name");
     compress_test->add_option("-w,-@,-n,--threads",n_thread,"thread number");
 
+
+
+    CLI::App *write_test = app.add_subcommand("write_test", "Write Testing One thread");
     write_test->add_option("-i", inputfile, "input File name")->required()->check(CLI::ExistingFile);
     write_test->add_option("-o", outputfile, "output File name");
     write_test->add_option("-w,-@,-n,--threads",n_thread,"thread number");
     write_test->add_option("-l,--level",level,"zip level");
 
+
+    CLI::App *write_mul_test = app.add_subcommand("write_mul_test", "Write Testing with multi thread");
     write_mul_test->add_option("-i", inputfile, "input File name")->required()->check(CLI::ExistingFile);
     write_mul_test->add_option("-o", outputfile, "output File name");
     write_mul_test->add_option("--nr",n_thread,"Read thread number");
     write_mul_test->add_option("--nw",n_thread_write,"Write thread number");
     write_mul_test->add_option("-l,--level",level,"zip level");
+
+
+    CLI::App *api_test = app.add_subcommand("api_test","use api to read and write");
+    api_test->add_option("-i",inputfile,"input File name")->required()->check(CLI::ExistingFile);
+    api_test->add_option("-o",outputfile,"output File name");
+    api_test->add_option("--nr",n_thread,"Read thread number");
+    api_test->add_option("--nw",n_thread_write,"Write thread number");
+    api_test->add_option("-l,--level",level,"zip level");
 
 
 
@@ -1128,17 +1146,17 @@ int main(int argc,char* argv[]){
         p.pool = hts_tpool_init(n_thread);
         hts_set_opt(sin,  HTS_OPT_THREAD_POOL, &p);
         hts_set_threads(output, n_thread);
-//        int num = 0;
+        int num = 0;
 //        output->format.format=bam;
         while(sam_read1(sin, hdr, b)>=0){
-//            num++;
-            sam_write1(output,hdr,b);
+            num++;
+//            sam_write1(output,hdr,b);
         }
 //        sam_itr_querys()
 //        while (sam_itr_next(sin,,b)>=0){
 //            num++;
 //        }
-//        printf("Bam Number is %d\n",num);
+        printf("Bam Number is %d\n",num);
         sam_close(sin);
         sam_close(output);
         TEND(fq)
@@ -1388,7 +1406,55 @@ int main(int argc,char* argv[]){
         TEND(fq)
         TPRINT(fq,"time is : ");
     }
+    if (strcmp(app.get_subcommands()[0]->get_name().c_str(), "api_test")==0){
+        TDEF(fq)
+        TSTART(fq)
 
+        printf("Starting Running API Test\n");
+        printf("BGZF_MAX_BLOCK_COMPLETE_SIZE is %d\n",BGZF_MAX_BLOCK_COMPLETE_SIZE);
+        printf("output File Name is %s\n",outputfile.c_str());
+        //if (strcmp(outputfile.substr(outputfile.size()-4).c_str(),"html")==0) outputfile=("./output.fastq");
+//        samFile *sin;
+//        sam_hdr_t *hdr;
+//        samFile *output;
+//        if ((sin=sam_open(inputfile.c_str(),"r"))==NULL){
+//            printf("Can`t open this file!\n");
+//            return 0;
+//        }
+//
+//        if ((output=sam_open(outputfile.c_str(),"wb"))==NULL){
+//            printf("Can`t open this file!\n");
+//            return 0;
+//        }
+//        if ((hdr = sam_hdr_read(sin)) == NULL) {
+//            return  0;
+//        }
+
+
+        /*
+         * 开始创建BamRead 和 BamWriter
+         */
+
+        BamReader *reader = new BamReader(inputfile,n_thread);
+        BamWriter *writer = new BamWriter(outputfile,reader->getHeader(),n_thread_write);
+        bam1_t *b;
+        if ((b = bam_init1()) == NULL) {
+            fprintf(stderr, "[E::%s] Out of memory allocating BAM struct.\n", __func__);
+        }
+        long long num=0;
+        while (reader->getBam1_t(b)){
+            num++;
+            writer->write(b);
+
+//            if (num%1000 == 0) printf("Bam1_t Num is %d\n",num);
+        }
+        writer->over();
+        cout << "Bam1_t Num : "<< num << endl;
+
+
+        TEND(fq)
+        TPRINT(fq,"time is : ");
+    }
 }
 
 

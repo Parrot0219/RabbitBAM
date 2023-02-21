@@ -10,8 +10,8 @@ BamWriteBlockConfig::BamBlockConfig(int Buffer_number){
     this->complete=0;
 }
 
-BamWriteBlock::BamBlock(){};
-BamWriteBlock::BamBlock(BamBlockConfig *config){
+BamWriteBlock::BamWriteBlock(){};
+BamWriteBlock::BamWriteBlock(BamBlockConfig *config){
     this->config= config;
     this->buffer=new bam_block*[this->config->Buffer_number];
     for (int i=0;i<this->config->Buffer_number;++i) this->buffer[i]=new bam_block;

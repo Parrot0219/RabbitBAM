@@ -69,665 +69,665 @@ include CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/bcf_sr_sort.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/bcf_sr_sort.c.o: ../htslib/bcf_sr_sort.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Config.dir/htslib/bcf_sr_sort.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/bcf_sr_sort.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/bcf_sr_sort.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/bcf_sr_sort.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/bcf_sr_sort.c
 
 CMakeFiles/Config.dir/htslib/bcf_sr_sort.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/bcf_sr_sort.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/bcf_sr_sort.c > CMakeFiles/Config.dir/htslib/bcf_sr_sort.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/bcf_sr_sort.c > CMakeFiles/Config.dir/htslib/bcf_sr_sort.c.i
 
 CMakeFiles/Config.dir/htslib/bcf_sr_sort.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/bcf_sr_sort.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/bcf_sr_sort.c -o CMakeFiles/Config.dir/htslib/bcf_sr_sort.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/bcf_sr_sort.c -o CMakeFiles/Config.dir/htslib/bcf_sr_sort.c.s
 
 CMakeFiles/Config.dir/htslib/bgzf.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/bgzf.c.o: ../htslib/bgzf.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/Config.dir/htslib/bgzf.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/bgzf.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/bgzf.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/bgzf.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/bgzf.c
 
 CMakeFiles/Config.dir/htslib/bgzf.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/bgzf.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/bgzf.c > CMakeFiles/Config.dir/htslib/bgzf.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/bgzf.c > CMakeFiles/Config.dir/htslib/bgzf.c.i
 
 CMakeFiles/Config.dir/htslib/bgzf.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/bgzf.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/bgzf.c -o CMakeFiles/Config.dir/htslib/bgzf.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/bgzf.c -o CMakeFiles/Config.dir/htslib/bgzf.c.s
 
 CMakeFiles/Config.dir/htslib/bgzip.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/bgzip.c.o: ../htslib/bgzip.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Config.dir/htslib/bgzip.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/bgzip.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/bgzip.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/bgzip.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/bgzip.c
 
 CMakeFiles/Config.dir/htslib/bgzip.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/bgzip.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/bgzip.c > CMakeFiles/Config.dir/htslib/bgzip.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/bgzip.c > CMakeFiles/Config.dir/htslib/bgzip.c.i
 
 CMakeFiles/Config.dir/htslib/bgzip.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/bgzip.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/bgzip.c -o CMakeFiles/Config.dir/htslib/bgzip.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/bgzip.c -o CMakeFiles/Config.dir/htslib/bgzip.c.s
 
 CMakeFiles/Config.dir/htslib/errmod.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/errmod.c.o: ../htslib/errmod.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Config.dir/htslib/errmod.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/errmod.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/errmod.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/errmod.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/errmod.c
 
 CMakeFiles/Config.dir/htslib/errmod.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/errmod.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/errmod.c > CMakeFiles/Config.dir/htslib/errmod.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/errmod.c > CMakeFiles/Config.dir/htslib/errmod.c.i
 
 CMakeFiles/Config.dir/htslib/errmod.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/errmod.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/errmod.c -o CMakeFiles/Config.dir/htslib/errmod.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/errmod.c -o CMakeFiles/Config.dir/htslib/errmod.c.s
 
 CMakeFiles/Config.dir/htslib/faidx.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/faidx.c.o: ../htslib/faidx.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/Config.dir/htslib/faidx.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/faidx.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/faidx.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/faidx.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/faidx.c
 
 CMakeFiles/Config.dir/htslib/faidx.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/faidx.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/faidx.c > CMakeFiles/Config.dir/htslib/faidx.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/faidx.c > CMakeFiles/Config.dir/htslib/faidx.c.i
 
 CMakeFiles/Config.dir/htslib/faidx.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/faidx.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/faidx.c -o CMakeFiles/Config.dir/htslib/faidx.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/faidx.c -o CMakeFiles/Config.dir/htslib/faidx.c.s
 
 CMakeFiles/Config.dir/htslib/header.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/header.c.o: ../htslib/header.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/Config.dir/htslib/header.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/header.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/header.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/header.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/header.c
 
 CMakeFiles/Config.dir/htslib/header.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/header.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/header.c > CMakeFiles/Config.dir/htslib/header.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/header.c > CMakeFiles/Config.dir/htslib/header.c.i
 
 CMakeFiles/Config.dir/htslib/header.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/header.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/header.c -o CMakeFiles/Config.dir/htslib/header.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/header.c -o CMakeFiles/Config.dir/htslib/header.c.s
 
 CMakeFiles/Config.dir/htslib/hfile.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/hfile.c.o: ../htslib/hfile.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/Config.dir/htslib/hfile.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/hfile.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/hfile.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile.c
 
 CMakeFiles/Config.dir/htslib/hfile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/hfile.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile.c > CMakeFiles/Config.dir/htslib/hfile.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile.c > CMakeFiles/Config.dir/htslib/hfile.c.i
 
 CMakeFiles/Config.dir/htslib/hfile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/hfile.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile.c -o CMakeFiles/Config.dir/htslib/hfile.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile.c -o CMakeFiles/Config.dir/htslib/hfile.c.s
 
 CMakeFiles/Config.dir/htslib/hfile_gcs.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/hfile_gcs.c.o: ../htslib/hfile_gcs.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/Config.dir/htslib/hfile_gcs.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/hfile_gcs.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile_gcs.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/hfile_gcs.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile_gcs.c
 
 CMakeFiles/Config.dir/htslib/hfile_gcs.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/hfile_gcs.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile_gcs.c > CMakeFiles/Config.dir/htslib/hfile_gcs.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile_gcs.c > CMakeFiles/Config.dir/htslib/hfile_gcs.c.i
 
 CMakeFiles/Config.dir/htslib/hfile_gcs.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/hfile_gcs.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile_gcs.c -o CMakeFiles/Config.dir/htslib/hfile_gcs.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile_gcs.c -o CMakeFiles/Config.dir/htslib/hfile_gcs.c.s
 
 CMakeFiles/Config.dir/htslib/hfile_libcurl.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/hfile_libcurl.c.o: ../htslib/hfile_libcurl.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/Config.dir/htslib/hfile_libcurl.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/hfile_libcurl.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile_libcurl.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/hfile_libcurl.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile_libcurl.c
 
 CMakeFiles/Config.dir/htslib/hfile_libcurl.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/hfile_libcurl.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile_libcurl.c > CMakeFiles/Config.dir/htslib/hfile_libcurl.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile_libcurl.c > CMakeFiles/Config.dir/htslib/hfile_libcurl.c.i
 
 CMakeFiles/Config.dir/htslib/hfile_libcurl.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/hfile_libcurl.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile_libcurl.c -o CMakeFiles/Config.dir/htslib/hfile_libcurl.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile_libcurl.c -o CMakeFiles/Config.dir/htslib/hfile_libcurl.c.s
 
 CMakeFiles/Config.dir/htslib/hfile_s3.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/hfile_s3.c.o: ../htslib/hfile_s3.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/Config.dir/htslib/hfile_s3.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/hfile_s3.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile_s3.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/hfile_s3.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile_s3.c
 
 CMakeFiles/Config.dir/htslib/hfile_s3.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/hfile_s3.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile_s3.c > CMakeFiles/Config.dir/htslib/hfile_s3.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile_s3.c > CMakeFiles/Config.dir/htslib/hfile_s3.c.i
 
 CMakeFiles/Config.dir/htslib/hfile_s3.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/hfile_s3.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile_s3.c -o CMakeFiles/Config.dir/htslib/hfile_s3.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile_s3.c -o CMakeFiles/Config.dir/htslib/hfile_s3.c.s
 
 CMakeFiles/Config.dir/htslib/hfile_s3_write.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/hfile_s3_write.c.o: ../htslib/hfile_s3_write.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/Config.dir/htslib/hfile_s3_write.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/hfile_s3_write.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile_s3_write.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/hfile_s3_write.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile_s3_write.c
 
 CMakeFiles/Config.dir/htslib/hfile_s3_write.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/hfile_s3_write.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile_s3_write.c > CMakeFiles/Config.dir/htslib/hfile_s3_write.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile_s3_write.c > CMakeFiles/Config.dir/htslib/hfile_s3_write.c.i
 
 CMakeFiles/Config.dir/htslib/hfile_s3_write.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/hfile_s3_write.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile_s3_write.c -o CMakeFiles/Config.dir/htslib/hfile_s3_write.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hfile_s3_write.c -o CMakeFiles/Config.dir/htslib/hfile_s3_write.c.s
 
 CMakeFiles/Config.dir/htslib/hts.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/hts.c.o: ../htslib/hts.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/Config.dir/htslib/hts.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/hts.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hts.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/hts.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hts.c
 
 CMakeFiles/Config.dir/htslib/hts.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/hts.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hts.c > CMakeFiles/Config.dir/htslib/hts.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hts.c > CMakeFiles/Config.dir/htslib/hts.c.i
 
 CMakeFiles/Config.dir/htslib/hts.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/hts.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hts.c -o CMakeFiles/Config.dir/htslib/hts.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hts.c -o CMakeFiles/Config.dir/htslib/hts.c.s
 
 CMakeFiles/Config.dir/htslib/hts_expr.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/hts_expr.c.o: ../htslib/hts_expr.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/Config.dir/htslib/hts_expr.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/hts_expr.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hts_expr.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/hts_expr.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hts_expr.c
 
 CMakeFiles/Config.dir/htslib/hts_expr.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/hts_expr.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hts_expr.c > CMakeFiles/Config.dir/htslib/hts_expr.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hts_expr.c > CMakeFiles/Config.dir/htslib/hts_expr.c.i
 
 CMakeFiles/Config.dir/htslib/hts_expr.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/hts_expr.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hts_expr.c -o CMakeFiles/Config.dir/htslib/hts_expr.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hts_expr.c -o CMakeFiles/Config.dir/htslib/hts_expr.c.s
 
 CMakeFiles/Config.dir/htslib/hts_os.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/hts_os.c.o: ../htslib/hts_os.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/Config.dir/htslib/hts_os.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/hts_os.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hts_os.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/hts_os.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hts_os.c
 
 CMakeFiles/Config.dir/htslib/hts_os.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/hts_os.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hts_os.c > CMakeFiles/Config.dir/htslib/hts_os.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hts_os.c > CMakeFiles/Config.dir/htslib/hts_os.c.i
 
 CMakeFiles/Config.dir/htslib/hts_os.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/hts_os.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hts_os.c -o CMakeFiles/Config.dir/htslib/hts_os.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/hts_os.c -o CMakeFiles/Config.dir/htslib/hts_os.c.s
 
 CMakeFiles/Config.dir/htslib/htsfile.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/htsfile.c.o: ../htslib/htsfile.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/Config.dir/htslib/htsfile.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/htsfile.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/htsfile.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/htsfile.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/htsfile.c
 
 CMakeFiles/Config.dir/htslib/htsfile.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/htsfile.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/htsfile.c > CMakeFiles/Config.dir/htslib/htsfile.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/htsfile.c > CMakeFiles/Config.dir/htslib/htsfile.c.i
 
 CMakeFiles/Config.dir/htslib/htsfile.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/htsfile.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/htsfile.c -o CMakeFiles/Config.dir/htslib/htsfile.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/htsfile.c -o CMakeFiles/Config.dir/htslib/htsfile.c.s
 
 CMakeFiles/Config.dir/htslib/kfunc.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/kfunc.c.o: ../htslib/kfunc.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/Config.dir/htslib/kfunc.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/kfunc.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/kfunc.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/kfunc.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/kfunc.c
 
 CMakeFiles/Config.dir/htslib/kfunc.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/kfunc.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/kfunc.c > CMakeFiles/Config.dir/htslib/kfunc.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/kfunc.c > CMakeFiles/Config.dir/htslib/kfunc.c.i
 
 CMakeFiles/Config.dir/htslib/kfunc.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/kfunc.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/kfunc.c -o CMakeFiles/Config.dir/htslib/kfunc.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/kfunc.c -o CMakeFiles/Config.dir/htslib/kfunc.c.s
 
 CMakeFiles/Config.dir/htslib/kstring.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/kstring.c.o: ../htslib/kstring.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/Config.dir/htslib/kstring.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/kstring.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/kstring.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/kstring.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/kstring.c
 
 CMakeFiles/Config.dir/htslib/kstring.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/kstring.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/kstring.c > CMakeFiles/Config.dir/htslib/kstring.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/kstring.c > CMakeFiles/Config.dir/htslib/kstring.c.i
 
 CMakeFiles/Config.dir/htslib/kstring.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/kstring.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/kstring.c -o CMakeFiles/Config.dir/htslib/kstring.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/kstring.c -o CMakeFiles/Config.dir/htslib/kstring.c.s
 
 CMakeFiles/Config.dir/htslib/md5.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/md5.c.o: ../htslib/md5.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/Config.dir/htslib/md5.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/md5.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/md5.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/md5.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/md5.c
 
 CMakeFiles/Config.dir/htslib/md5.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/md5.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/md5.c > CMakeFiles/Config.dir/htslib/md5.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/md5.c > CMakeFiles/Config.dir/htslib/md5.c.i
 
 CMakeFiles/Config.dir/htslib/md5.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/md5.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/md5.c -o CMakeFiles/Config.dir/htslib/md5.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/md5.c -o CMakeFiles/Config.dir/htslib/md5.c.s
 
 CMakeFiles/Config.dir/htslib/multipart.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/multipart.c.o: ../htslib/multipart.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/Config.dir/htslib/multipart.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/multipart.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/multipart.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/multipart.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/multipart.c
 
 CMakeFiles/Config.dir/htslib/multipart.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/multipart.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/multipart.c > CMakeFiles/Config.dir/htslib/multipart.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/multipart.c > CMakeFiles/Config.dir/htslib/multipart.c.i
 
 CMakeFiles/Config.dir/htslib/multipart.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/multipart.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/multipart.c -o CMakeFiles/Config.dir/htslib/multipart.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/multipart.c -o CMakeFiles/Config.dir/htslib/multipart.c.s
 
 CMakeFiles/Config.dir/htslib/plugin.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/plugin.c.o: ../htslib/plugin.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/Config.dir/htslib/plugin.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/plugin.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/plugin.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/plugin.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/plugin.c
 
 CMakeFiles/Config.dir/htslib/plugin.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/plugin.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/plugin.c > CMakeFiles/Config.dir/htslib/plugin.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/plugin.c > CMakeFiles/Config.dir/htslib/plugin.c.i
 
 CMakeFiles/Config.dir/htslib/plugin.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/plugin.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/plugin.c -o CMakeFiles/Config.dir/htslib/plugin.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/plugin.c -o CMakeFiles/Config.dir/htslib/plugin.c.s
 
 CMakeFiles/Config.dir/htslib/probaln.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/probaln.c.o: ../htslib/probaln.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/Config.dir/htslib/probaln.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/probaln.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/probaln.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/probaln.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/probaln.c
 
 CMakeFiles/Config.dir/htslib/probaln.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/probaln.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/probaln.c > CMakeFiles/Config.dir/htslib/probaln.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/probaln.c > CMakeFiles/Config.dir/htslib/probaln.c.i
 
 CMakeFiles/Config.dir/htslib/probaln.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/probaln.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/probaln.c -o CMakeFiles/Config.dir/htslib/probaln.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/probaln.c -o CMakeFiles/Config.dir/htslib/probaln.c.s
 
 CMakeFiles/Config.dir/htslib/realn.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/realn.c.o: ../htslib/realn.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/Config.dir/htslib/realn.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/realn.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/realn.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/realn.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/realn.c
 
 CMakeFiles/Config.dir/htslib/realn.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/realn.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/realn.c > CMakeFiles/Config.dir/htslib/realn.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/realn.c > CMakeFiles/Config.dir/htslib/realn.c.i
 
 CMakeFiles/Config.dir/htslib/realn.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/realn.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/realn.c -o CMakeFiles/Config.dir/htslib/realn.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/realn.c -o CMakeFiles/Config.dir/htslib/realn.c.s
 
 CMakeFiles/Config.dir/htslib/regidx.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/regidx.c.o: ../htslib/regidx.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/Config.dir/htslib/regidx.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/regidx.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/regidx.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/regidx.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/regidx.c
 
 CMakeFiles/Config.dir/htslib/regidx.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/regidx.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/regidx.c > CMakeFiles/Config.dir/htslib/regidx.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/regidx.c > CMakeFiles/Config.dir/htslib/regidx.c.i
 
 CMakeFiles/Config.dir/htslib/regidx.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/regidx.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/regidx.c -o CMakeFiles/Config.dir/htslib/regidx.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/regidx.c -o CMakeFiles/Config.dir/htslib/regidx.c.s
 
 CMakeFiles/Config.dir/htslib/region.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/region.c.o: ../htslib/region.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/Config.dir/htslib/region.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/region.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/region.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/region.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/region.c
 
 CMakeFiles/Config.dir/htslib/region.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/region.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/region.c > CMakeFiles/Config.dir/htslib/region.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/region.c > CMakeFiles/Config.dir/htslib/region.c.i
 
 CMakeFiles/Config.dir/htslib/region.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/region.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/region.c -o CMakeFiles/Config.dir/htslib/region.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/region.c -o CMakeFiles/Config.dir/htslib/region.c.s
 
 CMakeFiles/Config.dir/htslib/sam.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/sam.c.o: ../htslib/sam.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/Config.dir/htslib/sam.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/sam.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/sam.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/sam.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/sam.c
 
 CMakeFiles/Config.dir/htslib/sam.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/sam.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/sam.c > CMakeFiles/Config.dir/htslib/sam.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/sam.c > CMakeFiles/Config.dir/htslib/sam.c.i
 
 CMakeFiles/Config.dir/htslib/sam.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/sam.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/sam.c -o CMakeFiles/Config.dir/htslib/sam.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/sam.c -o CMakeFiles/Config.dir/htslib/sam.c.s
 
 CMakeFiles/Config.dir/htslib/synced_bcf_reader.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/synced_bcf_reader.c.o: ../htslib/synced_bcf_reader.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/Config.dir/htslib/synced_bcf_reader.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/synced_bcf_reader.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/synced_bcf_reader.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/synced_bcf_reader.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/synced_bcf_reader.c
 
 CMakeFiles/Config.dir/htslib/synced_bcf_reader.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/synced_bcf_reader.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/synced_bcf_reader.c > CMakeFiles/Config.dir/htslib/synced_bcf_reader.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/synced_bcf_reader.c > CMakeFiles/Config.dir/htslib/synced_bcf_reader.c.i
 
 CMakeFiles/Config.dir/htslib/synced_bcf_reader.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/synced_bcf_reader.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/synced_bcf_reader.c -o CMakeFiles/Config.dir/htslib/synced_bcf_reader.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/synced_bcf_reader.c -o CMakeFiles/Config.dir/htslib/synced_bcf_reader.c.s
 
 CMakeFiles/Config.dir/htslib/tabix.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/tabix.c.o: ../htslib/tabix.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/Config.dir/htslib/tabix.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/tabix.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/tabix.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/tabix.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/tabix.c
 
 CMakeFiles/Config.dir/htslib/tabix.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/tabix.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/tabix.c > CMakeFiles/Config.dir/htslib/tabix.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/tabix.c > CMakeFiles/Config.dir/htslib/tabix.c.i
 
 CMakeFiles/Config.dir/htslib/tabix.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/tabix.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/tabix.c -o CMakeFiles/Config.dir/htslib/tabix.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/tabix.c -o CMakeFiles/Config.dir/htslib/tabix.c.s
 
 CMakeFiles/Config.dir/htslib/tbx.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/tbx.c.o: ../htslib/tbx.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/Config.dir/htslib/tbx.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/tbx.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/tbx.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/tbx.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/tbx.c
 
 CMakeFiles/Config.dir/htslib/tbx.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/tbx.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/tbx.c > CMakeFiles/Config.dir/htslib/tbx.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/tbx.c > CMakeFiles/Config.dir/htslib/tbx.c.i
 
 CMakeFiles/Config.dir/htslib/tbx.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/tbx.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/tbx.c -o CMakeFiles/Config.dir/htslib/tbx.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/tbx.c -o CMakeFiles/Config.dir/htslib/tbx.c.s
 
 CMakeFiles/Config.dir/htslib/textutils.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/textutils.c.o: ../htslib/textutils.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/Config.dir/htslib/textutils.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/textutils.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/textutils.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/textutils.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/textutils.c
 
 CMakeFiles/Config.dir/htslib/textutils.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/textutils.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/textutils.c > CMakeFiles/Config.dir/htslib/textutils.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/textutils.c > CMakeFiles/Config.dir/htslib/textutils.c.i
 
 CMakeFiles/Config.dir/htslib/textutils.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/textutils.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/textutils.c -o CMakeFiles/Config.dir/htslib/textutils.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/textutils.c -o CMakeFiles/Config.dir/htslib/textutils.c.s
 
 CMakeFiles/Config.dir/htslib/thread_pool.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/thread_pool.c.o: ../htslib/thread_pool.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/Config.dir/htslib/thread_pool.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/thread_pool.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/thread_pool.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/thread_pool.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/thread_pool.c
 
 CMakeFiles/Config.dir/htslib/thread_pool.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/thread_pool.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/thread_pool.c > CMakeFiles/Config.dir/htslib/thread_pool.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/thread_pool.c > CMakeFiles/Config.dir/htslib/thread_pool.c.i
 
 CMakeFiles/Config.dir/htslib/thread_pool.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/thread_pool.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/thread_pool.c -o CMakeFiles/Config.dir/htslib/thread_pool.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/thread_pool.c -o CMakeFiles/Config.dir/htslib/thread_pool.c.s
 
 CMakeFiles/Config.dir/htslib/vcf.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/vcf.c.o: ../htslib/vcf.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/Config.dir/htslib/vcf.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/vcf.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/vcf.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/vcf.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/vcf.c
 
 CMakeFiles/Config.dir/htslib/vcf.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/vcf.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/vcf.c > CMakeFiles/Config.dir/htslib/vcf.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/vcf.c > CMakeFiles/Config.dir/htslib/vcf.c.i
 
 CMakeFiles/Config.dir/htslib/vcf.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/vcf.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/vcf.c -o CMakeFiles/Config.dir/htslib/vcf.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/vcf.c -o CMakeFiles/Config.dir/htslib/vcf.c.s
 
 CMakeFiles/Config.dir/htslib/vcf_sweep.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/vcf_sweep.c.o: ../htslib/vcf_sweep.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/Config.dir/htslib/vcf_sweep.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/vcf_sweep.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/vcf_sweep.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/vcf_sweep.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/vcf_sweep.c
 
 CMakeFiles/Config.dir/htslib/vcf_sweep.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/vcf_sweep.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/vcf_sweep.c > CMakeFiles/Config.dir/htslib/vcf_sweep.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/vcf_sweep.c > CMakeFiles/Config.dir/htslib/vcf_sweep.c.i
 
 CMakeFiles/Config.dir/htslib/vcf_sweep.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/vcf_sweep.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/vcf_sweep.c -o CMakeFiles/Config.dir/htslib/vcf_sweep.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/vcf_sweep.c -o CMakeFiles/Config.dir/htslib/vcf_sweep.c.s
 
 CMakeFiles/Config.dir/htslib/vcfutils.c.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/htslib/vcfutils.c.o: ../htslib/vcfutils.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/Config.dir/htslib/vcfutils.c.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/vcfutils.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/vcfutils.c
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Config.dir/htslib/vcfutils.c.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/vcfutils.c
 
 CMakeFiles/Config.dir/htslib/vcfutils.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Config.dir/htslib/vcfutils.c.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/vcfutils.c > CMakeFiles/Config.dir/htslib/vcfutils.c.i
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/vcfutils.c > CMakeFiles/Config.dir/htslib/vcfutils.c.i
 
 CMakeFiles/Config.dir/htslib/vcfutils.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Config.dir/htslib/vcfutils.c.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/gcc-9 $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/vcfutils.c -o CMakeFiles/Config.dir/htslib/vcfutils.c.s
+	/Library/Developer/CommandLineTools/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/htslib/vcfutils.c -o CMakeFiles/Config.dir/htslib/vcfutils.c.s
 
 CMakeFiles/Config.dir/test/test_header.cpp.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/test/test_header.cpp.o: ../test/test_header.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/Config.dir/test/test_header.cpp.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/test/test_header.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_header.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/test/test_header.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_header.cpp
 
 CMakeFiles/Config.dir/test/test_header.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Config.dir/test/test_header.cpp.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_header.cpp > CMakeFiles/Config.dir/test/test_header.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_header.cpp > CMakeFiles/Config.dir/test/test_header.cpp.i
 
 CMakeFiles/Config.dir/test/test_header.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Config.dir/test/test_header.cpp.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_header.cpp -o CMakeFiles/Config.dir/test/test_header.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_header.cpp -o CMakeFiles/Config.dir/test/test_header.cpp.s
 
 CMakeFiles/Config.dir/main.cpp.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/main.cpp.o: ../main.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/Config.dir/main.cpp.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/main.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/main.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/main.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/main.cpp
 
 CMakeFiles/Config.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Config.dir/main.cpp.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/main.cpp > CMakeFiles/Config.dir/main.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/main.cpp > CMakeFiles/Config.dir/main.cpp.i
 
 CMakeFiles/Config.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Config.dir/main.cpp.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/main.cpp -o CMakeFiles/Config.dir/main.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/main.cpp -o CMakeFiles/Config.dir/main.cpp.s
 
 CMakeFiles/Config.dir/Duplicate.cpp.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/Duplicate.cpp.o: ../Duplicate.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/Config.dir/Duplicate.cpp.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/Duplicate.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/Duplicate.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/Duplicate.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/Duplicate.cpp
 
 CMakeFiles/Config.dir/Duplicate.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Config.dir/Duplicate.cpp.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/Duplicate.cpp > CMakeFiles/Config.dir/Duplicate.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/Duplicate.cpp > CMakeFiles/Config.dir/Duplicate.cpp.i
 
 CMakeFiles/Config.dir/Duplicate.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Config.dir/Duplicate.cpp.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/Duplicate.cpp -o CMakeFiles/Config.dir/Duplicate.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/Duplicate.cpp -o CMakeFiles/Config.dir/Duplicate.cpp.s
 
 CMakeFiles/Config.dir/BamBlock.cpp.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/BamBlock.cpp.o: ../BamBlock.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/Config.dir/BamBlock.cpp.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/BamBlock.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamBlock.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/BamBlock.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamBlock.cpp
 
 CMakeFiles/Config.dir/BamBlock.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Config.dir/BamBlock.cpp.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamBlock.cpp > CMakeFiles/Config.dir/BamBlock.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamBlock.cpp > CMakeFiles/Config.dir/BamBlock.cpp.i
 
 CMakeFiles/Config.dir/BamBlock.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Config.dir/BamBlock.cpp.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamBlock.cpp -o CMakeFiles/Config.dir/BamBlock.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamBlock.cpp -o CMakeFiles/Config.dir/BamBlock.cpp.s
 
 CMakeFiles/Config.dir/block_mul.cpp.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/block_mul.cpp.o: ../block_mul.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/Config.dir/block_mul.cpp.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/block_mul.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/block_mul.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/block_mul.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/block_mul.cpp
 
 CMakeFiles/Config.dir/block_mul.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Config.dir/block_mul.cpp.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/block_mul.cpp > CMakeFiles/Config.dir/block_mul.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/block_mul.cpp > CMakeFiles/Config.dir/block_mul.cpp.i
 
 CMakeFiles/Config.dir/block_mul.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Config.dir/block_mul.cpp.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/block_mul.cpp -o CMakeFiles/Config.dir/block_mul.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/block_mul.cpp -o CMakeFiles/Config.dir/block_mul.cpp.s
 
 CMakeFiles/Config.dir/Buffer.cpp.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/Buffer.cpp.o: ../Buffer.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/Config.dir/Buffer.cpp.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/Buffer.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/Buffer.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/Buffer.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/Buffer.cpp
 
 CMakeFiles/Config.dir/Buffer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Config.dir/Buffer.cpp.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/Buffer.cpp > CMakeFiles/Config.dir/Buffer.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/Buffer.cpp > CMakeFiles/Config.dir/Buffer.cpp.i
 
 CMakeFiles/Config.dir/Buffer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Config.dir/Buffer.cpp.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/Buffer.cpp -o CMakeFiles/Config.dir/Buffer.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/Buffer.cpp -o CMakeFiles/Config.dir/Buffer.cpp.s
 
 CMakeFiles/Config.dir/BamStatus.cpp.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/BamStatus.cpp.o: ../BamStatus.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/Config.dir/BamStatus.cpp.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/BamStatus.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamStatus.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/BamStatus.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamStatus.cpp
 
 CMakeFiles/Config.dir/BamStatus.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Config.dir/BamStatus.cpp.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamStatus.cpp > CMakeFiles/Config.dir/BamStatus.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamStatus.cpp > CMakeFiles/Config.dir/BamStatus.cpp.i
 
 CMakeFiles/Config.dir/BamStatus.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Config.dir/BamStatus.cpp.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamStatus.cpp -o CMakeFiles/Config.dir/BamStatus.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamStatus.cpp -o CMakeFiles/Config.dir/BamStatus.cpp.s
 
 CMakeFiles/Config.dir/Overrepresent.cpp.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/Overrepresent.cpp.o: ../Overrepresent.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/Config.dir/Overrepresent.cpp.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/Overrepresent.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/Overrepresent.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/Overrepresent.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/Overrepresent.cpp
 
 CMakeFiles/Config.dir/Overrepresent.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Config.dir/Overrepresent.cpp.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/Overrepresent.cpp > CMakeFiles/Config.dir/Overrepresent.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/Overrepresent.cpp > CMakeFiles/Config.dir/Overrepresent.cpp.i
 
 CMakeFiles/Config.dir/Overrepresent.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Config.dir/Overrepresent.cpp.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/Overrepresent.cpp -o CMakeFiles/Config.dir/Overrepresent.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/Overrepresent.cpp -o CMakeFiles/Config.dir/Overrepresent.cpp.s
 
 CMakeFiles/Config.dir/test/test_sam.cpp.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/test/test_sam.cpp.o: ../test/test_sam.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object CMakeFiles/Config.dir/test/test_sam.cpp.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/test/test_sam.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_sam.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/test/test_sam.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_sam.cpp
 
 CMakeFiles/Config.dir/test/test_sam.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Config.dir/test/test_sam.cpp.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_sam.cpp > CMakeFiles/Config.dir/test/test_sam.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_sam.cpp > CMakeFiles/Config.dir/test/test_sam.cpp.i
 
 CMakeFiles/Config.dir/test/test_sam.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Config.dir/test/test_sam.cpp.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_sam.cpp -o CMakeFiles/Config.dir/test/test_sam.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_sam.cpp -o CMakeFiles/Config.dir/test/test_sam.cpp.s
 
 CMakeFiles/Config.dir/test/test_sam_read.cpp.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/test/test_sam_read.cpp.o: ../test/test_sam_read.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object CMakeFiles/Config.dir/test/test_sam_read.cpp.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/test/test_sam_read.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_sam_read.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/test/test_sam_read.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_sam_read.cpp
 
 CMakeFiles/Config.dir/test/test_sam_read.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Config.dir/test/test_sam_read.cpp.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_sam_read.cpp > CMakeFiles/Config.dir/test/test_sam_read.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_sam_read.cpp > CMakeFiles/Config.dir/test/test_sam_read.cpp.i
 
 CMakeFiles/Config.dir/test/test_sam_read.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Config.dir/test/test_sam_read.cpp.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_sam_read.cpp -o CMakeFiles/Config.dir/test/test_sam_read.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_sam_read.cpp -o CMakeFiles/Config.dir/test/test_sam_read.cpp.s
 
 CMakeFiles/Config.dir/BamRead.cpp.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/BamRead.cpp.o: ../BamRead.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/Config.dir/BamRead.cpp.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/BamRead.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamRead.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/BamRead.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamRead.cpp
 
 CMakeFiles/Config.dir/BamRead.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Config.dir/BamRead.cpp.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamRead.cpp > CMakeFiles/Config.dir/BamRead.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamRead.cpp > CMakeFiles/Config.dir/BamRead.cpp.i
 
 CMakeFiles/Config.dir/BamRead.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Config.dir/BamRead.cpp.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamRead.cpp -o CMakeFiles/Config.dir/BamRead.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamRead.cpp -o CMakeFiles/Config.dir/BamRead.cpp.s
 
 CMakeFiles/Config.dir/BamCompress.cpp.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/BamCompress.cpp.o: ../BamCompress.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object CMakeFiles/Config.dir/BamCompress.cpp.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/BamCompress.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamCompress.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/BamCompress.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamCompress.cpp
 
 CMakeFiles/Config.dir/BamCompress.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Config.dir/BamCompress.cpp.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamCompress.cpp > CMakeFiles/Config.dir/BamCompress.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamCompress.cpp > CMakeFiles/Config.dir/BamCompress.cpp.i
 
 CMakeFiles/Config.dir/BamCompress.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Config.dir/BamCompress.cpp.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamCompress.cpp -o CMakeFiles/Config.dir/BamCompress.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamCompress.cpp -o CMakeFiles/Config.dir/BamCompress.cpp.s
 
 CMakeFiles/Config.dir/BamCompleteBlock.cpp.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/BamCompleteBlock.cpp.o: ../BamCompleteBlock.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object CMakeFiles/Config.dir/BamCompleteBlock.cpp.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/BamCompleteBlock.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamCompleteBlock.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/BamCompleteBlock.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamCompleteBlock.cpp
 
 CMakeFiles/Config.dir/BamCompleteBlock.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Config.dir/BamCompleteBlock.cpp.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamCompleteBlock.cpp > CMakeFiles/Config.dir/BamCompleteBlock.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamCompleteBlock.cpp > CMakeFiles/Config.dir/BamCompleteBlock.cpp.i
 
 CMakeFiles/Config.dir/BamCompleteBlock.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Config.dir/BamCompleteBlock.cpp.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamCompleteBlock.cpp -o CMakeFiles/Config.dir/BamCompleteBlock.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamCompleteBlock.cpp -o CMakeFiles/Config.dir/BamCompleteBlock.cpp.s
 
 CMakeFiles/Config.dir/BamTools.cpp.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/BamTools.cpp.o: ../BamTools.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object CMakeFiles/Config.dir/BamTools.cpp.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/BamTools.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamTools.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/BamTools.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamTools.cpp
 
 CMakeFiles/Config.dir/BamTools.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Config.dir/BamTools.cpp.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamTools.cpp > CMakeFiles/Config.dir/BamTools.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamTools.cpp > CMakeFiles/Config.dir/BamTools.cpp.i
 
 CMakeFiles/Config.dir/BamTools.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Config.dir/BamTools.cpp.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamTools.cpp -o CMakeFiles/Config.dir/BamTools.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamTools.cpp -o CMakeFiles/Config.dir/BamTools.cpp.s
 
 CMakeFiles/Config.dir/BamWriteBlock.cpp.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/BamWriteBlock.cpp.o: ../BamWriteBlock.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object CMakeFiles/Config.dir/BamWriteBlock.cpp.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/BamWriteBlock.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriteBlock.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/BamWriteBlock.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriteBlock.cpp
 
 CMakeFiles/Config.dir/BamWriteBlock.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Config.dir/BamWriteBlock.cpp.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriteBlock.cpp > CMakeFiles/Config.dir/BamWriteBlock.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriteBlock.cpp > CMakeFiles/Config.dir/BamWriteBlock.cpp.i
 
 CMakeFiles/Config.dir/BamWriteBlock.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Config.dir/BamWriteBlock.cpp.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriteBlock.cpp -o CMakeFiles/Config.dir/BamWriteBlock.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriteBlock.cpp -o CMakeFiles/Config.dir/BamWriteBlock.cpp.s
 
 CMakeFiles/Config.dir/BamWriteCompress.cpp.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/BamWriteCompress.cpp.o: ../BamWriteCompress.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object CMakeFiles/Config.dir/BamWriteCompress.cpp.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/BamWriteCompress.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriteCompress.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/BamWriteCompress.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriteCompress.cpp
 
 CMakeFiles/Config.dir/BamWriteCompress.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Config.dir/BamWriteCompress.cpp.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriteCompress.cpp > CMakeFiles/Config.dir/BamWriteCompress.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriteCompress.cpp > CMakeFiles/Config.dir/BamWriteCompress.cpp.i
 
 CMakeFiles/Config.dir/BamWriteCompress.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Config.dir/BamWriteCompress.cpp.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriteCompress.cpp -o CMakeFiles/Config.dir/BamWriteCompress.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriteCompress.cpp -o CMakeFiles/Config.dir/BamWriteCompress.cpp.s
 
 CMakeFiles/Config.dir/BamWriter.cpp.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/BamWriter.cpp.o: ../BamWriter.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object CMakeFiles/Config.dir/BamWriter.cpp.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/BamWriter.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriter.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/BamWriter.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriter.cpp
 
 CMakeFiles/Config.dir/BamWriter.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Config.dir/BamWriter.cpp.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriter.cpp > CMakeFiles/Config.dir/BamWriter.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriter.cpp > CMakeFiles/Config.dir/BamWriter.cpp.i
 
 CMakeFiles/Config.dir/BamWriter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Config.dir/BamWriter.cpp.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriter.cpp -o CMakeFiles/Config.dir/BamWriter.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamWriter.cpp -o CMakeFiles/Config.dir/BamWriter.cpp.s
 
 CMakeFiles/Config.dir/BamReader.cpp.o: CMakeFiles/Config.dir/flags.make
 CMakeFiles/Config.dir/BamReader.cpp.o: ../BamReader.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object CMakeFiles/Config.dir/BamReader.cpp.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/BamReader.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamReader.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Config.dir/BamReader.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamReader.cpp
 
 CMakeFiles/Config.dir/BamReader.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Config.dir/BamReader.cpp.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamReader.cpp > CMakeFiles/Config.dir/BamReader.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamReader.cpp > CMakeFiles/Config.dir/BamReader.cpp.i
 
 CMakeFiles/Config.dir/BamReader.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Config.dir/BamReader.cpp.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamReader.cpp -o CMakeFiles/Config.dir/BamReader.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/BamReader.cpp -o CMakeFiles/Config.dir/BamReader.cpp.s
 
 # Object files for target Config
 Config_OBJECTS = \

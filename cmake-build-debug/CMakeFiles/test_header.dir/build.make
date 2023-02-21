@@ -69,15 +69,15 @@ include CMakeFiles/test_header.dir/flags.make
 CMakeFiles/test_header.dir/test/test_header.cpp.o: CMakeFiles/test_header.dir/flags.make
 CMakeFiles/test_header.dir/test/test_header.cpp.o: ../test/test_header.cpp
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/zhaozhan/CLionProjects/BamUniversalStatus/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test_header.dir/test/test_header.cpp.o"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_header.dir/test/test_header.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_header.cpp
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/test_header.dir/test/test_header.cpp.o -c /Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_header.cpp
 
 CMakeFiles/test_header.dir/test/test_header.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test_header.dir/test/test_header.cpp.i"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_header.cpp > CMakeFiles/test_header.dir/test/test_header.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_header.cpp > CMakeFiles/test_header.dir/test/test_header.cpp.i
 
 CMakeFiles/test_header.dir/test/test_header.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test_header.dir/test/test_header.cpp.s"
-	/usr/local/Cellar/gcc@9/9.5.0/bin/g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_header.cpp -o CMakeFiles/test_header.dir/test/test_header.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/zhaozhan/CLionProjects/BamUniversalStatus/test/test_header.cpp -o CMakeFiles/test_header.dir/test/test_header.cpp.s
 
 # Object files for target test_header
 test_header_OBJECTS = \

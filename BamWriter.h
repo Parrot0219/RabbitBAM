@@ -24,11 +24,35 @@
  *
  */
 
+
+int rabbit_write_deflate_block(BGZF *fp, bam_write_block* write_block);
+
+int rabbit_bgzf_flush(BGZF *fp,bam_write_block* write_block);
+
+int rabbit_bgzf_mul_flush(BGZF *fp,BamWriteCompress *bam_write_compress,bam_write_block* &write_block);
+int rabbit_bgzf_write(BGZF *fp,bam_write_block* &write_block,const void *data, size_t length);
+int rabbit_bgzf_mul_write(BGZF *fp, BamWriteCompress *bam_write_compress,bam_write_block* &write_block,const void *data, size_t length);
+int rabbit_bgzf_flush_try(BGZF *fp, bam_write_block* write_block,ssize_t size);
+int rabbit_bgzf_mul_flush_try(BGZF *fp,BamWriteCompress* bam_write_compress,bam_write_block* &write_block,ssize_t size);
+int bam_write_pack(BGZF *fp,BamWriteCompress *bam_write_compress);
+void bam_write_compress_pack(BGZF *fp,BamWriteCompress *bam_write_compress);
+
+int rabbit_bam_write_test(BGZF *fp,bam_write_block* write_block,bam1_t *b);
+int rabbit_bam_write_mul_test(BGZF *fp,BamWriteCompress *bam_write_compress,bam_write_block* &write_block,bam1_t *b);
+
+void benchmark_write_pack(BamCompleteBlock* completeBlock,samFile *output,sam_hdr_t *hdr,int level);
+
+void benchmark_write_mul_pack(BamCompleteBlock* completeBlock,BamWriteCompress* bam_write_compress,samFile *output,sam_hdr_t *hdr,int level);
+
+
+
 class BamWriter {
 
 public:
-    BamWriter(std::string file_name,sam_hdr_t *hdr, int level=6);
-    BamWriter(std::string file_name,sam_hdr_t *hdr, int BufferSize, int threadNumber, int level=6);
+    BamWriter(std::string file_name, int threadNumber=1, int level=6);
+//    BamWriter(std::string file_name,sam_hdr_t *hdr, int level=6);
+//    BamWriter(std::string file_name,sam_hdr_t *hdr, int threadNumber, int level=6);
+    BamWriter(std::string file_name,sam_hdr_t *hdr, int threadNumber=1, int BufferSize=200 ,int level=6);
     ~BamWriter(){
         if (write_block->block_offset>0){
             bam_write_compress->inputUnCompressData(write_block);
@@ -37,6 +61,11 @@ public:
         for (int i=0;i<n_thread_write;i++) write_compress_thread[i]->join();
 
     }
+
+    void bam_write(bam1_t* b);
+
+    void hdr_write(sam_hdr_t* hdr);
+
     void write(bam1_t* b);
 
     void over();

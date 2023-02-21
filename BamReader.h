@@ -66,12 +66,12 @@ public:
      *
      *  根据输入进来的bam1_t的指针，装入bam1_t
      *
-     *  无返回值
+     *  bool
      *
      *
      */
 
-    void getBam1_t(bam1_t* b);
+    bool getBam1_t(bam1_t* b);
 
 
     /*

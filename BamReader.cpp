@@ -380,17 +380,17 @@ sam_hdr_t* BamReader::getHeader(){
  *
  */
 
-void BamReader::getBam1_t(bam1_t* b){
+bool BamReader::getBam1_t(bam1_t* b){
         int ret;
-        if ((ret=(read_bam(un_comp,b,0)))>=0) {
-            return;
-        }else{
-            completeBlock->backEmpty(un_comp);
-            un_comp = completeBlock->getCompleteBlock();
+        while (un_comp!=nullptr){
             if ((ret=(read_bam(un_comp,b,0)))>=0) {
-                return;
+                return true;
+            }else{
+                completeBlock->backEmpty(un_comp);
+                un_comp = completeBlock->getCompleteBlock();
             }
         }
+        return false;
 }
 
 

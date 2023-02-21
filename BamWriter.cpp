@@ -261,6 +261,8 @@ int rabbit_bam_write_mul_test(BGZF *fp,BamWriteCompress *bam_write_compress,bam_
         return -1;
     }
     if (c->n_cigar > 0xffff) block_len += 16; // "16" for "CGBI", 4-byte tag length and 8-byte fake CIGAR
+
+
     if (c->pos > INT_MAX ||
         c->mpos > INT_MAX ||
         c->isize < INT_MIN || c->isize > INT_MAX) {
@@ -331,6 +333,9 @@ int rabbit_bam_write_mul_test(BGZF *fp,BamWriteCompress *bam_write_compress,bam_
     if (fp->is_be) swap_data(c, b->l_data, b->data, 0);
     return ok? 4 + block_len : -1;
 }
+
+
+
 
 void benchmark_write_pack(BamCompleteBlock* completeBlock,samFile *output,sam_hdr_t *hdr,int level){
 
@@ -435,34 +440,61 @@ void BamWriter::write(bam1_t* b){
 
 }
 
-BamWriter::BamWriter(std::string filename,sam_hdr_t *hdr,int level){
-
-    if ((output=sam_open(filename.c_str(),"wb"))==NULL){
-        printf("Can`t open this file!\n");
-        //TODO 处理一下无法打开的清空
-    }
-    if (sam_hdr_write(output, hdr) != 0) {
-        printf("HDR Write False!\n");
-        //TODO 处理一下无法输出的情况
-    }
-
-    n_thread_write = 4;
-    bam_write_compress = new BamWriteCompress(4000,n_thread_write);
-
-
-    write_compress_thread = new std::thread*[n_thread_write];
-    for (int i=0;i<n_thread_write;i++) write_compress_thread[i] = new std::thread(&bam_write_compress_pack,output->fp.bgzf,bam_write_compress);
-
-    write_output_thread = new std::thread(&bam_write_pack,output->fp.bgzf,bam_write_compress);
-
-
-
-    output->fp.bgzf->block_offset=0;
-    output->fp.bgzf->compress_level=level;
-
-    bam_write_block *write_block=bam_write_compress->getEmpty();
-}
-BamWriter::BamWriter(std::string filename,sam_hdr_t *hdr, int BufferSize, int threadNumber,int level){
+//BamWriter::BamWriter(std::string filename,sam_hdr_t *hdr,int level){
+//
+//    if ((output=sam_open(filename.c_str(),"w+"))==NULL){
+//        printf("Can`t open this file!\n");
+//        //TODO 处理一下无法打开的清空
+//    }
+//    if (sam_hdr_write(output, hdr) != 0) {
+//        printf("HDR Write False!\n");
+//        //TODO 处理一下无法输出的情况
+//    }
+//
+//    n_thread_write = 1;
+//    bam_write_compress = new BamWriteCompress(4000,n_thread_write);
+//
+//
+//    write_compress_thread = new std::thread*[n_thread_write];
+//    for (int i=0;i<n_thread_write;i++) write_compress_thread[i] = new std::thread(&bam_write_compress_pack,output->fp.bgzf,bam_write_compress);
+//
+//    write_output_thread = new std::thread(&bam_write_pack,output->fp.bgzf,bam_write_compress);
+//
+//
+//
+//    output->fp.bgzf->block_offset=0;
+//    output->fp.bgzf->compress_level=level;
+//
+//    write_block=bam_write_compress->getEmpty();
+//}
+//BamWriter::BamWriter(std::string filename,sam_hdr_t *hdr, int threadNumber,int level){
+//
+//    if ((output=sam_open(filename.c_str(),"wb"))==NULL){
+//        printf("Can`t open this file!\n");
+//        //TODO 处理一下无法打开的清空
+//    }
+//    if (sam_hdr_write(output, hdr) != 0) {
+//        printf("HDR Write False!\n");
+//        //TODO 处理一下无法输出的情况
+//    }
+//
+//    n_thread_write = threadNumber;
+//    bam_write_compress = new BamWriteCompress(4000,n_thread_write);
+//
+//
+//    write_compress_thread = new std::thread*[n_thread_write];
+//    for (int i=0;i<n_thread_write;i++) write_compress_thread[i] = new std::thread(&bam_write_compress_pack,output->fp.bgzf,bam_write_compress);
+//
+//    write_output_thread = new std::thread(&bam_write_pack,output->fp.bgzf,bam_write_compress);
+//
+//
+//
+//    output->fp.bgzf->block_offset=0;
+//    output->fp.bgzf->compress_level=level;
+//
+//    write_block=bam_write_compress->getEmpty();
+//}
+BamWriter::BamWriter(std::string filename,sam_hdr_t *hdr, int threadNumber, int BufferSize , int level){
 
     if ((output=sam_open(filename.c_str(),"wb"))==NULL){
         printf("Can`t open this file!\n");
@@ -487,7 +519,7 @@ BamWriter::BamWriter(std::string filename,sam_hdr_t *hdr, int BufferSize, int th
     output->fp.bgzf->block_offset=0;
     output->fp.bgzf->compress_level=level;
 
-    bam_write_block *write_block=bam_write_compress->getEmpty();
+    write_block=bam_write_compress->getEmpty();
 }
 
 void BamWriter::over(){
