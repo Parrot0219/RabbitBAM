@@ -928,7 +928,7 @@ int main(int argc,char* argv[]){
     string outputfile("./BAMStatus.html");
     int n_thread=1;
     int n_thread_write=1;
-    int level = 9;
+    int level = 6;
 
     CLI::App *bam2fq = app.add_subcommand("bam2fq", "BAM format turn to FastQ format");
     bam2fq->add_option("-i", inputfile, "input File name")->required()->check(CLI::ExistingFile);
@@ -1134,9 +1134,11 @@ int main(int argc,char* argv[]){
             printf("Can`t open this file!\n");
             return 0;
         }
+        output->format.compression_level=6;
         if ((hdr = sam_hdr_read(sin)) == NULL) {
             return  0;
         }
+
         sam_hdr_write(output,hdr);
         bam1_t *b;
         if ((b = bam_init1()) == NULL) {
@@ -1148,9 +1150,10 @@ int main(int argc,char* argv[]){
         hts_set_threads(output, n_thread);
         int num = 0;
 //        output->format.format=bam;
+
         while(sam_read1(sin, hdr, b)>=0){
             num++;
-//            sam_write1(output,hdr,b);
+            sam_write1(output,hdr,b);
         }
 //        sam_itr_querys()
 //        while (sam_itr_next(sin,,b)>=0){
@@ -1316,6 +1319,7 @@ int main(int argc,char* argv[]){
         int  consumer_thread_number = 1;
         thread **consumer_thread = new thread*[consumer_thread_number];
         for (int i=0;i<consumer_thread_number;i++) consumer_thread[i] = new thread(&benchmark_write_pack,&completeBlock,output,hdr,level);
+
         read_thread->join();
         for (int i=0;i<n_thread;i++) compress_thread[i]->join();
         assign_thread->join();
@@ -1436,7 +1440,7 @@ int main(int argc,char* argv[]){
          */
 
         BamReader *reader = new BamReader(inputfile,n_thread);
-        BamWriter *writer = new BamWriter(outputfile,reader->getHeader(),n_thread_write);
+        BamWriter *writer = new BamWriter(outputfile,reader->getHeader(),n_thread_write,level,200);
         bam1_t *b;
         if ((b = bam_init1()) == NULL) {
             fprintf(stderr, "[E::%s] Out of memory allocating BAM struct.\n", __func__);
@@ -1445,15 +1449,23 @@ int main(int argc,char* argv[]){
         while (reader->getBam1_t(b)){
             num++;
             writer->write(b);
-
 //            if (num%1000 == 0) printf("Bam1_t Num is %d\n",num);
         }
         writer->over();
+
         cout << "Bam1_t Num : "<< num << endl;
 
 
         TEND(fq)
         TPRINT(fq,"time is : ");
+        /*
+         *  二代数据线程读写比例为 1 ：4
+         *  三代数据线程读写比例为 1 ：4
+         *
+         *  测试下来读写速率为700mb/s 在64线程下
+         *
+         *  注意需要有额外的四个线程
+         */
     }
 }
 

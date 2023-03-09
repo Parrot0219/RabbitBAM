@@ -49,18 +49,11 @@ void benchmark_write_mul_pack(BamCompleteBlock* completeBlock,BamWriteCompress* 
 class BamWriter {
 
 public:
-    BamWriter(std::string file_name, int threadNumber=1, int level=6);
+    BamWriter(std::string file_name, int threadNumber=1, int level=6,int BufferSize=200);
 //    BamWriter(std::string file_name,sam_hdr_t *hdr, int level=6);
 //    BamWriter(std::string file_name,sam_hdr_t *hdr, int threadNumber, int level=6);
-    BamWriter(std::string file_name,sam_hdr_t *hdr, int threadNumber=1, int BufferSize=200 ,int level=6);
-    ~BamWriter(){
-        if (write_block->block_offset>0){
-            bam_write_compress->inputUnCompressData(write_block);
-        }
-        bam_write_compress->WriteComplete();
-        for (int i=0;i<n_thread_write;i++) write_compress_thread[i]->join();
-
-    }
+    BamWriter(std::string file_name,sam_hdr_t *hdr, int threadNumber=1, int level=6,int BufferSize=200);
+    ~BamWriter();
 
     void bam_write(bam1_t* b);
 
@@ -86,9 +79,12 @@ private:
 
     int n_thread_write;
 
-
+    int write_num=0;
 
 };
 
 
 #endif //BAMSTATUS_BAMWRITER_H
+
+//export PATH=/home/user_home/zz/API/BamUniversalStatus/build:$PATH
+//export LD_LIBRARY_PATH/home/user_home/zz/API/BamUniversalStatus/build:$LD_LIBRARY_PATH

@@ -1,6 +1,6 @@
 CXX = g++
 
-CPPFLAGS = -g -std=c++11 -lpthread -ldeflate -lz -O1 -ffast-math -DTIMING  -lhts
+CPPFLAGS = -g -std=c++11 -lpthread -ldeflate -lz -O3 -ffast-math -DTIMING  -lhts
 
 BUILD_PATH = $(shell pwd)/build
 

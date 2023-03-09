@@ -59,8 +59,8 @@ BamCompress::BamCompress(int BufferSize,int threadNumber){
     consumer_ed=0;
     consumer_size=BufferSize+5;
     consumer_data=new bam_block*[consumer_size];
-    is_ok = new bool[consumer_size];
-    for (int i=0;i<consumer_size;i++) is_ok[i]=false;
+//    is_ok = new bool[consumer_size];
+//    for (int i=0;i<consumer_size;i++) is_ok[i]=false;
 
 
     compressThread = threadNumber;
@@ -82,8 +82,10 @@ bam_block* BamCompress::getEmpty(){
     }
     int num = compress_bg;
     compress_bg=(compress_bg+1)%compress_size;
+    bam_block* res = compress_data[num];
     mtx_compress.unlock();
-    return compress_data[num];
+//    return compress_data[num];
+    return res;
 }
 /*
  * 按照顺序插入输出队列
@@ -119,9 +121,11 @@ bam_block* BamCompress::getUnCompressData(){
         if (compressThread==0 && (consumer_ed+1)%consumer_size == consumer_bg) return nullptr;
     }
     int num = consumer_bg;
-    is_ok[compress_bg]=false;
+    bam_block* res = consumer_data[consumer_bg];
     consumer_bg = (consumer_bg+1)%consumer_size;
-    return consumer_data[num];
+
+//    return consumer_data[num];
+    return res;
 }
 /*
  * 返还使用完毕的内存块

@@ -94,20 +94,24 @@ bam_write_block* BamWriteCompress::getUnCompressData(){
 //        printf("Compress Sleep Start\n");
         std::this_thread::sleep_for(std::chrono::nanoseconds(1));
 //        printf("Compress Sleep End\n");
+        mtx_need_compress.lock();
         if (isWriteComplete && (need_compress_ed+1)%need_compress_size==need_compress_bg){
+            mtx_need_compress.unlock();
             return nullptr;
         }
-        mtx_need_compress.lock();
+
 
     }
 //    printf("need compress bg : %d\n"
 //           "need compress ed : %d\n",need_compress_bg,need_compress_ed);
     int num=need_compress_bg;
+    bam_write_block* res = need_compress_data[need_compress_bg];
 //    printf("this need compress data block num : %d\n",need_compress_data[num]->block_num);
     need_compress_bg=(need_compress_bg+1)%need_compress_size;
     mtx_need_compress.unlock();
 
-    return need_compress_data[num];
+//    return need_compress_data[num];
+    return  res;
 }
 
 

@@ -117,11 +117,16 @@ int bam_write_pack(BGZF *fp,BamWriteCompress *bam_write_compress){
     bam_write_block* block;
     while(1){
 //        printf("Try to Get Compress Data\n");
+//
         block=bam_write_compress->getCompressData();
 //        printf("Has Get One Compress Data\n");
         if (block == nullptr){
             return 0;
         }
+        int block_offset = block->block_offset;
+//        printf("BlockLength = %d\n",block_offset);
+//        bam_write_compress->wait_num++;
+//        printf("Block Num = %d\n",bam_write_compress->wait_num);
 //        std::this_thread::sleep_for(std::chrono::nanoseconds(5));
         if (block->block_length < 0) {
             hts_log_debug("Deflate block operation failed: %s", bgzf_zerr(block->block_length, NULL));
@@ -138,6 +143,7 @@ int bam_write_pack(BGZF *fp,BamWriteCompress *bam_write_compress){
         fp->block_address += block->block_length;
         bam_write_compress->backEmpty(block);
     }
+
 }
 void bam_write_compress_pack(BGZF *fp,BamWriteCompress *bam_write_compress){
 //    printf("Start Compress\n");
@@ -167,6 +173,10 @@ void bam_write_compress_pack(BGZF *fp,BamWriteCompress *bam_write_compress){
 //            std::this_thread::sleep_for(std::chrono::milliseconds(1));
 //        }
     }
+
+//    if (block->block_length>0){
+//        bam_write_compress->inputUnCompressData(block);
+//    }
 //    printf("One Compress Thread has been over!\n");
     bam_write_compress->CompressThreadComplete();
 }
@@ -381,6 +391,7 @@ void benchmark_write_pack(BamCompleteBlock* completeBlock,samFile *output,sam_hd
         res++;
         completeBlock->backEmpty(un_comp);
     }
+    rabbit_bgzf_flush(output->fp.bgzf,write_block);
     printf("Bam1_t Number is %lld\n",ans);
     printf("Block  Number is %lld\n",res);
 }
@@ -435,11 +446,14 @@ void benchmark_write_mul_pack(BamCompleteBlock* completeBlock,BamWriteCompress* 
 //    printf("Bam1_t Number is %lld\n",ans);
 //    printf("Block  Number is %lld\n",res);
 }
-void BamWriter::write(bam1_t* b){
-    rabbit_bam_write_mul_test(output->fp.bgzf,bam_write_compress,write_block,b);
+void BamWriter::write(bam1_t* b) {
+    rabbit_bam_write_mul_test(output->fp.bgzf, bam_write_compress, write_block, b);
 
 }
 
+void BamWriter::bam_write(bam1_t* b){
+    rabbit_bam_write_mul_test(output->fp.bgzf, bam_write_compress, write_block, b);
+}
 //BamWriter::BamWriter(std::string filename,sam_hdr_t *hdr,int level){
 //
 //    if ((output=sam_open(filename.c_str(),"w+"))==NULL){
@@ -494,7 +508,32 @@ void BamWriter::write(bam1_t* b){
 //
 //    write_block=bam_write_compress->getEmpty();
 //}
-BamWriter::BamWriter(std::string filename,sam_hdr_t *hdr, int threadNumber, int BufferSize , int level){
+
+BamWriter::BamWriter(std::string filename, int threadNumber,  int level,int BufferSize){
+
+    if ((output=sam_open(filename.c_str(),"wb"))==NULL){
+        printf("Can`t open this file!\n");
+        //TODO 处理一下无法打开的清空
+    }
+
+    n_thread_write = threadNumber;
+    bam_write_compress = new BamWriteCompress(BufferSize,n_thread_write);
+
+
+    write_compress_thread = new std::thread*[n_thread_write];
+    for (int i=0;i<n_thread_write;i++) write_compress_thread[i] = new std::thread(&bam_write_compress_pack,output->fp.bgzf,bam_write_compress);
+
+    write_output_thread = new std::thread(&bam_write_pack,output->fp.bgzf,bam_write_compress);
+
+
+
+    output->fp.bgzf->block_offset=0;
+    output->fp.bgzf->compress_level=level;
+
+    write_block=bam_write_compress->getEmpty();
+}
+
+BamWriter::BamWriter(std::string filename,sam_hdr_t *hdr, int threadNumber,  int level,int BufferSize){
 
     if ((output=sam_open(filename.c_str(),"wb"))==NULL){
         printf("Can`t open this file!\n");
@@ -522,13 +561,25 @@ BamWriter::BamWriter(std::string filename,sam_hdr_t *hdr, int threadNumber, int 
     write_block=bam_write_compress->getEmpty();
 }
 
+void BamWriter::hdr_write(sam_hdr_t* hdr){
+    if (sam_hdr_write(output, hdr) != 0) {
+        printf("HDR Write False!\n");
+        //TODO 处理一下无法输出的情况
+    }
+}
+
+
 void BamWriter::over(){
 
     if (write_block->block_offset>0) {
         bam_write_compress->inputUnCompressData(write_block);
+        write_block=bam_write_compress->getEmpty();
     }
     bam_write_compress->WriteComplete();
-
+//    sleep(100);
+    for (int i=0;i<n_thread_write;i++) write_compress_thread[i]->join();
+    write_output_thread->join();
+    sam_close(output);
 }
 
 // TODO
