@@ -32,7 +32,7 @@ BamRead::BamRead(int BufferSize){
     read_bg = 0;read_ed = BufferSize-1;
     for (int i=read_bg;i<=read_ed;i++) readBlock[i] = new bam_block;
 
-    consumerBlockSize=BufferSize+5;
+    consumerBlockSize=2*BufferSize+5;
     consumerBlock = new bam_block*[consumerBlockSize];
     consumer_bg = 1;consumer_ed = 0;
     blockNum = 0;

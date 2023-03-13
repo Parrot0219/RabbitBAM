@@ -279,7 +279,7 @@ BamReader::BamReader(std::string file_name,int n_thread){
 
 
     //TODO 可以考虑获取用户的内存大小，根据此来获得Reader等的大小
-    read=new BamRead(1024);
+    read=new BamRead(512);
     //TODO 默认8线程
     this->n_thread = n_thread;
     compress=new BamCompress(512,n_thread);
