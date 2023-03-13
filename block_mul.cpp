@@ -1440,7 +1440,7 @@ int main(int argc,char* argv[]){
          */
 
         BamReader *reader = new BamReader(inputfile,n_thread);
-        BamWriter *writer = new BamWriter(outputfile,reader->getHeader(),n_thread_write,level,200);
+        BamWriter *writer = new BamWriter(outputfile,reader->getHeader(),n_thread_write,level,256);
         bam1_t *b;
         if ((b = bam_init1()) == NULL) {
             fprintf(stderr, "[E::%s] Out of memory allocating BAM struct.\n", __func__);

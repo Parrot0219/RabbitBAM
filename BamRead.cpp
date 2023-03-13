@@ -64,9 +64,12 @@ std::pair<bam_block*, int> BamRead::getReadBlock(){
     }
     int num_point = consumer_bg;
     consumer_bg = (consumer_bg+1)%consumerBlockSize;
+    bam_block* res = consumerBlock[num_point];
     int num_block = blockNum++;
     mtx_consumer.unlock();
-    return std::pair<bam_block*, int>(consumerBlock[num_point],num_block);
+//    return std::pair<bam_block*, int>(consumerBlock[num_point],num_block);
+    return std::pair<bam_block*, int>(res,num_block);
+
 }
 
 void BamRead::backBlock(bam_block* block){

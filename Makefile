@@ -1,10 +1,12 @@
 CXX = g++
 
-CPPFLAGS = -g -std=c++11 -lpthread -ldeflate -lz -O3 -ffast-math -DTIMING  -lhts
+CPPFLAGS = -g -std=c++11 -lpthread -ldeflate -lz -O3 -ffast-math -flto=full -DTIMING  -lhts
 
 BUILD_PATH = $(shell pwd)/build
 
 OBJECT = $(BUILD_PATH)/tools.o $(BUILD_PATH)/read.o $(BUILD_PATH)/write.o $(BUILD_PATH)/status.o
+
+LIB_OBJECT = $(BUILD_PATH)/librabbitbamtools.o $(BUILD_PATH)/librabbitbamread.o $(BUILD_PATH)/librabbitbamwrite.o
 
 TARGET = $(BUILD_PATH)/rabbitbam
 
@@ -25,13 +27,16 @@ $(BUILD_PATH)/status.o: $(BUILD_PATH)/tools.o Overrepresent.cpp Overrepresent.h 
 
 $(BUILD_PATH)/write.o : $(BUILD_PATH)/tools.o BamWriter.cpp BamWriter.h BamWriteCompress.h BamWriteCompress.cpp
 	$(CXX) $(CPPFLAGS) -I$(INCLUDE) -L$(LIB) BamWriter.cpp BamWriter.h BamWriteCompress.h BamWriteCompress.cpp  $(BUILD_PATH)/tools.o $(SHARE) -o $(BUILD_PATH)/write.o
+	$(CXX) $(CPPFLAGS) -I$(INCLUDE) -L$(LIB) BamWriter.cpp BamWriter.h BamWriteCompress.h BamWriteCompress.cpp  $(BUILD_PATH)/librabbitbamtools.so $(SHARE) -o $(BUILD_PATH)/librabbitbamwrite.so
+
 
 $(BUILD_PATH)/read.o : $(BUILD_PATH)/tools.o BamCompleteBlock.cpp BamCompleteBlock.h BamCompress.cpp BamCompress.h BamBlock.cpp BamBlock.h   BamRead.cpp BamRead.h BamReader.cpp BamReader.h
 	$(CXX) $(CPPFLAGS) -I$(INCLUDE) -L$(LIB) BamCompleteBlock.cpp BamCompleteBlock.h BamCompress.cpp BamCompress.h BamBlock.cpp BamBlock.h   BamRead.cpp BamRead.h BamReader.cpp BamReader.h $(SHARE) -o $(BUILD_PATH)/read.o  $(BUILD_PATH)/tools.o
+	$(CXX) $(CPPFLAGS) -I$(INCLUDE) -L$(LIB) BamCompleteBlock.cpp BamCompleteBlock.h BamCompress.cpp BamCompress.h BamBlock.cpp BamBlock.h   BamRead.cpp BamRead.h BamReader.cpp BamReader.h $(SHARE) -o $(BUILD_PATH)/librabbitbamread.so  $(BUILD_PATH)/librabbitbamtools.so
 
 $(BUILD_PATH)/tools.o :
 	$(CXX) $(CPPFLAGS) -I$(INCLUDE) -L$(LIB) BamTools.cpp BamTools.h Buffer.cpp Buffer.h config.h $(SHARE) -o $(BUILD_PATH)/tools.o
-
+	$(CXX) $(CPPFLAGS) -I$(INCLUDE) -L$(LIB) BamTools.cpp BamTools.h Buffer.cpp Buffer.h config.h $(SHARE) -o $(BUILD_PATH)/librabbitbamtools.so
 
 
 
