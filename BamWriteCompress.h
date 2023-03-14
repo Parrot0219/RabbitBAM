@@ -94,6 +94,7 @@ private:
      * 需要压缩处理处理的数据队列
      */
     int blockInputNum; // 根据插入时间增加时间戳
+    std::atomic<int> blockInputPos;
     bam_write_block** need_compress_data;
     int need_compress_bg;
     int need_compress_ed;

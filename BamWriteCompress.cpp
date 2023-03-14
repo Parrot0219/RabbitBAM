@@ -28,9 +28,11 @@ BamWriteCompress::BamWriteCompress(int BufferSize,int threadNumber){
     }
 
     blockInputNum=0;
+    blockInputPos=0;
+
     need_compress_bg=1;
     need_compress_ed=0;
-    need_compress_size = BufferSize+5;
+    need_compress_size = 2*BufferSize+5;
     need_compress_data = new bam_write_block*[need_compress_size];
 
     consumer_bg=1;
@@ -54,9 +56,9 @@ BamWriteCompress::BamWriteCompress(int BufferSize,int threadNumber){
 bam_write_block* BamWriteCompress::getEmpty(){
 //    mtx_compress.lock();
     while ((compress_ed+1)%compress_size == compress_bg){
-        mtx_compress.unlock();
+//        mtx_compress.unlock();
         std::this_thread::sleep_for(std::chrono::nanoseconds(5));
-        mtx_compress.lock();
+//        mtx_compress.lock();
     }
     int num = compress_bg;
     compress_bg=(compress_bg+1)%compress_size;
@@ -65,53 +67,63 @@ bam_write_block* BamWriteCompress::getEmpty(){
 }
 
 void BamWriteCompress::inputUnCompressData(bam_write_block* data){
-//    mtx_need_compress.lock();
-    data->block_num=blockInputNum++;
-//    printf("Input Data Block Num : %d\n",data->block_num);
-    need_compress_data[(need_compress_ed+1)%need_compress_size]=data;
-    need_compress_ed=(need_compress_ed+1)%need_compress_size;
-//    if (blockInputNum < 4) {
-//        printf("This Time need compress bg : %d need compress ed : %d\n",need_compress_bg,need_compress_ed);
-//        printf("Input One Over need compress bg block Num : %d\n",need_compress_data[need_compress_bg]->block_num);
-//    }
-    if (WriteDeBug){
-        printf("In InputUnCompressData: need_compress_bg : %d\n",need_compress_bg);
-        printf("In InputUnCompressData: need_compress_ed : %d\n",need_compress_ed);
-        printf("Input Un CompressData This Thread ID : %d\n",std::this_thread::get_id());
-    }
+//    data->block_num=blockInputNum++;
+//    need_compress_data[(need_compress_ed+1)%need_compress_size]=data;
+//    need_compress_ed=(need_compress_ed+1)%need_compress_size;
 
-//    mtx_need_compress.unlock();
+    data->block_num=blockInputNum;
+    need_compress_data[blockInputNum%need_compress_size]=data;
+    blockInputNum+=1;
+    //    need_compress_ed=(need_compress_ed+1)%need_compress_size;
+
 }
 bam_write_block* BamWriteCompress::getUnCompressData(){
-    mtx_need_compress.lock();
-    while ((need_compress_ed+1)%need_compress_size == need_compress_bg){
-        if (WriteDeBug){
-            printf("Get Un Compress Data This Thread ID : %d\n",std::this_thread::get_id());
-            printf("need compress bg : %d\n"
-                   "need compress ed : %d\n",need_compress_bg,need_compress_ed);
-        }
-        mtx_need_compress.unlock();
-//        printf("Compress Sleep Start\n");
-        std::this_thread::sleep_for(std::chrono::nanoseconds(1));
-//        printf("Compress Sleep End\n");
-        mtx_need_compress.lock();
-        if (isWriteComplete && (need_compress_ed+1)%need_compress_size==need_compress_bg){
-            mtx_need_compress.unlock();
-            return nullptr;
-        }
+//    mtx_need_compress.lock();
+//    while ((need_compress_ed+1)%need_compress_size == need_compress_bg){
+//        mtx_need_compress.unlock();
+//        std::this_thread::sleep_for(std::chrono::nanoseconds(1));
+//        mtx_need_compress.lock();
+//        if (isWriteComplete && (need_compress_ed+1)%need_compress_size==need_compress_bg){
+//            mtx_need_compress.unlock();
+//            return nullptr;
+//        }
+//    }
+//    int num=need_compress_bg;
+//    bam_write_block* res = need_compress_data[need_compress_bg];
+//    need_compress_bg=(need_compress_bg+1)%need_compress_size;
+//    mtx_need_compress.unlock();
+//    return  res;
 
-
+//    while(1){
+//        while(blockInputPos.load(std::memory_order_acq_rel) == blockInputNum) {
+//            std::this_thread::sleep_for(std::chrono::nanoseconds(1000));
+//            if (isWriteComplete &&
+//                blockInputPos.load(std::memory_order_acq_rel) == blockInputNum) {
+//                return nullptr;
+//            }
+//        }
+//        int num=blockInputPos.load(std::memory_order_acq_rel);
+//        if (num < blockInputNum && blockInputPos.compare_exchange_weak(num,num+1,std::memory_order_acq_rel)){
+//            bam_write_block* res = need_compress_data[num%need_compress_size];
+//            return res;
+//        }
+//    }
+    while(1){
+        int num = blockInputNum;
+        while(blockInputPos.compare_exchange_strong(num,num,std::memory_order_relaxed)) {
+            std::this_thread::sleep_for(std::chrono::nanoseconds(1));
+            if (isWriteComplete &&
+                blockInputPos.load(std::memory_order_acq_rel) == blockInputNum) {
+                return nullptr;
+            }
+            num=blockInputNum;
+        }
+        if (num < blockInputNum && blockInputPos.compare_exchange_strong(num,num+1,std::memory_order_relaxed)){
+            bam_write_block* res = need_compress_data[num%need_compress_size];
+            return res;
+        }
     }
-//    printf("need compress bg : %d\n"
-//           "need compress ed : %d\n",need_compress_bg,need_compress_ed);
-    int num=need_compress_bg;
-    bam_write_block* res = need_compress_data[need_compress_bg];
-//    printf("this need compress data block num : %d\n",need_compress_data[num]->block_num);
-    need_compress_bg=(need_compress_bg+1)%need_compress_size;
-    mtx_need_compress.unlock();
 
-//    return need_compress_data[num];
-    return  res;
 }
 
 

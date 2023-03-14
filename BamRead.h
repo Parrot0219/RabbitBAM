@@ -93,8 +93,10 @@ private:
 
     int consumerBlockSize;
 
+    std::atomic<int> blockNum;
+    int blockTot;
 
-    int blockNum;
+//    int blockNum;
     /*
      * 多线程同时使用consumer 获取block
      */

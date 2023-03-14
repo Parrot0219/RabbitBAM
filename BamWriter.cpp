@@ -119,7 +119,7 @@ int bam_write_pack(BGZF *fp,BamWriteCompress *bam_write_compress){
 //        printf("Try to Get Compress Data\n");
 //
         block=bam_write_compress->getCompressData();
-//        printf("Has Get One Compress Data\n");
+//        printf("Has Get One Compress Data %d\n",block->block_num);
         if (block == nullptr){
             return 0;
         }
