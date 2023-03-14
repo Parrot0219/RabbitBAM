@@ -54,66 +54,40 @@ BamWriteCompress::BamWriteCompress(int BufferSize,int threadNumber){
  * 输出：bam_block* : 指向该内存块的指针
  */
 bam_write_block* BamWriteCompress::getEmpty(){
-//    mtx_compress.lock();
     while ((compress_ed+1)%compress_size == compress_bg){
-//        mtx_compress.unlock();
         std::this_thread::sleep_for(std::chrono::nanoseconds(5));
-//        mtx_compress.lock();
     }
     int num = compress_bg;
     compress_bg=(compress_bg+1)%compress_size;
-//    mtx_compress.unlock();
     return compress_data[num];
 }
 
 void BamWriteCompress::inputUnCompressData(bam_write_block* data){
-//    data->block_num=blockInputNum++;
-//    need_compress_data[(need_compress_ed+1)%need_compress_size]=data;
-//    need_compress_ed=(need_compress_ed+1)%need_compress_size;
 
     data->block_num=blockInputNum;
     need_compress_data[blockInputNum%need_compress_size]=data;
     blockInputNum+=1;
-    //    need_compress_ed=(need_compress_ed+1)%need_compress_size;
 
 }
 bam_write_block* BamWriteCompress::getUnCompressData(){
-//    mtx_need_compress.lock();
-//    while ((need_compress_ed+1)%need_compress_size == need_compress_bg){
-//        mtx_need_compress.unlock();
-//        std::this_thread::sleep_for(std::chrono::nanoseconds(1));
-//        mtx_need_compress.lock();
-//        if (isWriteComplete && (need_compress_ed+1)%need_compress_size==need_compress_bg){
-//            mtx_need_compress.unlock();
-//            return nullptr;
-//        }
-//    }
-//    int num=need_compress_bg;
-//    bam_write_block* res = need_compress_data[need_compress_bg];
-//    need_compress_bg=(need_compress_bg+1)%need_compress_size;
-//    mtx_need_compress.unlock();
-//    return  res;
 
-//    while(1){
-//        while(blockInputPos.load(std::memory_order_acq_rel) == blockInputNum) {
-//            std::this_thread::sleep_for(std::chrono::nanoseconds(1000));
-//            if (isWriteComplete &&
-//                blockInputPos.load(std::memory_order_acq_rel) == blockInputNum) {
-//                return nullptr;
-//            }
-//        }
-//        int num=blockInputPos.load(std::memory_order_acq_rel);
-//        if (num < blockInputNum && blockInputPos.compare_exchange_weak(num,num+1,std::memory_order_acq_rel)){
-//            bam_write_block* res = need_compress_data[num%need_compress_size];
-//            return res;
-//        }
-//    }
     while(1){
         int num = blockInputNum;
+
+        /*
+         * blockInputNum++++++++;
+         * blockInputPos++++++++;
+         */
+       /*
+        *
+        *  这里必须Strong,不接受伪失败
+        *
+        */
+
         while(blockInputPos.compare_exchange_strong(num,num,std::memory_order_relaxed)) {
             std::this_thread::sleep_for(std::chrono::nanoseconds(1));
             if (isWriteComplete &&
-                blockInputPos.load(std::memory_order_acq_rel) == blockInputNum) {
+                blockInputPos.load(std::memory_order_relaxed) == blockInputNum) {
                 return nullptr;
             }
             num=blockInputNum;
@@ -135,19 +109,12 @@ bam_write_block* BamWriteCompress::getUnCompressData(){
  */
 
 void BamWriteCompress::inputCompressData(bam_write_block* data){
-//    printf("When Input Compress Data the data block num : %d\n",data->block_num);
     while (data->block_num != blockNum.load(std::memory_order_acq_rel)) {
         wait_num+=1;
-//        printf("Wait Sleep Start\n");
         std::this_thread::sleep_for(std::chrono::nanoseconds(data->block_num-blockNum)/8);
-//        printf("Wait Sleep End\n");
     }
-//    printf("comsumer bg : %d\n"
-//           "consumer ed : %d\n",consumer_bg,consumer_ed);
     consumer_data[(consumer_ed + 1) % consumer_size] = data;
     consumer_ed = (consumer_ed + 1) % consumer_size;
-//    printf("Input Compress Data consumer bg : %d\n"
-//           "Input Compress Data consumer ed : %d\n",consumer_bg,consumer_ed);
     blockNum.store(blockNum.load(std::memory_order_acq_rel)+1,std::memory_order_acq_rel);
 }
 
@@ -162,15 +129,10 @@ void BamWriteCompress::inputCompressData(bam_write_block* data){
  */
 bam_write_block* BamWriteCompress::getCompressData(){
     while ((consumer_ed+1)%consumer_size == consumer_bg){
-//        printf("Write Sleep Start\n");
         std::this_thread::sleep_for(std::chrono::nanoseconds(1));
-//        printf("Write Sleep end\n");
         if (compressThread==0 && (consumer_ed+1)%consumer_size == consumer_bg) return nullptr;
     }
     int num = consumer_bg;
-//    is_ok[compress_bg]=false;
-//    printf("Get Compress Data consumer bg : %d\n"
-//           "Get Compress Data consumer ed : %d\n",consumer_bg,consumer_ed);
     consumer_bg = (consumer_bg+1)%consumer_size;
     return consumer_data[num];
 }
