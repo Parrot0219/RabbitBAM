@@ -509,6 +509,16 @@ void BamWriter::bam_write(bam1_t* b){
 //    write_block=bam_write_compress->getEmpty();
 //}
 
+BamWriter::BamWriter(int threadNumber,  int level,int BufferSize){
+
+    n_thread_write = threadNumber;
+    bam_write_compress = new BamWriteCompress(BufferSize,n_thread_write);
+
+
+
+}
+
+
 BamWriter::BamWriter(std::string filename, int threadNumber,  int level,int BufferSize){
 
     if ((output=sam_open(filename.c_str(),"wb"))==NULL){
@@ -569,6 +579,21 @@ void BamWriter::hdr_write(sam_hdr_t* hdr){
 }
 
 
+void BamWriter::set_output(samFile *output){
+    this->output=output;
+    write_compress_thread = new std::thread*[n_thread_write];
+    for (int i=0;i<n_thread_write;i++) write_compress_thread[i] = new std::thread(&bam_write_compress_pack,output->fp.bgzf,bam_write_compress);
+
+    write_output_thread = new std::thread(&bam_write_pack,output->fp.bgzf,bam_write_compress);
+
+
+
+    output->fp.bgzf->block_offset=0;
+    output->fp.bgzf->compress_level=6;
+
+    write_block=bam_write_compress->getEmpty();
+}
+
 void BamWriter::over(){
 
     if (write_block->block_offset>0) {
@@ -579,7 +604,7 @@ void BamWriter::over(){
 //    sleep(100);
     for (int i=0;i<n_thread_write;i++) write_compress_thread[i]->join();
     write_output_thread->join();
-    sam_close(output);
+//    sam_close(output);
 }
 
 // TODO

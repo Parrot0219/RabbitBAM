@@ -8,9 +8,9 @@
 #include "config.h"
 #include "BamBlock.h"
 #include "Buffer.h"
-#include "BamStatus.h"
-#include "Duplicate.h"
-#include "Overrepresent.h"
+//#include "BamStatus.h"
+//#include "Duplicate.h"
+//#include "Overrepresent.h"
 #include "CLI/CLI.hpp"
 #include <sched.h>
 #include <unistd.h>
@@ -23,6 +23,7 @@
 #include "BamReader.h"
 #define BLOCK_HEADER_LENGTH 18
 #define BLOCK_FOOTER_LENGTH 8
+
 
 
 #define DEBUG 0
